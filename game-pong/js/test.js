@@ -1,3 +1,5 @@
+//is this working properly
+
 "use strict";
 function setup() {
   // Create canvas and set drawing modes
