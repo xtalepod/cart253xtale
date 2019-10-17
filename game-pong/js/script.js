@@ -275,6 +275,8 @@ function checkBallPaddleCollision(paddle) {
       // Then the ball is touching the paddle
       // Reverse its vx so it starts travelling in the opposite direction
       ball.vx = -ball.vx;
+    //  ball.x = paddle.x +(paddle.w+ball.size/2)
+      //ball.y = paddle.y
       // Play our bouncing sound effect by rewinding and then playing
       beepSFX.currentTime = 0;
       beepSFX.play();
@@ -311,15 +313,26 @@ function resetBall() {
   ball.vx = ball.speed;
   ball.vy = ball.speed;
 }
-//added a fuction to reset the ball base don game play
+//added a fuction to reset the ball based on game play
 function resetBallInGamePlay(){
-  ball.x = width / 2;
-  ball.y = height / 2;
+  // ball.x = width / 2;
+  // ball.y = height / 2;
+
+  //ball.x = paddle
+
+//right player scores a ppoint
   if (ball.x < 0 ){
-      ball.vx = ball.speed;
+    // - means we want it to move to left
+      ball.vx = -ball.speed;
+      ball.x = rightPaddle.x - (rightPaddle.w/2+ball.size/2)
+      ball.y = rightPaddle.y
   }
+
+  //left player scores a point
   if(ball.x > width ){
       ball.vx = -ball.speed;
+      ball.x = leftPaddle.x + (leftPaddle.w/2+ball.size/2)
+      ball.y = leftPaddle.y
   }
 
 }
