@@ -1,7 +1,7 @@
 "use strict";
 
-// Pong
-// by Pippin Barr
+// Ping
+// by christale terris
 //
 // A "simple" implementation of Pong with no scoring system
 // just the ability to play the game with the keyboard.
@@ -221,10 +221,6 @@ function ballIsOutOfBounds() {
   }
 }
 
-//function addNumbers(a,b){
-  //let c = a+b;
-  //return c;
-//}
 
 // checkBallWallCollision()
 //
@@ -315,12 +311,9 @@ function resetBall() {
 }
 //added a fuction to reset the ball based on game play
 function resetBallInGamePlay(){
-  // ball.x = width / 2;
-  // ball.y = height / 2;
 
-  //ball.x = paddle
 
-//right player scores a ppoint
+//if right player scores a point the ball respawns at their paddle and changes direction
   if (ball.x < 0 ){
     // - means we want it to move to left
       ball.vx = -ball.speed;
@@ -328,7 +321,7 @@ function resetBallInGamePlay(){
       ball.y = rightPaddle.y
   }
 
-  //left player scores a point
+//if left player scores a point the ball respawns at their paddle and changes direction
   if(ball.x > width ){
       ball.vx = -ball.speed;
       ball.x = leftPaddle.x + (leftPaddle.w/2+ball.size/2)
@@ -355,7 +348,7 @@ function displayScore() {
   text(scoreRight, 2*width/3, 20);
 
 }
-
+jhgkjkglh
 // mousePressed()
 //
 // Here to require a click to start playing the game
@@ -363,3 +356,6 @@ function displayScore() {
 function mousePressed() {
   playing = true;
 }
+//
+//
+// Ex.4 Game improved by changing the ball velocity and respawn location during play to correspond with the paddle that just scored, i.e left paddle scores means the ball with respawn in front of it and launch towards the right paddle. Thanks pippin!
