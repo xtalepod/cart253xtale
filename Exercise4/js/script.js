@@ -206,12 +206,15 @@ function updateBall() {
 // Returns true if so, false otherwise
 
 function ballIsOutOfBounds() {
-  // Check for ball going off the sides
+  // Check for ball going off the sides, if it goes off the left side player right scores
+  //and the paddle colour changes
   if (ball.x < 0 ) {
     scoreRight ++;
     rightPaddle.paddleColourR=rightPaddle.paddleColourR+10;
     return true;
   }
+  // Check for ball going off the sides, if it goes off the right side player left scores
+  //and the paddle colour changes
   else if(ball.x > width){
       scoreLeft ++;
       leftPaddle.paddleColourG=leftPaddle.paddleColourG+10;
