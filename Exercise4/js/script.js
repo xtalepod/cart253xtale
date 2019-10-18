@@ -12,6 +12,12 @@
 //Adding a font
 let myFont;
 
+//Adding speed changes and time
+//let speedChange;
+//let maxSpeed;
+let tx =0;
+let ty =0;
+
 // Whether the game has started
 let playing = false;
 
@@ -93,7 +99,8 @@ function setup() {
   rectMode(CENTER);
   noStroke();
   //fill(fgColor);
-
+  // tx = random(0,100);
+  // ty = random(0,100);
   setupPaddles();
   resetBall();
 }
@@ -111,6 +118,10 @@ function setupPaddles() {
   rightPaddle.y = height / 2;
 }
 
+function setupBall() {
+  tx = random(0,100);
+  ty = random(0,100);
+}
 // draw()
 //
 // Calls the appropriate functions to run the game
@@ -322,6 +333,10 @@ function resetBallInGamePlay(){
 
 //if right player scores a point the ball respawns at their paddle and changes direction
   if (ball.x < 0 ){
+    ball.x = width * noise(tx);
+    ball.y = height * noise(ty);
+    tx += 0.01;
+    ty += 0.01;
     // - means we want it to move to left
       ball.vx = -ball.speed;
       ball.x = rightPaddle.x - (rightPaddle.w/2+ball.size/2)
@@ -330,6 +345,11 @@ function resetBallInGamePlay(){
 
 //if left player scores a point the ball respawns at their paddle and changes direction
   if(ball.x > width ){
+    // ball.x = width * random(tx);
+    // ball.y = height * random(ty);
+    // tx += 0.10;
+    // ty += 0.10;
+    //should there be no minus
       ball.vx = -ball.speed;
       ball.x = leftPaddle.x + (leftPaddle.w/2+ball.size/2)
       ball.y = leftPaddle.y
@@ -351,13 +371,14 @@ function displayStartMessage() {
 }
 
 function displayScore() {
+push();
   textAlign(CENTER, TOP);
   textFont(myFont);
   textSize(20);
   fill(255,190,192)
   text(scoreLeft, width/3, 20);
   text(scoreRight, 2*width/3, 20);
-
+pop();
 }
 // mousePressed()
 //
