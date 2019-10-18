@@ -204,6 +204,7 @@ function updateBall() {
 //
 // Checks if the ball has gone off the left or right
 // Returns true if so, false otherwise
+
 function ballIsOutOfBounds() {
   // Check for ball going off the sides
   if (ball.x < 0 ) {
@@ -220,7 +221,6 @@ function ballIsOutOfBounds() {
     return false;
   }
 }
-
 
 // checkBallWallCollision()
 //
@@ -348,7 +348,6 @@ function displayScore() {
   text(scoreRight, 2*width/3, 20);
 
 }
-jhgkjkglh
 // mousePressed()
 //
 // Here to require a click to start playing the game
@@ -357,5 +356,3 @@ function mousePressed() {
   playing = true;
 }
 //
-//
-// Ex.4 Game improved by changing the ball velocity and respawn location during play to correspond with the paddle that just scored, i.e left paddle scores means the ball with respawn in front of it and launch towards the right paddle. Thanks pippin!
