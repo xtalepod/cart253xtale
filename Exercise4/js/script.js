@@ -9,12 +9,15 @@
 // Up and down keys control the right hand paddle, W and S keys control
 // the left hand paddle
 
+//Adding a font
+let myFont;
+
 // Whether the game has started
 let playing = false;
 
 // Game colors (using hexadecimal)
-let bgColor = 0;
-let fgColor = 255;
+//let bgColor = 0;
+//let fgColor = 255;
 
 let scoreLeft =0;
 let scoreRight =0;
@@ -76,6 +79,7 @@ let beepSFX;
 // Loads the beep audio for the sound of bouncing
 function preload() {
   beepSFX = new Audio("assets/sounds/beep.wav");
+  myFont = loadFont ("assets/font/spaceage.ttf");
 }
 
 // setup()
@@ -88,7 +92,7 @@ function setup() {
   createCanvas(640, 480);
   rectMode(CENTER);
   noStroke();
-  fill(fgColor);
+  //fill(fgColor);
 
   setupPaddles();
   resetBall();
@@ -112,8 +116,8 @@ function setupPaddles() {
 // Calls the appropriate functions to run the game
 // See how tidy it looks?!
 function draw() {
-  // Fill the background
-  background(bgColor);
+  // Fill the backgrColoround
+  background(150);
 
   if (playing) {
     // If the game is in play, we handle input and move the elements around
@@ -210,14 +214,14 @@ function ballIsOutOfBounds() {
   //and the paddle colour changes
   if (ball.x < 0 ) {
     scoreRight ++;
-    rightPaddle.paddleColourR=rightPaddle.paddleColourR+10;
+    rightPaddle.paddleColourR=rightPaddle.paddleColourR+5;
     return true;
   }
   // Check for ball going off the sides, if it goes off the right side player left scores
   //and the paddle colour changes
   else if(ball.x > width){
       scoreLeft ++;
-      leftPaddle.paddleColourG=leftPaddle.paddleColourG+10;
+      leftPaddle.paddleColourB=leftPaddle.paddleColourB+5;
       return true;
   }
   else {
@@ -339,14 +343,18 @@ function resetBallInGamePlay(){
 function displayStartMessage() {
  push();
   textAlign(CENTER, CENTER);
-  textSize(32);
-  text("CLICK TO START", width / 2, height / 2);
+  textFont(myFont);
+  textSize(80);
+  fill(255,190,192)
+  text("PING", width / 2, height / 1.15);
   pop();
 }
 
 function displayScore() {
   textAlign(CENTER, TOP);
+  textFont(myFont);
   textSize(20);
+  fill(255,190,192)
   text(scoreLeft, width/3, 20);
   text(scoreRight, 2*width/3, 20);
 
