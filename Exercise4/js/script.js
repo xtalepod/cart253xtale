@@ -1,3 +1,8 @@
+//
+//
+//
+//
+
 "use strict";
 
 // Ping
@@ -81,6 +86,9 @@ let rightPaddle = {
 // A variable to hold the beep sound we will play on bouncing
 let beepSFX;
 
+//a variable to make the background change
+let noiseScale = 0.02;
+
 // preload()
 //
 // Loads the beep audio for the sound of bouncing
@@ -122,7 +130,15 @@ function setupPaddles() {
 // See how tidy it looks?!
 function draw() {
   // Fill the backgrColor
-  background(150);
+//transparency added to abckground so you can see the objects in motion
+//noiseScale from p5.js used to make the game more interesting
+//changed to follow the ball instead of the mouse
+  background(255,193,170,10);
+  for (let n=0; n < width; n++) {
+    let noiseVal= noise((ball.x+n)*noiseScale,ball.y*noiseScale);
+    stroke(noiseVal*30);
+    line(n, ball.y+noiseVal*100,n,height);
+  }
 
   if (playing) {
     // If the game is in play, we handle input and move the elements around
@@ -314,6 +330,7 @@ function resetBall() {
   ball.x = random(30,600);
   ball.y = random(20,400);
   //ball always starts moving towards the left
+  //wanted to make it go left or right but couldn't figure it out
   ball.vx = -ball.speed;
   //set the velocity to random
   ball.vy = random(20,50);
@@ -373,4 +390,3 @@ pop();
 function mousePressed() {
   playing = true;
 }
-//
