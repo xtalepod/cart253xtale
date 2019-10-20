@@ -316,7 +316,7 @@ function resetBall() {
   //ball always starts moving towards the left
   ball.vx = -ball.speed;
   //set the velocity to random
-  ball.vy = random(0,50);
+  ball.vy = random(20,50);
 }
 
 //added a fuction to reset the ball based on game play
@@ -327,7 +327,8 @@ function resetBallInGamePlay(){
       ball.vx = -ball.speed;
       ball.x = rightPaddle.x - (rightPaddle.w/2+ball.size/2);
       ball.y = rightPaddle.y;
-      ball.vy = random(0,50);
+      //makes it so the ball velocity is random
+      ball.vy = random(20,50);
   }
 
 //if left player scores a point the ball respawns at their paddle and changes direction
@@ -336,6 +337,7 @@ function resetBallInGamePlay(){
       ball.vx = ball.speed;
       ball.x = leftPaddle.x + (leftPaddle.w/2+ball.size/2);
       ball.y = leftPaddle.y;
+      //makes it so the ball velocity is random
       ball.vy = random(0,50);
   }
 
