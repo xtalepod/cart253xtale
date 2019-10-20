@@ -112,10 +112,15 @@ function setup() {
   noStroke();
 //set up for oscillation
 osc = new p5.Oscillator();
-osc.setType('saw');
+osc.setType('sine');
 osc.freq(100);
-osc.amp(0);
-osc.start();
+//start 2 seconds after entering page
+osc.start(2);
+//methods that seem fun but didn't do much for me
+//osc.amp(1.0);
+//osc.phase(0.0);
+//osc.pan(-1,1)
+
 
 //
   setupPaddles();

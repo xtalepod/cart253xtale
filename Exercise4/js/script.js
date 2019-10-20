@@ -1,15 +1,14 @@
 //
 //
 //
-//
 
 "use strict";
 
-// Ping
+// PING
 // by christale terris
 //
-// A "simple" implementation of Pong with no scoring system
-// just the ability to play the game with the keyboard.
+// A "simple" implementation of Pong with a scoring system where the paddles change colours
+//and the score is couted on top.
 //
 // Up and down keys control the right hand paddle, W and S keys control
 // the left hand paddle
@@ -20,8 +19,8 @@ let myFont;
 //Adding speed changes and time
 //let speedChange;
 //let maxSpeed;
-let tx =0;
-let ty =0;
+let tx = 0;
+let ty = 0;
 
 // Whether the game has started
 let playing = false;
@@ -30,8 +29,8 @@ let playing = false;
 //let bgColor = 0;
 //let fgColor = 255;
 
-let scoreLeft =0;
-let scoreRight =0;
+let scoreLeft = 0;
+let scoreRight = 0;
 
 // BALL
 
@@ -43,8 +42,8 @@ let ball = {
   size: 20,
   vx: 0,
   vy: 0,
-  speed:5,
-  maxSpeed:10
+  speed: 5,
+  maxSpeed: 10
 }
 
 // PADDLES
@@ -83,18 +82,18 @@ let rightPaddle = {
   paddleColourB: 99
 }
 
-// A variable to hold the beep sound we will play on bouncing
-let beepSFX;
+//two variables for oscillation
+let osc;
+let playingOsc = false;
 
 //a variable to make the background change
 let noiseScale = 0.02;
 
 // preload()
 //
-// Loads the beep audio for the sound of bouncing
+// Loads font to display title and score
 function preload() {
-  beepSFX = new Audio("assets/sounds/beep.wav");
-  myFont = loadFont ("assets/font/spaceage.ttf");
+  myFont = loadFont("assets/font/spaceage.ttf");
 }
 
 // setup()
@@ -107,6 +106,19 @@ function setup() {
   createCanvas(640, 480);
   rectMode(CENTER);
   noStroke();
+  //set up for oscillation
+  osc = new p5.Oscillator();
+  osc.setType('sine');
+  osc.freq(100);
+  //start 2 seconds after entering page
+  osc.start(2);
+  //methods that seem fun but didn't do much for me
+  //osc.amp(1.0);
+  //osc.phase(0.0);
+  //osc.pan(-1,1)
+
+
+  //
   setupPaddles();
   resetBall();
 }
@@ -130,14 +142,15 @@ function setupPaddles() {
 // See how tidy it looks?!
 function draw() {
   // Fill the backgrColor
-//transparency added to abckground so you can see the objects in motion
-//noiseScale from p5.js used to make the game more interesting
-//changed to follow the ball instead of the mouse
-  background(255,193,170,10);
-  for (let n=0; n < width; n++) {
-    let noiseVal= noise((ball.x+n)*noiseScale,ball.y*noiseScale);
-    stroke(noiseVal*30);
-    line(n, ball.y+noiseVal*100,n,height);
+  //transparency added to abckground so you can see the objects in motion
+  //noiseScale from p5.js used to make the game more visually interesting
+  //also gives illusion of interaction with the oscillator
+  //changed to follow the ball instead of the mouse + aesthetic
+  background(255, 193, 170, 10);
+  for (let n = 0; n < width; n++) {
+    let noiseVal = noise((ball.x + n) * noiseScale, ball.y * noiseScale);
+    stroke(noiseVal * 30);
+    line(n, ball.y + noiseVal * 100, n, height);
   }
 
   if (playing) {
@@ -153,18 +166,17 @@ function draw() {
     checkBallPaddleCollision(rightPaddle);
     //
     // Check if the ball went out of bounds and respond if so
-   // (Note how we can use a function that returns a truth value
-     // inside a conditional!)
-     let result = ballIsOutOfBounds();
-    if (result ===true) {
-       // If it went off either side, reset ball in game play
-    resetBallInGamePlay();
-     }
-     else{
+    // (Note how we can use a function that returns a truth value
+    // inside a conditional!)
+    let result = ballIsOutOfBounds();
+    if (result === true) {
+      // If it went off either side, reset ball in game play
+      resetBallInGamePlay();
+    } else {
 
-//display the score
-   displayScore();
-     }
+      //display the score
+      displayScore();
+    }
   }
   // end if playing
   else {
@@ -172,10 +184,13 @@ function draw() {
     displayStartMessage();
   }
 
-//always display the paddles
+  //always display the paddles
   displayPaddle(leftPaddle);
   displayPaddle(rightPaddle);
   displayBall();
+
+  //always oscillate in someway
+  playOsc();
 
 }
 
@@ -194,8 +209,7 @@ function handleInput(paddle) {
   else if (keyIsDown(paddle.downKey)) {
     // Move down
     paddle.vy = paddle.speed;
-  }
-  else {
+  } else {
     // Otherwise stop moving
     paddle.vy = 0;
   }
@@ -207,7 +221,7 @@ function handleInput(paddle) {
 function updatePaddle(paddle) {
   // Update the paddle position based on its velocity
   //paddle.y += paddle.vy;
-  paddle.y = paddle.y+paddle.vy;
+  paddle.y = paddle.y + paddle.vy;
 }
 
 // updateBall()
@@ -227,19 +241,18 @@ function updateBall() {
 function ballIsOutOfBounds() {
   // Check for ball going off the sides, if it goes off the left side player right scores
   //and the paddle colour changes
-  if (ball.x < 0 ) {
-    scoreRight ++;
-    rightPaddle.paddleColourR=rightPaddle.paddleColourR+5;
+  if (ball.x < 0) {
+    scoreRight++;
+    rightPaddle.paddleColourR = rightPaddle.paddleColourR + 5;
     return true;
   }
   // Check for ball going off the sides, if it goes off the right side player left scores
   //and the paddle colour changes
-  else if(ball.x > width){
-      scoreLeft ++;
-      leftPaddle.paddleColourB=leftPaddle.paddleColourB+5;
-      return true;
-  }
-  else {
+  else if (ball.x > width) {
+    scoreLeft++;
+    leftPaddle.paddleColourB = leftPaddle.paddleColourB + 5;
+    return true;
+  } else {
     return false;
   }
 }
@@ -251,20 +264,13 @@ function ballIsOutOfBounds() {
 // Play a sound
 function checkBallWallCollision() {
   // Check for collisions with top or bottom...
-  if (ball.y < 0 ) {
+  if (ball.y < 0) {
     // It hit so reverse velocity
     ball.vy = ball.speed;
-    // Play our bouncing sound effect by rewinding and then playing
-    beepSFX.currentTime = 0;
-    beepSFX.play();
-  }
-  else if (ball.y > height){
+
+  } else if (ball.y > height) {
     // It hit so reverse velocity
     ball.vy = -ball.speed;
-    // Play our bouncing sound effect by rewinding and then playing
-    beepSFX.currentTime = 0;
-    beepSFX.play();
-
   }
 }
 
@@ -293,11 +299,7 @@ function checkBallPaddleCollision(paddle) {
       // Then the ball is touching the paddle
       // Reverse its vx so it starts travelling in the opposite direction
       ball.vx = -ball.vx;
-    //  ball.x = paddle.x +(paddle.w+ball.size/2)
-      //ball.y = paddle.y
-      // Play our bouncing sound effect by rewinding and then playing
-      beepSFX.currentTime = 0;
-      beepSFX.play();
+
     }
   }
 }
@@ -308,7 +310,7 @@ function checkBallPaddleCollision(paddle) {
 function displayPaddle(paddle) {
   // Draw the paddles
   push();
-  fill(paddle.paddleColourR,paddle.paddleColourG,paddle.paddleColourB);
+  fill(paddle.paddleColourR, paddle.paddleColourG, paddle.paddleColourB);
   rect(paddle.x, paddle.y, paddle.w, paddle.h);
   pop();
 }
@@ -321,41 +323,55 @@ function displayBall() {
   rect(ball.x, ball.y, ball.size, ball.size);
 }
 
+//a way to potentially make the oscillator more interactive with the game play
+// function playOsc() {
+//   if (ball.x > 0 && ball.x < width && ball.y < height && ball.y > 0) {
+//     if (!playingOsc) {
+//       // ramp amplitude to 0.5 over 0.05 seconds
+//       osc.amp(0.5, 0.05);
+//       playingOsc = true;
+//     } else {
+//       // ramp amplitude to 0 over 0.5 seconds
+//       osc.amp(0, 0.5);
+//       playingOsc = false;
+//     }
+//   }
+// }
 // resetBall()
 //
 // Sets the starting position and velocity of the ball
 function resetBall() {
   // Initialise the ball's position and velocity
   //make where the ball resets at inital game start random
-  ball.x = random(30,600);
-  ball.y = random(20,400);
+  ball.x = random(30, 600);
+  ball.y = random(20, 400);
   //ball always starts moving towards the left
   //wanted to make it go left or right but couldn't figure it out
   ball.vx = -ball.speed;
   //set the velocity to random
-  ball.vy = random(20,50);
+  ball.vy = random(20, 50);
 }
 
 //added a fuction to reset the ball based on game play
-function resetBallInGamePlay(){
-//if right player scores a point the ball respawns at their paddle and changes direction
-  if (ball.x < 0 ){
+function resetBallInGamePlay() {
+  //if right player scores a point the ball respawns at their paddle and changes direction
+  if (ball.x < 0) {
     // - means we want it to move to left
-      ball.vx = -ball.speed;
-      ball.x = rightPaddle.x - (rightPaddle.w/2+ball.size/2);
-      ball.y = rightPaddle.y;
-      //makes it so the ball velocity is random
-      ball.vy = random(20,50);
+    ball.vx = -ball.speed;
+    ball.x = rightPaddle.x - (rightPaddle.w / 2 + ball.size / 2);
+    ball.y = rightPaddle.y;
+    //makes it so the ball velocity is random
+    ball.vy = random(20, 50);
   }
 
-//if left player scores a point the ball respawns at their paddle and changes direction
-  if(ball.x > width ){
+  //if left player scores a point the ball respawns at their paddle and changes direction
+  if (ball.x > width) {
     //should there be no minus
-      ball.vx = ball.speed;
-      ball.x = leftPaddle.x + (leftPaddle.w/2+ball.size/2);
-      ball.y = leftPaddle.y;
-      //makes it so the ball velocity is random
-      ball.vy = random(0,50);
+    ball.vx = ball.speed;
+    ball.x = leftPaddle.x + (leftPaddle.w / 2 + ball.size / 2);
+    ball.y = leftPaddle.y;
+    //makes it so the ball velocity is random
+    ball.vy = random(0, 50);
   }
 
 }
@@ -364,24 +380,24 @@ function resetBallInGamePlay(){
 //
 // Shows a message about how to start the game
 function displayStartMessage() {
- push();
+  push();
   textAlign(CENTER, CENTER);
   textFont(myFont);
   textSize(80);
-  fill(255,190,192)
+  fill(255, 190, 192)
   text("PING", width / 2, height / 1.15);
   pop();
 }
 
 function displayScore() {
-push();
+  push();
   textAlign(CENTER, TOP);
   textFont(myFont);
   textSize(20);
-  fill(255,190,192)
-  text(scoreLeft, width/3, 20);
-  text(scoreRight, 2*width/3, 20);
-pop();
+  fill(255, 190, 192)
+  text(scoreLeft, width / 3, 20);
+  text(scoreRight, 2 * width / 3, 20);
+  pop();
 }
 // mousePressed()
 //
