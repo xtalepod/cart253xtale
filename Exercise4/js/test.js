@@ -19,25 +19,34 @@ let ball = {
 
 function setup() {
   createCanvas(500,500);
-  ball.tx = random(0,1000);
-  ball.ty = random(0,1000);
   ball.x = width/2;
   ball.y = height/2;
   ball.vx = ball.speed;
   ball.vy = -ball.speed;
+  ball.tx = random(0,1000);
+  ball.ty = random(0,1000);
 }
 
 // Sets the position of the ball based on its velocity
-// function updateBall() {
+function updateBall() {
 //   // Update the ball's position based on velocity
-//   ball.x += ball.vx;
-//   ball.y += ball.vy;
-// }
+//
+// ball.x = width/2;
+// ball.y = height/2;
+// ball.vx = ball.speed;
+// ball.vy = -ball.speed;
+// ball.tx = random(0,1000);
+// ball.ty = random(0,1000);
+//
+//   // ball.x += ball.vx;
+//   // ball.y += ball.vy;
+}
 
 
 function displayBall() {
   // Draw the ball
   rect(ball.x, ball.y, ball.size, ball.size);
+  stroke(0);
 }
 
 function draw() {
@@ -48,6 +57,9 @@ function draw() {
   ball.vy = map(random(ball.ty),0,1,-ball.maxSpeed,ball.maxSpeed);
   ball.x += ball.vx;
   ball.y += ball.vy;
+  // ball.tx += 0.01;
+  // ball.ty += 0.01;
+
   if (ball.x < 0) {
     ball.x += width;
   }
@@ -60,8 +72,8 @@ function draw() {
   else if (ball.y > height) {
     ball.y -= height;
   }
-  ball.tx += 0.01;
-  ball.ty += 0.01;
+  // ball.tx += 0.01;
+  // ball.ty += 0.01;
   // ball(ball.x,ball.y,10,10);
 }
 // //

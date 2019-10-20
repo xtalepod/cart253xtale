@@ -38,7 +38,8 @@ let ball = {
   size: 20,
   vx: 0,
   vy: 0,
-  speed:5
+  speed:5,
+  maxSpeed:10
 }
 
 // PADDLES
@@ -98,9 +99,6 @@ function setup() {
   createCanvas(640, 480);
   rectMode(CENTER);
   noStroke();
-  //fill(fgColor);
-  // tx = random(0,100);
-  // ty = random(0,100);
   setupPaddles();
   resetBall();
 }
@@ -118,16 +116,12 @@ function setupPaddles() {
   rightPaddle.y = height / 2;
 }
 
-function setupBall() {
-  tx = random(0,100);
-  ty = random(0,100);
-}
 // draw()
 //
 // Calls the appropriate functions to run the game
 // See how tidy it looks?!
 function draw() {
-  // Fill the backgrColoround
+  // Fill the backgrColor
   background(150);
 
   if (playing) {
@@ -136,42 +130,36 @@ function draw() {
     handleInput(rightPaddle);
     updatePaddle(leftPaddle);
     updatePaddle(rightPaddle);
-     updateBall();
+    updateBall();
     //
-   checkBallWallCollision();
+    checkBallWallCollision();
     checkBallPaddleCollision(leftPaddle);
     checkBallPaddleCollision(rightPaddle);
     //
-     // Check if the ball went out of bounds and respond if so
+    // Check if the ball went out of bounds and respond if so
    // (Note how we can use a function that returns a truth value
      // inside a conditional!)
      let result = ballIsOutOfBounds();
     if (result ===true) {
-       // If it went off either side, reset it
-    //  resetBall();
+       // If it went off either side, reset ball in game play
     resetBallInGamePlay();
-      // This is where we would likely count points, depending on which side
-      // the ball went off...
      }
      else{
-       console.log("ball not out of bounds");
+
+//display the score
+   displayScore();
      }
-
-    // We always display the paddles and ball so it looks like Pong!
-    displayScore();
-
-  }// end if playing
+  }
+  // end if playing
   else {
     // Otherwise we display the message to start the game
     displayStartMessage();
   }
 
+//always display the paddles
   displayPaddle(leftPaddle);
   displayPaddle(rightPaddle);
- displayBall();
- //let result = addNumbers(5,10);
- //console.log(result);
-
+  displayBall();
 
 }
 
@@ -322,37 +310,33 @@ function displayBall() {
 // Sets the starting position and velocity of the ball
 function resetBall() {
   // Initialise the ball's position and velocity
-  ball.x = width / 2;
-  ball.y = height / 2;
-  ball.vx = ball.speed;
-  ball.vy = ball.speed;
+  //make where the ball resets at inital game start random
+  ball.x = random(30,600);
+  ball.y = random(20,400);
+  //ball always starts moving towards the left
+  ball.vx = -ball.speed;
+  //set the velocity to random
+  ball.vy = random(0,50);
 }
+
 //added a fuction to reset the ball based on game play
 function resetBallInGamePlay(){
-
-
 //if right player scores a point the ball respawns at their paddle and changes direction
   if (ball.x < 0 ){
-    ball.x = width * noise(tx);
-    ball.y = height * noise(ty);
-    tx += 0.01;
-    ty += 0.01;
     // - means we want it to move to left
       ball.vx = -ball.speed;
-      ball.x = rightPaddle.x - (rightPaddle.w/2+ball.size/2)
-      ball.y = rightPaddle.y
+      ball.x = rightPaddle.x - (rightPaddle.w/2+ball.size/2);
+      ball.y = rightPaddle.y;
+      ball.vy = random(0,50);
   }
 
 //if left player scores a point the ball respawns at their paddle and changes direction
   if(ball.x > width ){
-    // ball.x = width * random(tx);
-    // ball.y = height * random(ty);
-    // tx += 0.10;
-    // ty += 0.10;
     //should there be no minus
-      ball.vx = -ball.speed;
-      ball.x = leftPaddle.x + (leftPaddle.w/2+ball.size/2)
-      ball.y = leftPaddle.y
+      ball.vx = ball.speed;
+      ball.x = leftPaddle.x + (leftPaddle.w/2+ball.size/2);
+      ball.y = leftPaddle.y;
+      ball.vy = random(0,50);
   }
 
 }
