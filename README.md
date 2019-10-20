@@ -1,2 +1,1 @@
-# christalestestrepo
-testing repo when you forget to push or pull
+the new official repository for all things cart253xtale until the next failure to push//pull
