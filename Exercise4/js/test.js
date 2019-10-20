@@ -84,7 +84,10 @@ let rightPaddle = {
 }
 
 // A variable to hold the beep sound we will play on bouncing
-let beepSFX;
+//let beepSFX;
+//two variables for oscillation
+let osc;
+let playingOsc =false;
 
 //a variable to make the background change
 let noiseScale = 0.02;
@@ -93,7 +96,7 @@ let noiseScale = 0.02;
 //
 // Loads the beep audio for the sound of bouncing
 function preload() {
-  beepSFX = new Audio("assets/sounds/beep.wav");
+  //beepSFX = new Audio("assets/sounds/beep.wav");
   myFont = loadFont ("assets/font/spaceage.ttf");
 }
 
@@ -107,6 +110,14 @@ function setup() {
   createCanvas(640, 480);
   rectMode(CENTER);
   noStroke();
+//set up for oscillation
+osc = new p5.Oscillator();
+osc.setType('saw');
+osc.freq(100);
+osc.amp(0);
+osc.start();
+
+//
   setupPaddles();
   resetBall();
 }
@@ -155,7 +166,7 @@ function draw() {
     // Check if the ball went out of bounds and respond if so
    // (Note how we can use a function that returns a truth value
      // inside a conditional!)
-     let result = ballIsOutOfBounds();
+    let result = ballIsOutOfBounds();
     if (result ===true) {
        // If it went off either side, reset ball in game play
     resetBallInGamePlay();
@@ -176,6 +187,9 @@ function draw() {
   displayPaddle(leftPaddle);
   displayPaddle(rightPaddle);
   displayBall();
+
+//always oscillate in someway
+playOsc();
 
 }
 
@@ -255,15 +269,15 @@ function checkBallWallCollision() {
     // It hit so reverse velocity
     ball.vy = ball.speed;
     // Play our bouncing sound effect by rewinding and then playing
-    beepSFX.currentTime = 0;
-    beepSFX.play();
+    // beepSFX.currentTime = 0;
+    // beepSFX.play();
   }
   else if (ball.y > height){
     // It hit so reverse velocity
     ball.vy = -ball.speed;
     // Play our bouncing sound effect by rewinding and then playing
-    beepSFX.currentTime = 0;
-    beepSFX.play();
+    // beepSFX.currentTime = 0;
+    // beepSFX.play();
 
   }
 }
@@ -296,8 +310,8 @@ function checkBallPaddleCollision(paddle) {
     //  ball.x = paddle.x +(paddle.w+ball.size/2)
       //ball.y = paddle.y
       // Play our bouncing sound effect by rewinding and then playing
-      beepSFX.currentTime = 0;
-      beepSFX.play();
+      //beepSFX.currentTime = 0;
+      //beepSFX.play();
     }
   }
 }
@@ -321,6 +335,19 @@ function displayBall() {
   rect(ball.x, ball.y, ball.size, ball.size);
 }
 
+function playOsc() {
+  if (ball.x > 0 && ball.x < width && ball.y < height && ball.y > 0) {
+  if (!playingOsc) {
+    // ramp amplitude to 0.5 over 0.05 seconds
+    osc.amp(0.5, 0.05);
+    playingOsc = true;
+  } else {
+    // ramp amplitude to 0 over 0.5 seconds
+    osc.amp(0, 0.5);
+    playingOsc = false;
+  }
+}
+}
 // resetBall()
 //
 // Sets the starting position and velocity of the ball
