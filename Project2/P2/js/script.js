@@ -13,6 +13,14 @@ let antelope;
 let zebra;
 let bee;
 
+//the superPrey
+
+let tommy;
+
+//
+// function preload () {
+//   superPreyImage = loadImage("assets/images/tommyboy.png");
+// }
 // setup()
 //
 // Sets up a canvas
@@ -23,6 +31,7 @@ function setup() {
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
+  tommy = new PreySuper(50,50,color(0,30,50,0),40);
 }
 
 // draw()
@@ -30,7 +39,7 @@ function setup() {
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
   // Clear the background to black
-  background(0);
+  background(200);
 
   // Handle input for the tiger
   tiger.handleInput();
@@ -40,15 +49,20 @@ function draw() {
   antelope.move();
   zebra.move();
   bee.move();
+  tommy.move();
 
   // Handle the tiger eating any of the prey
   tiger.handleEating(antelope);
   tiger.handleEating(zebra);
   tiger.handleEating(bee);
+  tiger.handleEating(tommy);
+
+//tommy.draw();
 
   // Display all the "animals"
   tiger.display();
   antelope.display();
   zebra.display();
   bee.display();
+  tommy.display();
 }
