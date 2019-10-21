@@ -108,12 +108,12 @@ true
   }
 
   // Once we've displayed all decoys, we choose a random location for
-the target
+
   targetX = random(0, width);
   targetY = random(0, height);
 
-  // And draw it (because it's the last thing drawn, it will always be
-on top)
+  // And draw it (because it's the last thing drawn, it will always be on top
+
   image(targetImage, targetX, targetY);
 }
 
@@ -179,15 +179,15 @@ push();
 
 // mousePressed()
 //
-// Checks if the player clicked on the target and if so tells them they
-won
+// Checks if the player clicked on the target and if so tells them they won
+
 function mousePressed() {
   // The mouse was clicked!
   // Check if the cursor is in the x range of the target
   // (We're subtracting the image's width/2 because we're using
-imageMode(CENTER) -
+imageMode(CENTER)
   // the key is we want to determine the left and right edges of the
-image.)
+
   if (mouseX > targetX - targetImage.width / 2 && mouseX < targetX +
 targetImage.width / 2) {
     // Check if the cursor is also in the y range of the target
