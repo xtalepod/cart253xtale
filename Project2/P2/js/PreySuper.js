@@ -4,7 +4,7 @@
 // on screen based on a noise() function. It can move around
 // the screen and be consumed by Predator objects.
 
-class PreySuper {
+class Preysuper {
 
   // constructor
   //
@@ -31,12 +31,6 @@ class PreySuper {
     this.superPreyImage = loadImage("assets/images/tommyboy3.png");
     //console.log(PreySuper);
   }
-
-  //preload area
-
-  // preload(){
-  //   superPreyImage = loadImage("assets/images/tommyboy.png");
-  // }
 
   // move
   //
@@ -77,11 +71,6 @@ class PreySuper {
     }
   }
 
-
-// //draw super Prey
-// draw() {
-//       image(this.superPreyImage,this.x, this.y);
-// }
   // display
   //
   // Draw the prey as an ellipse on the canvas
@@ -94,7 +83,7 @@ class PreySuper {
     this.radius = this.health;
     image(this.superPreyImage,this.x, this.y);
     pop();
-    console.log(tommy);
+    // console.log(tommy);
   }
 
   // reset

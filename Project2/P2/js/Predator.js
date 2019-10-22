@@ -23,6 +23,8 @@ class Predator {
     this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
     this.healthLossPerMove = 0.1;
     this.healthGainPerEat = 1;
+    //this.preyEaten = 0;
+
     // Display properties
     this.fillColor = fillColor;
     this.radius = this.health; // Radius is defined in terms of health
@@ -119,6 +121,21 @@ class Predator {
     }
   }
 
+//handle eating for super prey
+handleSuperEating(preySuper) {
+    let e = dist(this.x, this.y, preySuper.x, preySuper.y);
+    if (e < this.radius + preySuper.radius) {
+// Increase predator health and constrain it to its possible range
+    this.health += this.healthGainPerEat;
+    this.health = constrain(this.health, 0, this.maxHealth);
+// Decrease prey health by the same amount
+    preySuper.health -= this.healthGainPerEat;
+// Check if the prey died and reset it if so
+    if (preySuper.health < 0) {
+    preySuper.reset();
+      }
+    }
+  }
   // display
   //
   // Draw the predator as an ellipse on the canvas
@@ -131,4 +148,3 @@ class Predator {
     ellipse(this.x, this.y, this.radius * 2);
     pop();
   }
-}
