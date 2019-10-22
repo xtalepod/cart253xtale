@@ -10,8 +10,8 @@ class PreySuper {
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
-  //size
-  constructor(x, y, speed, size) {
+  //radius
+  constructor(x, y, speed, radius) {
     // Position
     this.x = x;
     this.y = y;
@@ -23,12 +23,12 @@ class PreySuper {
     this.tx = random(0, 1000); // To make x and y noise different
     this.ty = random(0, 1000); // we use random starting values
     // Health properties
-    this.maxHealth = size;
+    this.maxHealth = radius;
     this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
     // Display properties
     //this.fillColor;
-    this.size = this.health;
-    this.superPreyImage = loadImage("assets/images/tommyboy.png");
+    this.radius = this.health;
+    this.superPreyImage = loadImage("assets/images/tommyboy3.png");
     //console.log(PreySuper);
   }
 
@@ -85,29 +85,29 @@ class PreySuper {
   // display
   //
   // Draw the prey as an ellipse on the canvas
-  // with a size the same size as its current health.
+  // with a radius the same radius as its current health.
   display() {
     push();
     //noStroke();
     //fill(this.fillColor);
     //rect(20,20,30,40);
-    this.size = this.health;
-    image(this.superPreyImage)//,this.x, this.y, this.size * 2);
+    this.radius = this.health;
+    image(this.superPreyImage,this.x, this.y);
     pop();
-    //console.log(tommy);
+    console.log(tommy);
   }
 
   // reset
   //
   // Set the position to a random location and reset health
-  // and size back to default
+  // and radius back to default
   reset() {
     // Random position
     this.x = random(0, width);
     this.y = random(0, height);
     // Default health
     this.health = this.maxHealth;
-    // Default size
-    this.size = this.health;
+    // Default radius
+    this.radius = this.health;
   }
 }
