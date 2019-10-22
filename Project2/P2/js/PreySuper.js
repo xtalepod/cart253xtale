@@ -4,7 +4,7 @@
 // on screen based on a noise() function. It can move around
 // the screen and be consumed by Predator objects.
 
-class Preysuper {
+class PreySuper {
 
   // constructor
   //

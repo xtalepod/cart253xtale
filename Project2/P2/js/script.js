@@ -31,7 +31,7 @@ function setup() {
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
-  tommy = new Preysuper(50,50,4,20);
+  tommy = new PreySuper(50,50,4,20);
 }
 
 // draw()
@@ -55,7 +55,7 @@ function draw() {
   tiger.handleEating(antelope);
   tiger.handleEating(zebra);
   tiger.handleEating(bee);
-  tiger.handleEating(tommy);
+  tiger.handleSuperEating(tommy);
 
 //tommy.draw();
 

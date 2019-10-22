@@ -133,9 +133,10 @@ handleSuperEating(preySuper) {
 // Check if the prey died and reset it if so
     if (preySuper.health < 0) {
     preySuper.reset();
-      }
-    }
-  }
+    //debugging window telling me i'm missing a ) in line 137...
+    // console.log(preysuper eating);
+
+//
   // display
   //
   // Draw the predator as an ellipse on the canvas
@@ -148,3 +149,4 @@ handleSuperEating(preySuper) {
     ellipse(this.x, this.y, this.radius * 2);
     pop();
   }
+}
