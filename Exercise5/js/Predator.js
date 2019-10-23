@@ -13,6 +13,8 @@ this.preyEaten = 0;
 this.speed = speed;
 this.fillColor = fillColor;
 this.radius = radius;
+//question for pippin: to make this an argument do i make change these values to be generic and
+//add parameters to the constructor and then alter in script?
 this.upKey = UP_ARROW;
 this.downKey = DOWN_ARROW;
 this.leftKey = LEFT_ARROW;
@@ -65,7 +67,7 @@ else if (this.y > height) {
 }
   }
 
-
+//what do you mean increase the number of prey eaten?
   handleEating(prey) {
     // Check for an overlap with this prey
     // And reduce its health if there is one
