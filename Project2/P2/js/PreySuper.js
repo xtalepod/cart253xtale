@@ -13,7 +13,7 @@ class PreySuper {
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
   //radius
-  constructor(x, y, speed, radius, image1, image2, image3) {
+  constructor(x, y, speed, radius, image) {
     // Position
     this.x = x;
     this.y = y;
@@ -26,12 +26,11 @@ class PreySuper {
     this.ty = random(0, 1000); // we use random starting values
     // Health properties
     //this.maxHealth = radius;
-    this.state = 1; //this.maxHealth; // Must be AFTER defining this.maxHealth
+    this.state = 0; //this.maxHealth; // Must be AFTER defining this.maxHealth
+    this.maxState = 100; // qnote make this as an argument instead
     // Display properties
     this.radius = radius; //this.health;
-    this.image1 = image1;
-    this.image2 = image2;
-    this.image3 = image3;
+    this.image = image;
 
     //console.log(PreySuper);
   }
@@ -82,8 +81,9 @@ class PreySuper {
     // Check if the distance is less than their two radii (an overlap)
     if (d < this.radius + predator.radius) {
 //this means the picture will change
-      if (this.state < 3) {
-        this.state ++;
+      if (this.state < this.maxState) {
+        this.state++;
+        console.log(this.state);
       }
     }
   }
@@ -93,19 +93,15 @@ class PreySuper {
   // with a radius the same radius as its current health.
   display() {
     // this.radius = this.health;
-    if(this.state === 1){
-      image(this.image1,this.x, this.y);
-    }
-    else if(this.state === 2){
-      image(this.image2,this.x, this.y);
-    }
-    else{
-      image(this.image1,this.x,this.y);
+    image(this.image,this.x, this.y);
+    if(this.state === this.maxState){
+        console.log('MAX!!');
+        this.image.resize(300,300);
     }
     // pop();
     // image(superPreyImage, preyX, preyY, preyHealth);
     // preyImage.resize(100, 100);
-    console.log('tommydisplay');
+
   }
 
   // reset

@@ -24,8 +24,7 @@ let tommyImage3;
 function preload () {
   tommyImage1 = loadImage("assets/images/tommyboy3.png");
   tommyImage2 =loadImage("assets/images/tommy4.png");
-  tommyImage3 =loadImage("assets/images/tommy4.png");
-  console.log('whereistommy');
+  console.log('preload done');
 }
 // setup()
 //
@@ -37,8 +36,10 @@ function setup() {
   antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
-  console.log('canyouseeme');
-  tommy = new PreySuper(50,50,4,20,tommyImage1,tommyImage2,tommyImage3);
+  tommy1 = new PreySuper(50,50,4,20,tommyImage1);
+  tommy2 = new PreySuper(10,100,10,10,tommyImage2);
+  console.log('setup done');
+
 }
 
 // draw()
@@ -56,20 +57,21 @@ function draw() {
   antelope.move();
   zebra.move();
   bee.move();
-  tommy.move();
+  tommy1.move();
+  tommy2.move();
 
   // Handle the tiger eating any of the prey
   tiger.handleEating(antelope);
   tiger.handleEating(zebra);
   tiger.handleEating(bee);
-  tiger.handleEating(tommy);
+  tiger.handleEating(tommy1);
 
   //handle the tommy eating
-  tommy.handleEating(tiger);
+  tommy1.handleEating(tiger);
 
   //tiger.handleSuperEating(tommy);
-  console.log('whereistommydisplayscript');
-  tommy.display();
+  tommy1.display();
+  tommy2.display();
   // Display all the "animals"
   //predator
   tiger.display();

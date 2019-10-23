@@ -121,24 +121,6 @@ class Predator {
     }
   }
 
-//handle eating for super prey
-handleSuperEating(preySuper) {
-    let e = dist(this.x, this.y, preySuper.x, preySuper.y);
-    if (e < this.radius + preySuper.radius) {
-        // Increase predator health and constrain it to its possible range
-        this.health += this.healthGainPerEat;
-        this.health = constrain(this.health, 0, this.maxHealth);
-        // Decrease prey health by the same amount
-        preySuper.health -= this.healthGainPerEat;
-        // Check if the prey died and reset it if so
-        if (preySuper.health < 0) {
-            preySuper.reset();
-            // debugging window telling me i'm missing a ) in line 137...
-            console.log('preysupereating');
-        }
-    }
-}
-
 
 //
   // display
