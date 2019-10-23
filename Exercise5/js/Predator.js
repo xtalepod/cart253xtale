@@ -6,9 +6,10 @@ this.y = y;
 this.vx = 0;
 this.vy = 0;
 this.maxHealth = 100;
-this.health = 100; // Must be AFTER defining this.maxHealth
+this.health = 50; // Must be AFTER defining this.maxHealth
 this.healthLossPerMove = 0.1;
 this.healthGainPerEat = 1;
+this.preyEaten = 0;
 this.speed = speed;
 this.fillColor = fillColor;
 this.radius = radius;
@@ -74,6 +75,7 @@ else if (this.y > height) {
     this.health += this.healthGainPerEat;
     this.health = constrain(this.health,0,this.maxHealth);
     prey.health -= this.healthGainPerEat;
+  //this.preyEaten ++;
     if (prey.health < 0) {
       prey.reset();
     }

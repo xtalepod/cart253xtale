@@ -11,7 +11,7 @@ class PreySuper {
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
   //radius
-  constructor(x, y, speed, radius) {
+  constructor(x, y, speed, radius, image) {
     // Position
     this.x = x;
     this.y = y;
@@ -28,7 +28,7 @@ class PreySuper {
     // Display properties
     //this.fillColor;
     this.radius = this.health;
-    this.superPreyImage = loadImage("assets/images/tommyboy3.png");
+    this.image = image;
     //console.log(PreySuper);
   }
 
@@ -76,14 +76,16 @@ class PreySuper {
   // Draw the prey as an ellipse on the canvas
   // with a radius the same radius as its current health.
   display() {
-    push();
-    //noStroke();
-    //fill(this.fillColor);
-    //rect(20,20,30,40);
-    this.radius = this.health;
-    image(this.superPreyImage,this.x, this.y);
-    pop();
-    // console.log(tommy);
+    // push();
+    // noStroke();
+    // fill(this.fillColor);
+    // rect(20,20,30,40);
+    // this.radius = this.health;
+    image(this.image,this.x, this.y);
+    // pop();
+    // image(superPreyImage, preyX, preyY, preyHealth);
+    // preyImage.resize(100, 100);
+    console.log('tommydisplay');
   }
 
   // reset
