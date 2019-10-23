@@ -3,6 +3,8 @@
 // A class that represents a simple prey that moves
 // on screen based on a noise() function. It can move around
 // the screen and be consumed by Predator objects.
+//consider: constructing 3 images in the super (x ,y, speed, radius, image)
+//preload 3 images from script tommyImage1-3
 
 class PreySuper {
 
@@ -11,7 +13,7 @@ class PreySuper {
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
   //radius
-  constructor(x, y, speed, radius, image) {
+  constructor(x, y, speed, radius, image1, image2, image3) {
     // Position
     this.x = x;
     this.y = y;
@@ -23,12 +25,14 @@ class PreySuper {
     this.tx = random(0, 1000); // To make x and y noise different
     this.ty = random(0, 1000); // we use random starting values
     // Health properties
-    this.maxHealth = radius;
-    this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
+    //this.maxHealth = radius;
+    this.state = 1; //this.maxHealth; // Must be AFTER defining this.maxHealth
     // Display properties
-    //this.fillColor;
-    this.radius = this.health;
-    this.image = image;
+    this.radius = radius; //this.health;
+    this.image1 = image1;
+    this.image2 = image2;
+    this.image3 = image3;
+
     //console.log(PreySuper);
   }
 
@@ -71,17 +75,33 @@ class PreySuper {
     }
   }
 
+
+  handleEating(predator) {
+    // Calculate distance from this predator to the prey
+    let d = dist(this.x, this.y, predator.x, predator.y);
+    // Check if the distance is less than their two radii (an overlap)
+    if (d < this.radius + predator.radius) {
+//this means the picture will change
+      if (this.state < 3) {
+        this.state ++;
+      }
+    }
+  }
   // display
   //
   // Draw the prey as an ellipse on the canvas
   // with a radius the same radius as its current health.
   display() {
-    // push();
-    // noStroke();
-    // fill(this.fillColor);
-    // rect(20,20,30,40);
     // this.radius = this.health;
-    image(this.image,this.x, this.y);
+    if(this.state === 1){
+      image(this.image1,this.x, this.y);
+    }
+    else if(this.state === 2){
+      image(this.image2,this.x, this.y);
+    }
+    else{
+      image(this.image1,this.x,this.y);
+    }
     // pop();
     // image(superPreyImage, preyX, preyY, preyHealth);
     // preyImage.resize(100, 100);
@@ -97,8 +117,8 @@ class PreySuper {
     this.x = random(0, width);
     this.y = random(0, height);
     // Default health
-    this.health = this.maxHealth;
-    // Default radius
-    this.radius = this.health;
+    // this.health = this.maxHealth;
+    // // Default radius
+    // this.radius = this.health;
   }
 }

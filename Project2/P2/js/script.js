@@ -16,11 +16,15 @@ let bee;
 //the superPrey
 
 let tommy;
-let tommySuperPreyImage;
+let tommyImage1;
+let tommyImage2;
+let tommyImage3;
 
 //
 function preload () {
-  tommySuperPreyImage = loadImage("assets/images/tommyboy3.png");
+  tommyImage1 = loadImage("assets/images/tommyboy3.png");
+  tommyImage2 =loadImage("assets/images/tommy4.png");
+  tommyImage3 =loadImage("assets/images/tommy4.png");
   console.log('whereistommy');
 }
 // setup()
@@ -34,7 +38,7 @@ function setup() {
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
   console.log('canyouseeme');
-  tommy = new PreySuper(50,50,4,20,tommySuperPreyImage);
+  tommy = new PreySuper(50,50,4,20,tommyImage1,tommyImage2,tommyImage3);
 }
 
 // draw()
@@ -58,6 +62,10 @@ function draw() {
   tiger.handleEating(antelope);
   tiger.handleEating(zebra);
   tiger.handleEating(bee);
+  tiger.handleEating(tommy);
+
+  //handle the tommy eating
+  tommy.handleEating(tiger);
 
   //tiger.handleSuperEating(tommy);
   console.log('whereistommydisplayscript');
