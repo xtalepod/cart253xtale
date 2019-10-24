@@ -104,6 +104,8 @@ class Predator { // A Predator class describes what a Predator is and does
     fill(this.fillColor, this.health);
     this.radius = this.health;
     ellipse(this.x, this.y, this.radius * 2);
+    let preyEatenText = "YUM YUM";
+    preyEatenText = preyEatenText + "YOU ARE" + this.preyEaten + "circles\n";
     pop();
     // console.log(this.x,this.y,this.radius, this.health)
   }
