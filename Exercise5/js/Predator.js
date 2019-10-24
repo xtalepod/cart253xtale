@@ -3,6 +3,7 @@ class Predator { // A Predator class describes what a Predator is and does
   // (x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey, sprintKey, sprintHealthPenalty,normalHealthPenalty, sprintSpeed,normalSpeed)
     // Sets up the Predator when it is created or "constructed"
     this.x = x;
+<<<<<<< HEAD
     this.y = y;
     this.vx = 0;
     this.vy = 0;
@@ -23,6 +24,25 @@ class Predator { // A Predator class describes what a Predator is and does
     this.sprintKey = this.sprintKey;
     this.sprintSpeed = 50;
     this.normalSpeed = 10;
+=======
+this.y = y;
+this.vx = 0;
+this.vy = 0;
+this.maxHealth = 100;
+this.health = 50; // Must be AFTER defining this.maxHealth
+this.healthLossPerMove = 0.1;
+this.healthGainPerEat = 1;
+this.preyEaten = 0;
+this.speed = speed;
+this.fillColor = fillColor;
+this.radius = radius;
+//question for pippin: to make this an argument do i make change these values to be generic and
+//add parameters to the constructor and then alter in script?
+this.upKey = UP_ARROW;
+this.downKey = DOWN_ARROW;
+this.leftKey = LEFT_ARROW;
+this.rightKey = RIGHT_ARROW;
+>>>>>>> 9dd3049c2210f20bed3810da9e3c17ebc3599b9a
   }
   handleInput() {
     // check if the predator is sprinting
@@ -75,6 +95,10 @@ class Predator { // A Predator class describes what a Predator is and does
     }
   }
 
+<<<<<<< HEAD
+=======
+//what do you mean increase the number of prey eaten?
+>>>>>>> 9dd3049c2210f20bed3810da9e3c17ebc3599b9a
   handleEating(prey) {
     // Check for an overlap with this prey
     // And reduce its health if there is one
