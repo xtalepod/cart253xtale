@@ -1,15 +1,13 @@
 class Predator { // A Predator class describes what a Predator is and does
-  constructor(x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey, sprintKey){
-  // (x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey, sprintKey, sprintHealthPenalty,normalHealthPenalty, sprintSpeed,normalSpeed)
+  constructor(x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey, sprintKey, sprintHealthPenalty,normalHealthPenalty,sprintSpeed,normalSpeed) {
     // Sets up the Predator when it is created or "constructed"
     this.x = x;
-<<<<<<< HEAD
     this.y = y;
     this.vx = 0;
     this.vy = 0;
     this.maxHealth = 100;
     this.health = 50; // Must be AFTER defining this.maxHealth
-    this.healthLossNormal = 0; //Per move
+    this.healthLossNormal = normalHealthPenalty; //Per move
     this.healthGainPerEat = 1;
     this.preyEaten = 0;
     this.speed = speed;
@@ -20,41 +18,27 @@ class Predator { // A Predator class describes what a Predator is and does
     this.leftKey = leftKey; //LEFT_ARROW;
     this.rightKey = rightKey; //RIGHT_ARROW;
     //sprinting properties
-    this.sprintHealthPenalty = this.sprintHealthPenalty;
-    this.sprintKey = this.sprintKey;
-    this.sprintSpeed = 50;
-    this.normalSpeed = 10;
-=======
-this.y = y;
-this.vx = 0;
-this.vy = 0;
-this.maxHealth = 100;
-this.health = 50; // Must be AFTER defining this.maxHealth
-this.healthLossPerMove = 0.1;
-this.healthGainPerEat = 1;
-this.preyEaten = 0;
-this.speed = speed;
-this.fillColor = fillColor;
-this.radius = radius;
-//question for pippin: to make this an argument do i make change these values to be generic and
-//add parameters to the constructor and then alter in script?
-this.upKey = UP_ARROW;
-this.downKey = DOWN_ARROW;
-this.leftKey = LEFT_ARROW;
-this.rightKey = RIGHT_ARROW;
->>>>>>> 9dd3049c2210f20bed3810da9e3c17ebc3599b9a
+    this.sprintHealthPenalty = sprintHealthPenalty;
+    this.sprintKey = sprintKey;
+    this.sprintSpeed = sprintSpeed;
+    this.normalSpeed = normalSpeed;
+    this.normalHealthPenalty = normalHealthPenalty;
+    console.log(this.healthLossNormal);
   }
   handleInput() {
-    // check if the predator is sprinting
-    // if (keyIsDown(this.sprintKey)) {
-    //   this.speed = this.sprintSpeed;
-    //   this.healthLossNormal = this.sprintHealthPenalty;
-    // }//to make it reset when shift is no longer pressed
-    // else {
-    //   this.speed = this.normalSpeed;
-    //   this.healthLossNormal = this.normalHealthPenalty;
-    // //     //console.log('these keys make it stop working');
-    // }
+
+    // // check if the predator is sprinting
+    if (keyIsDown(this.sprintKey)) {
+      this.speed = this.sprintSpeed;
+      this.healthLossNormal = this.sprintHealthPenalty;
+      console.log('where are you');
+    }
+    //to make it reset when shift is no longer pressed
+    else {
+      this.speed = this.normalSpeed;
+      this.healthLossNormal = this.normalHealthPenalty;
+      console.log('these keys make it stop working');
+    }
     // Check for player input and react appropriately
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
@@ -78,6 +62,7 @@ this.rightKey = RIGHT_ARROW;
     this.y += this.vy;
     this.health = this.health - this.healthLossNormal;
     this.health = constrain(this.health, 0, this.maxHealth);
+    // console.log(this.health, this.healthLossNormal);
     this.handleWrapping(); // Calls the handleWrapping method, note the use of "this"
   }
 
@@ -95,10 +80,6 @@ this.rightKey = RIGHT_ARROW;
     }
   }
 
-<<<<<<< HEAD
-=======
-//what do you mean increase the number of prey eaten?
->>>>>>> 9dd3049c2210f20bed3810da9e3c17ebc3599b9a
   handleEating(prey) {
     // Check for an overlap with this prey
     // And reduce its health if there is one
@@ -124,5 +105,6 @@ this.rightKey = RIGHT_ARROW;
     this.radius = this.health;
     ellipse(this.x, this.y, this.radius * 2);
     pop();
+    // console.log(this.x,this.y,this.radius, this.health)
   }
 }
