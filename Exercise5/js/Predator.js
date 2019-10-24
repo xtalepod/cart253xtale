@@ -1,13 +1,14 @@
 class Predator { // A Predator class describes what a Predator is and does
-  constructor(x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey) {
+  constructor(x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey, sprintKey){
+  // (x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey, sprintKey, sprintHealthPenalty,normalHealthPenalty, sprintSpeed,normalSpeed)
     // Sets up the Predator when it is created or "constructed"
     this.x = x;
     this.y = y;
     this.vx = 0;
     this.vy = 0;
     this.maxHealth = 100;
-    this.health = 100; // Must be AFTER defining this.maxHealth
-    this.healthLossPerMove = 0.1;
+    this.health = 50; // Must be AFTER defining this.maxHealth
+    this.healthLossNormal = 0; //Per move
     this.healthGainPerEat = 1;
     this.preyEaten = 0;
     this.speed = speed;
@@ -17,8 +18,23 @@ class Predator { // A Predator class describes what a Predator is and does
     this.downKey = downKey; //DOWN_ARROW;
     this.leftKey = leftKey; //LEFT_ARROW;
     this.rightKey = rightKey; //RIGHT_ARROW;
+    //sprinting properties
+    this.sprintHealthPenalty = this.sprintHealthPenalty;
+    this.sprintKey = this.sprintKey;
+    this.sprintSpeed = 50;
+    this.normalSpeed = 10;
   }
   handleInput() {
+    // check if the predator is sprinting
+    // if (keyIsDown(this.sprintKey)) {
+    //   this.speed = this.sprintSpeed;
+    //   this.healthLossNormal = this.sprintHealthPenalty;
+    // }//to make it reset when shift is no longer pressed
+    // else {
+    //   this.speed = this.normalSpeed;
+    //   this.healthLossNormal = this.normalHealthPenalty;
+    // //     //console.log('these keys make it stop working');
+    // }
     // Check for player input and react appropriately
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
@@ -26,6 +42,7 @@ class Predator { // A Predator class describes what a Predator is and does
       this.vx = this.speed;
     } else {
       this.vx = 0;
+    //console.log('i want these to work');
     }
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
@@ -39,7 +56,7 @@ class Predator { // A Predator class describes what a Predator is and does
   move() {
     this.x += this.vx;
     this.y += this.vy;
-    this.health = this.health - this.healthLossPerMove;
+    this.health = this.health - this.healthLossNormal;
     this.health = constrain(this.health, 0, this.maxHealth);
     this.handleWrapping(); // Calls the handleWrapping method, note the use of "this"
   }
@@ -67,9 +84,9 @@ class Predator { // A Predator class describes what a Predator is and does
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
       prey.health -= this.healthGainPerEat;
-      //this.preyEaten ++;
-console.log('counting prey eaten');
-      this.preyEaten = this.preyEaten + 1;
+      console.log('counting prey eaten');
+      this.preyEaten ++;
+       //this.preyEaten = this.preyEaten + 1;
       if (prey.health < 0) {
         prey.reset();
       }
