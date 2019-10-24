@@ -1,27 +1,27 @@
 class Predator { // A Predator class describes what a Predator is and does
-  constructor(x, y, speed, fillColor, radius) {
+  constructor(x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey) {
     // Sets up the Predator when it is created or "constructed"
     this.x = x;
-this.y = y;
-this.vx = 0;
-this.vy = 0;
-this.maxHealth = 100;
-this.health = 50; // Must be AFTER defining this.maxHealth
-this.healthLossPerMove = 0.1;
-this.healthGainPerEat = 1;
-this.preyEaten = 0;
-this.speed = speed;
-this.fillColor = fillColor;
-this.radius = radius;
-this.upKey = UP_ARROW;
-this.downKey = DOWN_ARROW;
-this.leftKey = LEFT_ARROW;
-this.rightKey = RIGHT_ARROW;
+    this.y = y;
+    this.vx = 0;
+    this.vy = 0;
+    this.maxHealth = 100;
+    this.health = 100; // Must be AFTER defining this.maxHealth
+    this.healthLossPerMove = 0.1;
+    this.healthGainPerEat = 1;
+    this.preyEaten = 0;
+    this.speed = speed;
+    this.fillColor = fillColor;
+    this.radius = radius;
+    this.upKey = upKey; //UP_ARROW;
+    this.downKey = downKey; //DOWN_ARROW;
+    this.leftKey = leftKey; //LEFT_ARROW;
+    this.rightKey = rightKey; //RIGHT_ARROW;
   }
   handleInput() {
     // Check for player input and react appropriately
     if (keyIsDown(this.leftKey)) {
-  this.vx = -this.speed;
+      this.vx = -this.speed;
 }
 else if (keyIsDown(this.rightKey)) {
   this.vx = this.speed;
@@ -39,7 +39,6 @@ else {
   this.vy = 0;
 }
   }
-
 
   move(){
   this.x += this.vx;

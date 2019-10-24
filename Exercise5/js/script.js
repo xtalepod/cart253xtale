@@ -31,8 +31,11 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
-snowLeopard = new Predator(0, 0, 5, color(255, 20, 0), 25);
-tiger = new Predator(100, 100, 50, color(200, 100, 190), 50);
+//setup for predators
+//(x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey)
+snowLeopard = new Predator(0, 0, 5, color(255, 20, 0), 25,UP_ARROW,DOWN_ARROW,LEFT_ARROW,RIGHT_ARROW);
+tiger = new Predator(100, 100, 50, color(200, 100, 190), 50,87,83,65,68);
+//set up for preys
 preyCat = new Prey (30,30,10,color(255,190,198), 15);
 
 }
