@@ -1,5 +1,5 @@
-class Predator { // A Predator class describes what a Predator is and does
-  constructor(x, y, speed, fillColor, radius, upKey, downKey, leftKey, rightKey, sprintKey, sprintHealthPenalty,normalHealthPenalty,sprintSpeed,normalSpeed) {
+class BeePredator { // A Predator class describes what a Predator is and does
+  constructor(x, y, speed, image, radius, upKey, downKey, leftKey, rightKey, sprintKey, sprintHealthPenalty,normalHealthPenalty,sprintSpeed,normalSpeed) {
     // Sets up the Predator when it is created or "constructed"
     this.x = x;
     this.y = y;
@@ -11,7 +11,7 @@ class Predator { // A Predator class describes what a Predator is and does
     this.healthGainPerEat = 1;
     this.preyEaten = 0;
     this.speed = speed;
-    this.fillColor = fillColor;
+    // this.fillColor = fillColor;
     this.radius = radius;
     this.upKey = upKey; //UP_ARROW;
     this.downKey = downKey; //DOWN_ARROW;
@@ -24,8 +24,8 @@ class Predator { // A Predator class describes what a Predator is and does
     this.normalSpeed = normalSpeed;
     this.normalHealthPenalty = normalHealthPenalty;
     //images
-    // this.image = image;
-    // console.log(this.image);
+    this.image = image;
+    console.log(this.image);
   }
   handleInput() {
 
@@ -91,7 +91,7 @@ class Predator { // A Predator class describes what a Predator is and does
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
       prey.health -= this.healthGainPerEat;
-      // console.log('counting prey eaten');
+      console.log('counting prey eaten');
       this.preyEaten ++;
        //this.preyEaten = this.preyEaten + 1;
       if (prey.health < 0) {
@@ -102,10 +102,12 @@ class Predator { // A Predator class describes what a Predator is and does
   display() {
     // Draw the predator on the canvas
     push();
-    noStroke();
-    fill(this.fillColor, this.health);
+    // noStroke();
+    //fill(this.fillColor, this.health);
+    image(this.image,this.x,this.y);
     this.radius = this.health;
-    ellipse(this.x, this.y, this.radius * 2);
+    // image(beePreyImage);
+// console.log("whereamibuzzbuzz");
     pop();
     // console.log(this.x,this.y,this.radius, this.health)
   }
