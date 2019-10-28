@@ -46,18 +46,20 @@ function draw() {
 
   // Move all the "animals"
   tiger.move();
-  // antelope.move();
-  // zebra.move();
+  antelope.move();
+  zebra.move();
 
   // Handle the tiger eating any of the prey
   tiger.handleEating(antelope);
   tiger.handleEating(zebra);
   tiger.handleEating(bee);
-
+  console.log("are we here?");
   // Display all the "animals"
   tiger.display();
   //////////////// FIXED
   antelope.display();
-  zebra.disploy();
-  b.display();
+  //////////////// FIXED
+  zebra.display();
+    //////////////// FIXED
+  bee.display();
 }
