@@ -1,5 +1,5 @@
 class BeePredator { // A Predator class describes what a Predator is and does
-  constructor(x, y, speed, image, radius, upKey, downKey, leftKey, rightKey, sprintKey, sprintHealthPenalty,normalHealthPenalty,sprintSpeed,normalSpeed) {
+  constructor(x, y, speed, image, radius, upKey, downKey, leftKey, rightKey, sprintKey, sprintHealthPenalty, normalHealthPenalty, sprintSpeed, normalSpeed) {
     // Sets up the Predator when it is created or "constructed"
     this.x = x;
     this.y = y;
@@ -48,7 +48,7 @@ class BeePredator { // A Predator class describes what a Predator is and does
       this.vx = this.speed;
     } else {
       this.vx = 0;
-    //console.log('i want these to work');
+      //console.log('i want these to work');
     }
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
@@ -91,9 +91,9 @@ class BeePredator { // A Predator class describes what a Predator is and does
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
       prey.health -= this.healthGainPerEat;
-//console.log('counting prey eaten');
-      this.preyEaten ++;
-       //this.preyEaten = this.preyEaten + 1;
+      //console.log('counting prey eaten');
+      this.preyEaten++;
+      //this.preyEaten = this.preyEaten + 1;
       if (prey.health < 0) {
         prey.reset();
       }
@@ -104,11 +104,17 @@ class BeePredator { // A Predator class describes what a Predator is and does
     push();
     // noStroke();
     //fill(this.fillColor, this.health);
-    image(this.image,this.x,this.y,this.radius);
+    image(this.image, this.x, this.y, this.radius);
     this.radius = this.health;
     // image(beePreyImage);
-// console.log("whereamibuzzbuzz");
+    // console.log("whereamibuzzbuzz");
     pop();
     // console.log(this.x,this.y,this.radius, this.health)
+  }
+  reset() {
+    this.x = random(0, width);
+    this.y = random(0, height);
+    this.health = this.maxHealth;
+    this.radius = this.health;
   }
 }
