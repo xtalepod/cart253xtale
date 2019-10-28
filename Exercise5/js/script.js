@@ -59,7 +59,7 @@ function setup() {
 predatorPurpleFlower = new Predator(100, 100, 10, purpleFlowerImage, 50,87,83,65,68,32,0.2,0.03,20,10);
 console.log("why dont you work");
 
-bee1 = new BeePredator(100,300,10,beePreyImage,100,87,83,65,68,32,0.2,0.03,20,10);
+bee1 = new BeePredator(100,300,10,beePreyImage,100,UP_ARROW,DOWN_ARROW,LEFT_ARROW,RIGHT_ARROW,16,0.2,0.03,20,10);
 //set up for preys
 preyBlueFlower = new Prey (30,30,10,blueFlowerImage, 15);
 preyPinkFlower = new Prey (5,10,5,pinkFlowerImage,20);
@@ -75,10 +75,8 @@ function draw() {
 //the purple flower preys on the bee because it is covered in pesticides
   predatorPurpleFlower.handleInput();
   predatorPurpleFlower.move();
-    console.log("where did everybody go?");
   predatorPurpleFlower.handleEating(bee1);
   predatorPurpleFlower.display();
-    console.log("hello new predaaator?");
 
 //the bee "preys" on flowers to collect pollen
 bee1.handleInput();

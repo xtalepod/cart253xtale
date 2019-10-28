@@ -89,7 +89,7 @@ class Predator { // A Predator class describes what a Predator is and does
     if (d < this.radius + beePredator.radius) {
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
-      prey.health -= this.healthGainPerEat;
+      beePredator.health -= this.healthGainPerEat;
       // console.log('counting prey eaten');
       this.beePredatorEaten ++;
        //this.preyEaten = this.preyEaten + 1;
