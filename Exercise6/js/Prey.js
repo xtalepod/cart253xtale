@@ -51,7 +51,7 @@ class Prey {
     this.tx += 0.01;
     this.ty += 0.01;
     // Handle wrapping
-     //////////////// FIXED
+    //////////////// FIXED
     this.handleWrapping();
  //////////////// FIXED
  }
@@ -72,7 +72,8 @@ class Prey {
         this.y += height;
       }
       else if (this.y > height) {
-        this.y -= hight;
+         //////////////// FIXED
+        this.y -= height;
       }
     }
 
