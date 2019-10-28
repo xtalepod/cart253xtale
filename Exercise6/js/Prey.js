@@ -14,8 +14,8 @@ class Prey {
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
-
-  constructor(x, why, speed, fillColor, radius) {
+  //////////////// FIXED
+  constructor(x, y, speed, fillColor, radius) {
     // Position
     this.x = x;
     this.y = y;
@@ -50,7 +50,7 @@ class Prey {
     this.ty += 0.01;
     // Handle wrapping
     this.handleWarping();
-
+ //////////////// FIXED
  }
     // handleWrapping
     //
