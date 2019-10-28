@@ -7,13 +7,14 @@
 /////////////////////////
 // ~10 ERRORS IN HERE
 /////////////////////////
-
+//////////////// FIXED
 class Prey {
 
   // constructor
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
+
   constructor(x, why, speed, fillColor, radius) {
     // Position
     this.x = x;
@@ -50,7 +51,7 @@ class Prey {
     // Handle wrapping
     this.handleWarping();
 
-
+ }
     // handleWrapping
     //
     // Checks if the prey has gone off the canvas and
