@@ -1,5 +1,5 @@
 class Prey {
-  constructor(x, y, speed, fillColor, radius) {
+  constructor(x, y, speed, image, radius) {
     this.x = x;
     this.y = y;
     this.vx = 0;
@@ -9,8 +9,9 @@ class Prey {
     this.maxHealth = radius;
     this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
     this.speed = speed;
-    this.fillColor = color(255,190,198);
+    //this.fillColor = color(255,190,198);
     this.radius = this.health;
+    this.image = image;
   }
   move() {
     this.vx = map(noise(this.tx), 0, 1, -this.speed, this.speed);
@@ -37,10 +38,10 @@ class Prey {
   }
   display() {
     push();
-    noStroke();
-    fill(this.fillColor);
+    // noStroke();
+    // fill(this.fillColor);
     this.radius = this.health;
-    ellipse(this.x, this.y, this.radius * 2);
+    image(this.image,this.x, this.y);
     pop();
   }
   reset() {

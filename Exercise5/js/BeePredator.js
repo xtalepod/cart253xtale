@@ -91,7 +91,7 @@ class BeePredator { // A Predator class describes what a Predator is and does
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
       prey.health -= this.healthGainPerEat;
-      console.log('counting prey eaten');
+//console.log('counting prey eaten');
       this.preyEaten ++;
        //this.preyEaten = this.preyEaten + 1;
       if (prey.health < 0) {
@@ -104,7 +104,7 @@ class BeePredator { // A Predator class describes what a Predator is and does
     push();
     // noStroke();
     //fill(this.fillColor, this.health);
-    image(this.image,this.x,this.y);
+    image(this.image,this.x,this.y,this.radius);
     this.radius = this.health;
     // image(beePreyImage);
 // console.log("whereamibuzzbuzz");
