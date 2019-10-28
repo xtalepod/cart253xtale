@@ -121,7 +121,8 @@ class Predator {
       prey.health -= this.healthGainPerEat;
       // Check if the prey died and reset it if so
       if (prey.health < 0) {
-        prey.rest();
+        //////////////// FIXED
+        prey.reset();
       }
     }
   }
@@ -139,6 +140,6 @@ class Predator {
     ellipse(this.x, this.y, this.radius * 2);
   //////////////// FIXED
     pop();
-      console.log("predator hello?");
+      // console.log("predator?");
   }
 }

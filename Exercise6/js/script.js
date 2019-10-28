@@ -64,5 +64,5 @@ function draw() {
   zebra.display();
     //////////////// FIXED
   bee.display();
-    console.log("are we here?");
+  // console.log("are we here?");
 }
