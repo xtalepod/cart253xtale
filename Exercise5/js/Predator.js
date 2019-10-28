@@ -9,7 +9,7 @@ class Predator { // A Predator class describes what a Predator is and does
     this.health = 50; // Must be AFTER defining this.maxHealth
     this.healthLossNormal = normalHealthPenalty; //Per move
     this.healthGainPerEat = 1;
-    this.preyEaten = 0;
+    this.beePredatorEaten = 0;
     this.speed = speed;
     this.radius = radius;
     this.upKey = upKey; //UP_ARROW;
@@ -81,20 +81,20 @@ class Predator { // A Predator class describes what a Predator is and does
     }
   }
 
-  handleEating(prey) {
+  handleEating(beePredator) {
     // Check for an overlap with this prey
     // And reduce its health if there is one
     // Also increase the predator's health
-    let d = dist(this.x, this.y, prey.x, prey.y);
-    if (d < this.radius + prey.radius) {
+    let d = dist(this.x, this.y, beePredator.x, beePredator.y);
+    if (d < this.radius + beePredator.radius) {
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
       prey.health -= this.healthGainPerEat;
       // console.log('counting prey eaten');
-      this.preyEaten ++;
+      this.beePredatorEaten ++;
        //this.preyEaten = this.preyEaten + 1;
-      if (prey.health < 0) {
-        prey.reset();
+      if (beePredator.health < 0) {
+        beePredator.reset();
       }
     }
   }

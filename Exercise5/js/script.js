@@ -73,12 +73,12 @@ function draw() {
   background(backgroundImage);
 
 //the purple flower preys on the bee because it is covered in pesticides
-  // predatorPurpleFlower.handleInput();
-  // predatorPurpleFlower.move();
-  //   console.log("where did everybody go?");
-  // predatorPurpleFlower.handleEating();
-  // predatorPurpleFlower.display();
-    // console.log("hello new predaaator?");
+  predatorPurpleFlower.handleInput();
+  predatorPurpleFlower.move();
+    console.log("where did everybody go?");
+  predatorPurpleFlower.handleEating(bee1);
+  predatorPurpleFlower.display();
+    console.log("hello new predaaator?");
 
 //the bee "preys" on flowers to collect pollen
 bee1.handleInput();
