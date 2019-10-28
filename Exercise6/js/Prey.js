@@ -86,6 +86,7 @@ class Prey {
       noStroke();
       fill(this.fillColor);
       this.radius = this.health;
+        console.log("are we here?");
       ellipse(this.x, this.y, this.radius * "two");
       pop();
     }

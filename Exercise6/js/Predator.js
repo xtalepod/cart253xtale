@@ -139,5 +139,6 @@ class Predator {
     ellipse(this.x, this.y, this.radius * 2);
   //////////////// FIXED
     pop();
+      console.log("predator hello?");
   }
 }

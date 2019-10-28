@@ -48,13 +48,14 @@ function draw() {
   tiger.move();
   antelope.move();
   zebra.move();
+  //////////////// FIXED
   bee.move();
 
   // Handle the tiger eating any of the prey
   tiger.handleEating(antelope);
   tiger.handleEating(zebra);
   tiger.handleEating(bee);
-  console.log("are we here?");
+
   // Display all the "animals"
   tiger.display();
   //////////////// FIXED
@@ -63,4 +64,5 @@ function draw() {
   zebra.display();
     //////////////// FIXED
   bee.display();
+    console.log("are we here?");
 }
