@@ -84,6 +84,7 @@ class Predator {
     this.health = constrain(this.health, 0, this.maxHealth);
     // Handle wrapping
     this.handleWrapping();
+    console.log("why dont you move");
   }
 
   // handleWrapping
