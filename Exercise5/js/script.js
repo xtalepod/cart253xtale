@@ -2,11 +2,16 @@
 
 /*****************
 
-Title of Project
-Author Name
+Urban Beehaviour
+xtalepod
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+Help this urban bee find pollen to bring back to the hive but bee careful
+because one of the flowers is covered in pesticides!
+
+Two player game
+
+Bee takes keys UP_ARROW, DOWN_ARROW,LEFT_ARROW,RIGHT_ARROW, and 16 (sprint mode)
+Purple Flower (Predator?Pesticide) takes keys W,A,S,D, and 32 (sprint mode)
 
 ******************/
 //predators
@@ -29,12 +34,15 @@ let specialHealth;
 
 //background image
 let backgroundImage;
+//background sound
+let backgroundSound;
 // preload()
 //
 // Description of preload
 
 function preload() {
 backgroundImage = loadImage ("assets/images/background.png")
+backgroundSound = loadSound("assets/sounds/bees.wav")
 beePreyImage = loadImage ("assets/images/bee.png");
 purpleFlowerImage = loadImage ("assets/images/purpleflower.png");
 pinkFlowerImage = loadImage ("assets/images/pinkflower.png");
@@ -71,6 +79,7 @@ preyPinkFlower = new Prey (5,10,5,pinkFlowerImage,20);
 
 function draw() {
   background(backgroundImage);
+  // backgroundSound.loop();
 
 //the purple flower preys on the bee because it is covered in pesticides
   predatorPurpleFlower.handleInput();
@@ -83,7 +92,9 @@ bee1.handleInput();
 bee1.move();
 //handle the bee eating each flower prey
 bee1.handleEating(preyBlueFlower);
+console.log("yumyumblue");
 bee1.handleEating(preyPinkFlower);
+
 bee1.display();
 
 //the flowers are "prey" to the bee
