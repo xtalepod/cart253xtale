@@ -9,7 +9,6 @@ class Prey {
     this.maxHealth = radius;
     this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
     this.speed = speed;
-    //this.fillColor = color(255,190,198);
     this.radius = this.health;
     this.image = image;
   }
@@ -38,8 +37,6 @@ class Prey {
   }
   display() {
     push();
-    // noStroke();
-    // fill(this.fillColor);
     this.radius = this.health;
     image(this.image,this.x, this.y);
     pop();

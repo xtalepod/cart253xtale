@@ -24,7 +24,6 @@ class Predator { // A Predator class describes what a Predator is and does
     this.normalHealthPenalty = normalHealthPenalty;
     //images
     this.image = image;
-    // console.log(this.image);
   }
   handleInput() {
 
@@ -90,7 +89,6 @@ class Predator { // A Predator class describes what a Predator is and does
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
       beePredator.health -= this.healthGainPerEat;
-      // console.log('counting prey eaten');
       this.beePredatorEaten ++;
        //this.preyEaten = this.preyEaten + 1;
       if (beePredator.health < 0) {
@@ -106,6 +104,5 @@ class Predator { // A Predator class describes what a Predator is and does
     image(this.image,this.x,this.y,this.radius);
     this.radius = this.health;
     pop();
-    // console.log(this.x,this.y,this.radius, this.health)
   }
 }
