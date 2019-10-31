@@ -75,7 +75,7 @@ class PreySuper {
   }
 
 
-  handleEating(predator) {
+  handleEating() {
     // Calculate distance from this predator to the prey
     let d = dist(this.x, this.y, predator.x, predator.y);
     // Check if the distance is less than their two radii (an overlap)
@@ -95,7 +95,6 @@ class PreySuper {
     // this.radius = this.health;
     image(this.image,this.x, this.y);
     if(this.body === this.maxBody){
-        console.log('MAX!!');
         this.image.resize(300,300);
     }
     // pop();

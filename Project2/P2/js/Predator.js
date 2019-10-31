@@ -10,7 +10,7 @@ class Predator {
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, speed, fillColor, radius) {
+  constructor(x, y, speed, radius, image, upKey, downKey, rightKey, leftKey) {
     // Position
     this.x = x;
     this.y = y;
@@ -26,13 +26,13 @@ class Predator {
     //this.preyEaten = 0;
 
     // Display properties
-    this.fillColor = fillColor;
     this.radius = this.health; // Radius is defined in terms of health
     // Input properties
-    this.upKey = UP_ARROW;
-    this.downKey = DOWN_ARROW;
-    this.leftKey = LEFT_ARROW;
-    this.rightKey = RIGHT_ARROW;
+    this.upKey = upKey;
+    this.downKey = downKey;
+    this.leftKey = leftKey;
+    this.rightKey = rightKey;
+    this.image = image;
   }
 
   // handleInput
@@ -76,6 +76,7 @@ class Predator {
     this.health = constrain(this.health, 0, this.maxHealth);
     // Handle wrapping
     this.handleWrapping();
+    console.log("moving the corgi");
   }
 
   // handleWrapping
@@ -128,11 +129,13 @@ class Predator {
   // Draw the predator as an ellipse on the canvas
   // with a radius the same size as its current health.
   display() {
-    push();
-    noStroke();
-    fill(this.fillColor);
-    this.radius = this.health;
-    ellipse(this.x, this.y, this.radius * 2);
-    pop();
+      push();
+      noStroke();
+      this.radius = this.health;
+      image(this.image,this.x, this.y);
+      if(this.body === this.maxBody){
+          this.image.resize(300,300);
+      pop();
+      }
   }
-}//this is the end of the class
+}

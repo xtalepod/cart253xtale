@@ -44,9 +44,9 @@ function preload () {
 // Creates objects for the predator and three prey
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  cake1 = new Prey(100, 100, 5, color(200, 200, 0), 100, cakeImage);
-  cake2 = new Prey(100, 100, 5, color(200, 200, 0), 300,cakeImage);
-  corgi1 = new Predator(100, 100, 5, color(200, 200, 0), 100,corgiImage);
+  cake1 = new Prey(100, 100, 5, 100, cakeImage);
+  cake2 = new Prey(100, 100, 5, 40, cakeImage);
+  corgi1 = new Predator(100, 100, 5, 30, corgiImage, 38,40,39,37);
   tommy1 = new PreySuper(50,50,4,20,tommyImage1);
 
 }
@@ -65,12 +65,13 @@ function draw() {
 
     tommy1.move();
     tommy1.handleWrapping();
-    tommy1.handleEating();
+    tommy1.handleEating(Predator);
     tommy1.display();
 
     corgi1.move();
-    corgi1.handleWrapping();
-    corgi1.handleEating();
+    console.log(corgi1.move);
+    corgi1.handleInput();
+    corgi1.handleEating(PreySuper);
     corgi1.display();
 
     cake1.move();
@@ -81,6 +82,7 @@ function draw() {
     cake2.display();
     cake1.reset();
     cake2.reset();
+
 
   }
   else if (state === "GAMEOVER") {
