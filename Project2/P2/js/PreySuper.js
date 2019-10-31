@@ -26,8 +26,8 @@ class PreySuper {
     this.ty = random(0, 1000); // we use random starting values
     // Health properties
     //this.maxHealth = radius;
-    this.state = 0; //this.maxHealth; // Must be AFTER defining this.maxHealth
-    this.maxState = 100; // qnote make this as an argument instead
+    this.body = 0; //this.maxHealth; // Must be AFTER defining this.maxHealth
+    this.maxBody = 100; // qnote make this as an argument instead
     // Display properties
     this.radius = radius; //this.health;
     this.image = image;
@@ -81,9 +81,9 @@ class PreySuper {
     // Check if the distance is less than their two radii (an overlap)
     if (d < this.radius + predator.radius) {
 //this means the picture will change
-      if (this.state < this.maxState) {
-        this.state++;
-        console.log(this.state);
+      if (this.body < this.maxBody) {
+        this.body++;
+        console.log(this.body);
       }
     }
   }
@@ -94,7 +94,7 @@ class PreySuper {
   display() {
     // this.radius = this.health;
     image(this.image,this.x, this.y);
-    if(this.state === this.maxState){
+    if(this.body === this.maxBody){
         console.log('MAX!!');
         this.image.resize(300,300);
     }

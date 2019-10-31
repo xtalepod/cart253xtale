@@ -5,25 +5,37 @@
 // The predator chases the prey using the arrow keys and consumes them.
 // The predator loses health over time, so must keep eating to survive.
 
-// Our predator
-let tiger;
 
-// The three prey
-let antelope;
-let zebra;
-let bee;
+//states
+
+let state ="START";
+let gameOver = false;
 
 //the superPrey
 
-let tommy;
+let tommy1;
 let tommyImage1;
-// let tommyImage2;
 
+//the prey
+
+let cake1;
+let cake2;
+let cakeImage;
+
+//the Predator
+
+let corgi1;
+let corgiImage;
+
+//background image
+let startImage;
 
 //
 function preload () {
   tommyImage1 = loadImage("assets/images/tommyboy3.png");
-  tommyImage2 =loadImage("assets/images/tommy4.png");
+  cakeImage = loadImage("assets/images/cake2.png");
+  corgiImage = loadImage("assets/images/corgipic.jpg");
+  startImage = loadImage("assets/images/cloud.png");
   console.log('preload done');
 }
 // setup()
@@ -32,13 +44,10 @@ function preload () {
 // Creates objects for the predator and three prey
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  tiger = new Predator(100, 100, 5, color(200, 200, 0), 100);
-  antelope = new Prey(100, 100, 10, color(255, 100, 10), 50);
-  zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
-  bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
+  cake1 = new Prey(100, 100, 5, color(200, 200, 0), 100, cakeImage);
+  cake2 = new Prey(100, 100, 5, color(200, 200, 0), 300,cakeImage);
+  corgi1 = new Predator(100, 100, 5, color(200, 200, 0), 100,corgiImage);
   tommy1 = new PreySuper(50,50,4,20,tommyImage1);
-  tommy2 = new PreySuper(10,100,10,10,tommyImage1);
-  console.log('setup done');
 
 }
 
@@ -49,37 +58,63 @@ function draw() {
   // Clear the background to black
   background(200);
 
-  // Handle input for the tiger
-  tiger.handleInput();
-  // console.log('wtfishappening');
-  // Move all the "animals"
-  tiger.move();
-  antelope.move();
-  zebra.move();
-  bee.move();
-  tommy1.move();
-  tommy2.move();
+  if (state === "START") {
+    displayStartScreen();
+  }
+  else if (state === "PLAY") {
 
-  // Handle the tiger eating any of the prey
-  tiger.handleEating(antelope);
-  tiger.handleEating(zebra);
-  tiger.handleEating(bee);
-  tiger.handleEating(tommy1);
+    tommy1.move();
+    tommy1.handleWrapping();
+    tommy1.handleEating();
+    tommy1.display();
 
-  //handle the tommy eating
-  tommy1.handleEating(tiger);
+    corgi1.move();
+    corgi1.handleWrapping();
+    corgi1.handleEating();
+    corgi1.display();
 
-  //tiger.handleSuperEating(tommy);
-  tommy1.display();
-  tommy2.display();
-  // Display all the "animals"
-  //predator
-  tiger.display();
+    cake1.move();
+    cake2.move();
+    cake1.handleWrapping();
+    cake2.handleWrapping();
+    cake1.display();
+    cake2.display();
+    cake1.reset();
+    cake2.reset();
 
-  //prey
-  antelope.display();
-  zebra.display();
-  bee.display();
-
-
+  }
+  else if (state === "GAMEOVER") {
+      showGameOver();
+  }
+}
+//
+function mousePressed() {
+  //click rectangle to start game and sound
+  if (state === "START") {
+    if (mouseX > 230 && mouseX < 380 && mouseY > 500 && mouseY < 550) {
+      rect(305, 550, 150, 50);
+      // playSound.loop();
+      state = "PLAY";
+    }
+  }
+}
+//start state
+function displayStartScreen() {
+  image(startImage, 0, 0, width, height);
+  textAlign(CENTER, CENTER);
+  textStyle(BOLD);
+  fill(255, 105, 180);
+  textSize(40);
+  text("LIFE IS LIKE", 305, 40); // Title
+  fill(20);
+  textSize(10);
+  textStyle(BOLD);
+  text("a box of chocolates you always know what you're going to get", 305, 60); // easy button
+  textSize(20);
+  textStyle(ITALIC, BOLD);
+  rectMode(CENTER, CENTER);
+  fill(255);
+  rect(305, 550, 150, 50);
+  fill(0);
+  text("NEVER KNOW", 305, 550);
 }

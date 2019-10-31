@@ -1,7 +1,7 @@
 //this is a super class for shapes
 
 class Shape {
-  constructor(x,y,size) {
+  constructor(x,y,size,color) {
     this.x = x;
     this.y = y;
     this.size = size;
