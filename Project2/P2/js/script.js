@@ -17,8 +17,8 @@ let bee;
 
 let tommy;
 let tommyImage1;
-let tommyImage2;
-let tommyImage3;
+// let tommyImage2;
+
 
 //
 function preload () {
@@ -37,7 +37,7 @@ function setup() {
   zebra = new Prey(100, 100, 8, color(255, 255, 255), 60);
   bee = new Prey(100, 100, 20, color(255, 255, 0), 10);
   tommy1 = new PreySuper(50,50,4,20,tommyImage1);
-  tommy2 = new PreySuper(10,100,10,10,tommyImage2);
+  tommy2 = new PreySuper(10,100,10,10,tommyImage1);
   console.log('setup done');
 
 }
