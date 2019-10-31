@@ -11,7 +11,6 @@ class BeePredator { // A Predator class describes what a Predator is and does
     this.healthGainPerEat = 1;
     this.preyEaten = 0;
     this.speed = speed;
-    // this.fillColor = fillColor;
     this.radius = radius;
     this.upKey = upKey; //UP_ARROW;
     this.downKey = downKey; //DOWN_ARROW;
@@ -25,7 +24,6 @@ class BeePredator { // A Predator class describes what a Predator is and does
     this.normalHealthPenalty = normalHealthPenalty;
     //images
     this.image = image;
-    console.log(this.image);
   }
   handleInput() {
 
@@ -33,13 +31,11 @@ class BeePredator { // A Predator class describes what a Predator is and does
     if (keyIsDown(this.sprintKey)) {
       this.speed = this.sprintSpeed;
       this.healthLossNormal = this.sprintHealthPenalty;
-      // console.log('where are you');
     }
     //to make it reset when shift is no longer pressed
     else {
       this.speed = this.normalSpeed;
       this.healthLossNormal = this.normalHealthPenalty;
-      // console.log('these keys make it stop working');
     }
     // Check for player input and react appropriately
     if (keyIsDown(this.leftKey)) {
@@ -64,8 +60,7 @@ class BeePredator { // A Predator class describes what a Predator is and does
     this.y += this.vy;
     this.health = this.health - this.healthLossNormal;
     this.health = constrain(this.health, 0, this.maxHealth);
-    // console.log(this.health, this.healthLossNormal);
-    this.handleWrapping(); // Calls the handleWrapping method, note the use of "this"
+    this.handleWrapping();
   }
 
 
@@ -91,7 +86,6 @@ class BeePredator { // A Predator class describes what a Predator is and does
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
       prey.health -= this.healthGainPerEat;
-      //console.log('counting prey eaten');
       this.preyEaten++;
       //this.preyEaten = this.preyEaten + 1;
       if (prey.health < 0) {
@@ -102,15 +96,22 @@ class BeePredator { // A Predator class describes what a Predator is and does
   display() {
     // Draw the predator on the canvas
     push();
-    // noStroke();
-    //fill(this.fillColor, this.health);
     image(this.image, this.x, this.y, this.radius);
     this.radius = this.health;
-    // image(beePreyImage);
-    // console.log("whereamibuzzbuzz");
     pop();
-    // console.log(this.x,this.y,this.radius, this.health)
   }
+
+displayScore() {
+    push();
+    // textAlign(CENTER, TOP);
+    // textFont(myFont);
+    textSize(100);
+    fill(255, 190, 192)
+    text(preyEaten, width / 3, 20);
+    // text(scoreRight, 2 * width / 3, 20);
+    console.log(score);
+    pop();
+}
   reset() {
     this.x = random(0, width);
     this.y = random(0, height);

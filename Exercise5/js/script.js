@@ -89,8 +89,8 @@ function draw() {
     predatorPurpleFlower.move();
     //handle the eating (contamination) of the bee and other flowers
     predatorPurpleFlower.handleEating(bee1);
-    predatorPurpleFlower.handleEating(preyBlueFlower)
-    predatorPurpleFlower.handleEating(preyPinkFlower)
+    // predatorPurpleFlower.handleEating(preyBlueFlower)
+    // predatorPurpleFlower.handleEating(preyPinkFlower)
     //displayer the predator
     predatorPurpleFlower.display();
 
