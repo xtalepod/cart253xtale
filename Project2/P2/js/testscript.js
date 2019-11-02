@@ -11,6 +11,9 @@
 let state ="START";
 let gameOver = false;
 
+let skyFall;
+let skyFallImage;
+
 //the superPrey
 
 let tommy1;
@@ -36,6 +39,7 @@ function preload () {
   cakeImage = loadImage("assets/images/cake2.png");
   corgiImage = loadImage("assets/images/corgipic.jpg");
   startImage = loadImage("assets/images/cloud.png");
+  skyFallImage = loadImage("assets/images/cone.png");
   console.log('preload done');
 }
 // setup()
@@ -44,11 +48,11 @@ function preload () {
 // Creates objects for the predator and three prey
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  cake1 = new Prey(100, 100, 5, 100, cakeImage);
-  cake2 = new Prey(100, 100, 5, 40, cakeImage);
-  corgi1 = new Predator(100, 100, 5, 30, corgiImage, 38,40,39,37);
-  tommy1 = new PreySuper(50,50,4,20,tommyImage1);
-
+  cake1 = new TestPrey(100, 100, 5, 100, cakeImage);
+  cake2 = new TestPrey(100, 100, 5, 40, cakeImage);
+  corgi1 = new TestPredator(100, 100, 5, 30, corgiImage, 38,40,39,37);
+  tommy1 = new PreySuperTest(50,50,4,20,tommyImage1);
+  cone1 = new TestSkyFalling(100,100,5,30,skyFallImage);
 }
 
 // draw()
@@ -61,16 +65,21 @@ function draw() {
   if (state === "START") {
     displayStartScreen();
   }
+  else if (state === "STORY") {
+    displayStoryScreen();
+    cone1.display();
+    cone1.move();
+  }
   else if (state === "PLAY") {
-    console.log(corgi1.move);
+
     tommy1.move();
     tommy1.handleWrapping();
-    tommy1.handleEating(Predator);
+    tommy1.handleEating(TestPredator);
     tommy1.display();
 
     corgi1.move();
     corgi1.handleInput();
-    corgi1.handleEating(PreySuper);
+    corgi1.handleEating(PreySuperTest);
     corgi1.display();
 
     cake1.move();
@@ -82,7 +91,6 @@ function draw() {
     cake1.reset();
     cake2.reset();
 
-
   }
   else if (state === "GAMEOVER") {
       showGameOver();
@@ -93,13 +101,39 @@ function mousePressed() {
   //click rectangle to start game and sound
   if (state === "START") {
     if (mouseX > width/2 && mouseX < width*2 && mouseY > height/2 && mouseY < height*2) {
-      // rect(width/2, height/2, 150, 50);
-      // playSound.loop();
-        console.log("housefuck you");
-      state = "PLAY";
+      state = "STORY"
     }
+   }
+  else if (state === "STORY") {
+    if (mouseX > width/2 && mouseX < width*2 && mouseY > height/2 && mouseY < height*2) {
+      state = "PLAY";
+
+  }
   }
 }
+
+function displayStoryScreen() {
+  image(cakeImage, 0, 0, width, height);
+  text("this is the story of a snail", 305, 60);
+  textSize(20);
+  textStyle(ITALIC, BOLD);
+  rectMode(CENTER, CENTER);
+  fill(255);
+  rect(width/2, height/2, 150, 50);
+  fill(0);
+  text("NEVER KNOW", width/2, height/2);
+  corgi1.move();
+  corgi1.handleInput();
+  corgi1.handleEating();
+  corgi1.display();
+
+  cake1.move();
+  cake1.handleInput();
+  cake1.display();
+
+}
+
+
 //start state
 function displayStartScreen() {
   image(startImage, 0, 0, width, height);

@@ -6,7 +6,7 @@
 //consider: constructing 3 images in the super (x ,y, speed, radius, image)
 //preload 3 images from script tommyImage1-3
 
-class PreySuper {
+class PreySuperTest {
 
   // constructor
   //
@@ -78,9 +78,9 @@ class PreySuper {
   handleEating() {
     // Calculate distance from this predator to the prey
     //is it normal to capitalise?
-    let d = dist(this.x, this.y, Predator.x, Predator.y);
+    let d = dist(this.x, this.y, TestPredator.x, TestPredator.y);
     // Check if the distance is less than their two radii (an overlap)
-    if (d < this.radius + Predator.radius) {
+    if (d < this.radius + TestPredator.radius) {
 //this means the picture will change
       if (this.body < this.maxBody) {
         this.body++;

@@ -3,16 +3,13 @@
 // A class that represents a simple prey that moves
 // on screen based on a noise() function. It can move around
 // the screen and be consumed by Predator objects.
-//consider: constructing 3 images in the super (x ,y, speed, radius, image)
-//preload 3 images from script tommyImage1-3
 
-class PreySuper {
+class TestPrey {
 
   // constructor
   //
   // Sets the initial values for the Predator's properties
   // Either sets default values or uses the arguments provided
-  //radius
   constructor(x, y, speed, radius, image) {
     // Position
     this.x = x;
@@ -25,14 +22,11 @@ class PreySuper {
     this.tx = random(0, 1000); // To make x and y noise different
     this.ty = random(0, 1000); // we use random starting values
     // Health properties
-    //this.maxHealth = radius;
-    this.body = 0; //this.maxHealth; // Must be AFTER defining this.maxHealth
-    this.maxBody = 100; // qnote make this as an argument instead
+    this.maxHealth = radius;
+    this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
     // Display properties
-    this.radius = radius; //this.health;
+    this.radius = this.health;
     this.image = image;
-
-    //console.log(PreySuper);
   }
 
   // move
@@ -74,31 +68,20 @@ class PreySuper {
     }
   }
 
-
-  handleEating() {
-    // Calculate distance from this predator to the prey
-    //is it normal to capitalise?
-    let d = dist(this.x, this.y, Predator.x, Predator.y);
-    // Check if the distance is less than their two radii (an overlap)
-    if (d < this.radius + Predator.radius) {
-//this means the picture will change
-      if (this.body < this.maxBody) {
-        this.body++;
-        console.log(this.body);
-      }
-    }
-  }
   // display
   //
   // Draw the prey as an ellipse on the canvas
-  // with a radius the same radius as its current health.
+  // with a radius the same size as its current health.
   display() {
-    // this.radius = this.health;
+    push();
+    noStroke();
+    //this.radius = this.health;
     image(this.image,this.x, this.y);
     if(this.body === this.maxBody){
         this.image.resize(300,300);
-    }
+    pop();
   }
+}
 
   // reset
   //
@@ -109,8 +92,8 @@ class PreySuper {
     this.x = random(0, width);
     this.y = random(0, height);
     // Default health
-    // this.health = this.maxHealth;
-    // // Default radius
-    // this.radius = this.health;
+    this.health = this.maxHealth;
+    // Default radius
+    this.radius = this.health;
   }
 }
