@@ -1,16 +1,16 @@
-// Predator
+// fox
 //
-// A class that represents a simple predator
+// A class that represents a simple fox
 // controlled by the arrow keys. It can move around
-// the screen and consume Prey objects to maintain its health.
+// the screen and consume storySquares objects to maintain its health.
 
-class TestPredator {
+class Fox {
 
   // constructor
   //
-  // Sets the initial values for the Predator's properties
+  // Sets the initial values for the fox's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, speed, radius, image, upKey, downKey, rightKey, leftKey) {
+  constructor(x, y, speed, radius, upKey, downKey, rightKey, leftKey) {
     // Position
     this.x = x;
     this.y = y;
@@ -23,7 +23,7 @@ class TestPredator {
     this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
     this.healthLossPerMove = 0.1;
     this.healthGainPerEat = 1;
-    //this.preyEaten = 0;
+    //this.storySquaresEaten = 0;
 
     // Display properties
     this.radius = this.health; // Radius is defined in terms of health
@@ -37,7 +37,7 @@ class TestPredator {
 
   // handleInput
   //
-  // Checks if an arrow key is pressed and sets the predator's
+  // Checks if an arrow key is pressed and sets the fox's
   // velocity appropriately.
   handleInput() {
     // Horizontal movement
@@ -71,17 +71,16 @@ class TestPredator {
     // Update position
     this.x += this.vx;
     this.y += this.vy;
-    // Update health
-    this.health = this.health - this.healthLossPerMove;
-    this.health = constrain(this.health, 0, this.maxHealth);
+    // // Update health
+    // this.health = this.health - this.healthLossPerMove;
+    // this.health = constrain(this.health, 0, this.maxHealth);
     // Handle wrapping
     this.handleWrapping();
-    console.log("moving the corgi");
   }
 
   // handleWrapping
   //
-  // Checks if the predator has gone off the canvas and
+  // Checks if the fox has gone off the canvas and
   // wraps it to the other side if so
   handleWrapping() {
     // Off the left or right
@@ -102,22 +101,23 @@ class TestPredator {
 
   // handleEating
   //
-  // Takes a Prey object as an argument and checks if the predator
-  // overlaps it. If so, reduces the prey's health and increases
-  // the predator's. If the prey dies, it gets reset.
-  handleEating(prey) {
-    // Calculate distance from this predator to the prey
-    let d = dist(this.x, this.y, prey.x, prey.y);
+  // Takes a storySquares object as an argument and checks if the fox
+  // overlaps it. If so, reduces the storySquares's health and increases
+  // the fox's. If the storySquares dies, it gets reset.
+  handleEating(storySquares) {
+    // Calculate distance from this fox to the storySquares
+    let d = dist(this.x, this.y, storySquares.x, storySquares.y);
     // Check if the distance is less than their two radii (an overlap)
-    if (d < this.radius + prey.radius) {
-      // Increase predator health and constrain it to its possible range
+    if (d < this.radius + storySquares.radius) {
+      // Increase fox health and constrain it to its possible range
       this.health += this.healthGainPerEat;
       this.health = constrain(this.health, 0, this.maxHealth);
-      // Decrease prey health by the same amount
-      prey.health -= this.healthGainPerEat;
-      // Check if the prey died and reset it if so
-      if (prey.health < 0) {
-        prey.reset();
+      // Decrease storySquares health by the same amount
+      storySquares.health -= this.healthGainPerEat;
+      // Check if the storySquares died and reset it if so
+      if (storySquares.health < 0) {
+        storySquares.reset();
+        console.log("count fox and story overlaps")
       }
     }
   }
@@ -126,16 +126,20 @@ class TestPredator {
 //
   // display
   //
-  // Draw the predator as an ellipse on the canvas
+  // Draw the fox as an ellipse on the canvas
   // with a radius the same size as its current health.
   display() {
-      push();
-      noStroke();
-      this.radius = this.health;
-      image(this.image,this.x, this.y);
-      if(this.body === this.maxBody){
-          this.image.resize(300,300);
-      pop();
-      }
+    push();
+
+    this.radius = this.health;
+    noStroke();
+    fill(255,158,77);
+    rect(this.x, this.y, 80, 80);
+    noStroke();
+    fill(250);
+    rect(this.x + 20, this.y + 7.5, 70,10);
+    console.log("rect");
+
+    pop();
   }
 }
