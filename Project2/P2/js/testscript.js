@@ -99,7 +99,7 @@ function setup() {
 // constructor(x, y, w, h,fillColor, speed, upKey, downKey, rightKey, leftKey) {
   hedgehog = new TestH(60, 300, 40, 40, color(26, 255, 140), 2, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
   // constructor(x, y,w,h, speed, radius, upKey, downKey, rightKey, leftKey) {
-  fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 2, 16, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW);
+  fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 2, 16, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
   // (x, y, size, fillColor) {
 push();
   for (let i = 0; i < 3; i++) {
@@ -123,41 +123,43 @@ pop();
 function draw() {
   // Clear the background to black
   background(200);
-  
-  if (state === "START") {
-    displayStartScreen();
-  }
-  else if (state === "STORY") {
-    displayStoryScreen();
-    // cone1.display();
-    // cone1.move();
-  }
-  else if (state === "PLAY") {
+  //
+  // if (state === "START") {
+  //   displayStartScreen();
+  // }
+  // else if (state === "STORY") {
+  //   displayStoryScreen();
+  //   // cone1.display();
+  //   // cone1.move();
+  // }
+  // else if (state === "PLAY") {
   displayPlayScreen();
   for (let i = 0; i < 3; i++) {
     boxes[i].display();
     boxes[i].handleCollision(hedgehog);
-    boxes[i].reset();
+    boxes[i].handleCollision(fox);
+    // boxes[i].reset();
     }
   for (let i = 0; i < 2; i++) {
     boxes1[i].display();
     boxes1[i].handleCollision(hedgehog)
     boxes1[i].handleCollision(fox);
-    boxes1[i].reset();
+    // boxes1[i].reset();
     }
 
   //handle the input, movement, eating, and display for the hedgehog
     hedgehog.handleInput();
     hedgehog.move();
     hedgehog.display();
+    // hedgehog.reset();
   //handle the input, movement, eating, and display for the fox
     fox.handleInput();
     fox.move();
     fox.display();
-  }
-  else if (state === "GAMEOVER") {
-      showGameOver();
-  }
+  // }
+  // else if (state === "GAMEOVER") {
+  //     showGameOver();
+  // }
 }
 //
 function mousePressed() {
@@ -173,6 +175,7 @@ function mousePressed() {
     }
   }
 }
+
 //story state
 function displayStoryScreen() {
   background(153, 255, 153)
@@ -229,6 +232,7 @@ function displayStartScreen() {
 
 
 function displayPlayScreen() {
+push();
   for (let i = 0; i < 10; i++) {
     x = i * 0.5 + 50
     y = i * 40 + 40
@@ -251,6 +255,7 @@ function displayPlayScreen() {
     rect(i * .05 + 800, i * 40 + 40, trees[2], trees[3])
     rect(i * .05 + 850, i * 40 + 40, trees[2], trees[3])
   }
+pop();
 }
 
 function keyPressed() {

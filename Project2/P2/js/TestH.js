@@ -108,4 +108,12 @@ class TestH {
     rect(this.x, this.y, this.w, this.h);
     pop();
   }
+
+reset() {
+  push();
+  noStroke();
+  fill(this.fillColor);
+  rect(this.x, this.y, this.w, this.h);
+  pop();
+ }
 }

@@ -37,43 +37,39 @@ class TestB {
     pop();
   }
 //This code is adapted from cart253-2019/games/game-oop-pong/js/Ball.js
-handleCollision(hedgehog) {
+handleCollision() {
    // Check if the ball overlaps the hedgehog on x axi
-push();
-  if (this.x + this.size > hedgehog.x && this.x < hedgehog.x + hedgehog.w) {
-    // Check if the ball overlaps the hedgehog on y axis
-    if (this.y + this.size > hedgehog.y && this.y < hedgehog.y + hedgehog.h) {
-      this.fillColor = 255;
-      hedgehog.fillColor = 0;
-      hedgehog.w = 70;
-      hedgehog.h = 70;
-  }
-  }
-pop();
-}
-
-handleCollision(fox) {
- // Check if the ball overlaps the fox on x axi
-
-push();
-if (this.x + this.size > fox.x && this.x < fox.x + fox.w) {
-  // Check if the ball overlaps the fox on y axis
-  if (this.y + this.size > fox.y && this.y < fox.y + fox.h) {
-    this.fillColor = 25;
-    fox.fillColor = color(180,255,153);
-    fox.w = 100;
-    fox.h = 100;
-}
-}
-pop();
-}
+   push();
+     if (this.x + this.size > hedgehog.x && this.x < hedgehog.x + hedgehog.w) {
+       // Check if the ball overlaps the hedgehog on y axis
+       if (this.y + this.size > hedgehog.y && this.y < hedgehog.y + hedgehog.h) {
+         this.fillColor = 255;
+         hedgehog.fillColor = 100;
+         hedgehog.w = 55;
+         hedgehog.h = 55;
+         hedgehogBoxes
+     }
+   }
+   pop();
+   push();
+     if (this.x + this.size > fox.x && this.x < fox.x + fox.w) {
+       // Check if the ball overlaps the fox on y axis
+       if (this.y + this.size > fox.y && this.y < fox.y + fox.h) {
+         this.fillColor = 20;
+         fox.fillColor = 2;
+         fox.w = 75;
+         fox.h = 75;
+         foxBoxes
+     }
+   }
+   pop();
+   }
+// //
+// pop();
    // reset
+  // reset() {
   //
-  // Set the position to a random location and reset health
-  // and radius back to default
-  reset() {
-    // Random position
-  this.fillcolor = color(255, 153, 153)
-
-  }
+  // this.fillcolor = color(255, 153, 153)
+  //
+  // }
 }
