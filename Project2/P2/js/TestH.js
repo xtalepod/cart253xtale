@@ -23,6 +23,11 @@ class TestH {
     this.vy = 0;
     this.speed = speed;
     // Display properties
+    //collision properties
+    this.top = this.y - this.h /2
+    this.bottom = this.y + this.h / 2
+    this.left = this.x - this.w / 2
+    this.right = this.x + this.w / 2
     // Input properties
     this.upKey = upKey;
     this.downKey = downKey;
@@ -93,31 +98,21 @@ class TestH {
 
 //check for hedgehog and box collision
 
-checkBoxCollision() {
-  let boxTop = boxes.y - boxes.size / 2
-  let boxBottom = boxes.y + boxes.size / 2
-  let boxLeft = boxes.x - boxes.size / 2
-  let boxRight = boxes.x - boxes.size / 2
-
-  let hedgehogTop = this.y - this.h /2
-  let hedgehogBottom = this.y + this.h / 2
-  let hedgehogLeft = this.x + this.w / 2
-  let hedgehogRight = this.x - this.w / 2
-
-// First check the ball is in the vertical range of the paddle
-  if (hedgehogTop > boxBottom && hedgehogBottom < boxTop) {
-    console.log("collision");
-    // Then check if it is touching the paddle horizontally
-    // if (hedgehogLeft < boxRight && hedgehogRight > boxLeft) {
-    //   this.fillColor = 255
-  //if they are touching display poem array
-      // hedgehogIndex += 1;
-      // if (hedgehogIndex >= hedgehogBoxes.length) {
-      //   hedgehogIndex = 0;
-        //increase size
-    // }
-   }
- }
+// checkBoxCollision(boxes) 
+// // First check the ball is in the vertical range of the paddle
+//   if (this.top > boxes.bottom && this.bottom < boxes.top) {
+//         console.log("TestH checkBoxCollision () called");
+//     // Then check if it is touching the paddle horizontally
+//     // if (this.left < box.right && this.right > box.left) {
+//     //   this.fillColor = 255
+//   //if they are touching display poem array
+//       // hedgehogIndex += 1;
+//       // if (hedgehogIndex >= hedgehogBoxes.length) {
+//       //   hedgehogIndex = 0;
+//         //increase size
+//     }
+//    }
+ // }
   // display
   //
   // Draw the fox as an ellipse on the canvas
