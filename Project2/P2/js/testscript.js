@@ -1,3 +1,8 @@
+//add parameter to hedhoge for word
+//random word thing in testscript paramter
+
+
+
 //from testscript
 
 //the fox and hedge hog are are non-traditional predators
