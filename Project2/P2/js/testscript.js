@@ -99,7 +99,7 @@ function setup() {
 // constructor(x, y, w, h,fillColor, speed, upKey, downKey, rightKey, leftKey) {
   hedgehog = new TestH(60, 300, 40, 40, color(26, 255, 140), 2, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
   // constructor(x, y,w,h, speed, radius, upKey, downKey, rightKey, leftKey) {
-  fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 2, 16, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
+  // fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 2, 16, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
   // (x, y, size, fillColor) {
 push();
   for (let i = 0; i < 3; i++) {
@@ -134,28 +134,35 @@ function draw() {
   // }
   // else if (state === "PLAY") {
   displayPlayScreen();
+
+  let hedgehogOverLapping = false;
+
   for (let i = 0; i < 3; i++) {
     boxes[i].display();
-    boxes[i].handleCollision(hedgehog);
-    boxes[i].handleCollision(fox);
+    if (boxes[i].handleCollision(hedgehog)) {
+      hedgehogOverLapping = true;
+    }
+    // boxes[i].handleCollision(fox);
     // boxes[i].reset();
     }
   for (let i = 0; i < 2; i++) {
     boxes1[i].display();
-    boxes1[i].handleCollision(hedgehog)
-    boxes1[i].handleCollision(fox);
+    if (boxes1[i].handleCollision(hedgehog)) {
+      hedgehogOverLapping = true;
+    // boxes1[i].handleCollision(fox);
     // boxes1[i].reset();
     }
+  }
 
   //handle the input, movement, eating, and display for the hedgehog
     hedgehog.handleInput();
     hedgehog.move();
-    hedgehog.display();
+    hedgehog.display(hedgehogOverLapping);
     // hedgehog.reset();
   //handle the input, movement, eating, and display for the fox
-    fox.handleInput();
-    fox.move();
-    fox.display();
+    // fox.handleInput();
+    // fox.move();
+    // fox.display();
   // }
   // else if (state === "GAMEOVER") {
   //     showGameOver();
@@ -218,7 +225,7 @@ function displayStartScreen() {
   // textStyle(BOLD);
   fill(0);
   textFont('Courier New', [50]);
-  text("THE HEDGEHOG AND THE FOX", width / 2, height / 2); // Title
+  text("hedgehog and fox", width / 2, height / 2); // Title
   pop();
 
   push();
@@ -236,24 +243,9 @@ push();
   for (let i = 0; i < 10; i++) {
     x = i * 0.5 + 50
     y = i * 40 + 40
-    rect(10, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 60, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 100, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 150, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 200, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 250, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 300, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 350, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 400, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 450, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 500, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 550, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 600, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 650, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 700, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 750, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 800, i * 40 + 40, trees[2], trees[3])
-    rect(i * .05 + 850, i * 40 + 40, trees[2], trees[3])
+    // rect(10, i * 40 + 40, trees[2], trees[3])
+    for (let j = 0; j < 20; j++) {
+    rect(j * .05 + 60+ j* 50, i * 40 + 40, trees[2], trees[3])}
   }
 pop();
 }

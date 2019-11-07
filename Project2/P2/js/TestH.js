@@ -101,12 +101,23 @@ class TestH {
   //
   // Draw the fox as an ellipse on the canvas
   // with a radius the same size as its current health.
-  display() {
+  display(isOverBox) {
     push();
     noStroke();
     fill(this.fillColor);
     rect(this.x, this.y, this.w, this.h);
     pop();
+    if (isOverBox) {
+      this.fillColor = 0;
+      this.w = 50;
+      this.h = 50;
+    }
+    else {
+      this.fillColor = color(26, 255, 140);
+      this.w = 40;
+      this.h = 40;
+
+    }
   }
 
 reset() {
