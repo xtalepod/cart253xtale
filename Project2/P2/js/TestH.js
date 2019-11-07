@@ -96,22 +96,6 @@ class TestH {
     }
   }
 
-//check for hedgehog and box collision
-
-// checkBoxCollision(boxes) 
-// // First check the ball is in the vertical range of the paddle
-//   if (this.top > boxes.bottom && this.bottom < boxes.top) {
-//         console.log("TestH checkBoxCollision () called");
-//     // Then check if it is touching the paddle horizontally
-//     // if (this.left < box.right && this.right > box.left) {
-//     //   this.fillColor = 255
-//   //if they are touching display poem array
-//       // hedgehogIndex += 1;
-//       // if (hedgehogIndex >= hedgehogBoxes.length) {
-//       //   hedgehogIndex = 0;
-//         //increase size
-//     }
-//    }
  // }
   // display
   //
@@ -119,7 +103,6 @@ class TestH {
   // with a radius the same size as its current health.
   display() {
     push();
-    this.radius = this.health;
     noStroke();
     fill(this.fillColor);
     rect(this.x, this.y, this.w, this.h);

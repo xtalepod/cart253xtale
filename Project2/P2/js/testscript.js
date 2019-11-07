@@ -9,9 +9,9 @@
 //get to know the hedgehog and the fox by visiting these objects
 
 let hedgehog;
-// let fox;
+let fox;
 let boxes = [];
-// let boxes1 = [];
+let boxes1 = [];
 
 //the stories are non-traditional prey
 //they appear on the screen as squares with text that appears when the hedgehog of the fox overlap
@@ -99,7 +99,7 @@ function setup() {
 // constructor(x, y, w, h,fillColor, speed, upKey, downKey, rightKey, leftKey) {
   hedgehog = new TestH(60, 300, 40, 40, color(26, 255, 140), 2, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
   // constructor(x, y,w,h, speed, radius, upKey, downKey, rightKey, leftKey) {
-  // fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 2, 16, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW);
+  fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 2, 16, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW);
   // (x, y, size, fillColor) {
 push();
   for (let i = 0; i < 3; i++) {
@@ -107,15 +107,15 @@ push();
     let y = 100 + 100 * i
     boxes[i] = new TestB(x, y, 40, color(255, 153, 153));
 
-    // for (let i = 0; i < 5; i++) {
-    //   let x = 850 - 100 * i
-    //   let y = 100 + 100 * i
-    //   boxes1[i] = new TestB(x, y, 40, color(255, 153, 153));
+    for (let i = 0; i < 5; i++) {
+      let x = 850 - 100 * i
+      let y = 100 + 100 * i
+      boxes1[i] = new TestB(x, y, 40, color(255, 153, 153));
     //   // cone1 = new TestSkyFalling(100,100,5,30,skyFallImage);
 pop();
     }
   }
-// }
+}
 
 // draw()
 //
@@ -123,39 +123,41 @@ pop();
 function draw() {
   // Clear the background to black
   background(200);
-  //
-  // if (state === "START") {
-  //   displayStartScreen();
-  // }
-  // else if (state === "STORY") {
-  //   displayStoryScreen();
-  //   // cone1.display();
-  //   // cone1.move();
-  // }
-  // else if (state === "PLAY") {
+  
+  if (state === "START") {
+    displayStartScreen();
+  }
+  else if (state === "STORY") {
+    displayStoryScreen();
+    // cone1.display();
+    // cone1.move();
+  }
+  else if (state === "PLAY") {
   displayPlayScreen();
   for (let i = 0; i < 3; i++) {
     boxes[i].display();
     boxes[i].handleCollision(hedgehog);
-    // boxes[i].reset();
+    boxes[i].reset();
     }
-  // for (let i = 0; i < 2; i++) {
-  //   boxes1[i].display();
-  //   // boxes[i].reset();
-  //   }
+  for (let i = 0; i < 2; i++) {
+    boxes1[i].display();
+    boxes1[i].handleCollision(hedgehog)
+    boxes1[i].handleCollision(fox);
+    boxes1[i].reset();
+    }
 
   //handle the input, movement, eating, and display for the hedgehog
     hedgehog.handleInput();
     hedgehog.move();
     hedgehog.display();
   //handle the input, movement, eating, and display for the fox
-  // fox.handleInput();
-  // fox.move();
-  // fox.display();
-  // }
-  // else if (state === "GAMEOVER") {
-  //     showGameOver();
-  // }
+    fox.handleInput();
+    fox.move();
+    fox.display();
+  }
+  else if (state === "GAMEOVER") {
+      showGameOver();
+  }
 }
 //
 function mousePressed() {
