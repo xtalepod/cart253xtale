@@ -1,3 +1,5 @@
+"use strict"
+
 // StorySquares
 // //
 // //a class that contains the object for the story squares
@@ -15,8 +17,6 @@ class TestB {
     // Position
     this.x = x;
     this.y = y;
-    // this.w = w;
-    // this.h = h;
     this.size = 20;
     // Display properties
     this.fillColor = fillColor;
@@ -43,20 +43,34 @@ handleCollision(hedgehog) {
        // Check if the ball overlaps the hedgehog on y axis
        if (this.y + this.size > hedgehog.y && this.y < hedgehog.y + hedgehog.h) {
          this.fillColor = 255;
+         fill(20);
+         textFont('Courier New', [20]);
+         textStyle(BOLD);
+         text("survive", width / 1.1, height / 1.1);
          return true;
-     //      if (hedgehogIndex >= hedgehogBoxes.length) {
-     //          hedgehogIndex = 0;
-     // }
    }
  }
  else {
-   this.fillColor = 0;
+   this.fillColor = color(255, 153, 153);
  }
 }
-   // reset
-  // reset() {
-  //
-  // this.fillcolor = color(255, 153, 153)
-  //
-  // }
+
+handleFoxCollision(fox) {
+   // Check if the ball overlaps the fox on x axi
+
+    if (this.x + this.size > fox.x && this.x < fox.x + fox.w) {
+       // Check if the ball overlaps the fox on y axis
+    if (this.y + this.size > fox.y && this.y < fox.y + fox.h) {
+         this.fillColor = 255;
+         fill(20);
+         textFont('Courier New', [20]);
+         textStyle(BOLD);
+         text("survival", width /2, height / 1.1);
+         return true;
+   }
+ }
+ else {
+   this.fillColor = color(255, 153, 153);
+ }
+ }
 }

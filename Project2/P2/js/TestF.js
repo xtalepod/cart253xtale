@@ -1,4 +1,4 @@
-
+"use strict"
 // // fox
 // //
 // // A class that represents a simple fox
@@ -101,7 +101,18 @@ class TestF {
   //
   // Draw the fox as an ellipse on the canvas
   // with a radius the same size as its current health.
-  display() {
+  display(isFoxOverBox) {
+    if (isFoxOverBox) {
+      this.fillColor = 0;
+      this.w = 100;
+      this.h = 100;
+    }
+    else {
+      this.fillColor = color(153, 255, 204);
+      this.w = 70;
+      this.h = 70;
+
+    }
     push();
     noStroke();
     fill(this.fillColor);

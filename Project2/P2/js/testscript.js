@@ -99,22 +99,33 @@ function setup() {
 // constructor(x, y, w, h,fillColor, speed, upKey, downKey, rightKey, leftKey) {
   hedgehog = new TestH(60, 300, 40, 40, color(26, 255, 140), 2, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
   // constructor(x, y,w,h, speed, radius, upKey, downKey, rightKey, leftKey) {
-  // fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 2, 16, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
+  fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 2, 87,83,65,68);
   // (x, y, size, fillColor) {
 push();
   for (let i = 0; i < 3; i++) {
     let x = 50 + 100 * i
     let y = 100 + 100 * i
-    boxes[i] = new TestB(x, y, 40, color(255, 153, 153));
+    boxes.push( new TestB(x, y, 40, color(255, 153, 153)) );
+  }
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
       let x = 850 - 100 * i
       let y = 100 + 100 * i
-      boxes1[i] = new TestB(x, y, 40, color(255, 153, 153));
+      boxes.push (new TestB(x, y, 40, color(255, 153, 153)));
     //   // cone1 = new TestSkyFalling(100,100,5,30,skyFallImage);
 pop();
     }
-  }
+
+// boxes[i](j * .05 + 60+ j* 50, i * 40 + 40)
+// for (let i = 0; i < 3; i++) {
+//   let x = 50 + 100 * i
+//   let y = 100 + 100 * i
+//   boxes[i] = new TestB(x, y, 40, color(255, 153, 153));
+//
+//   for (let j = 0; j < 20; j++) {
+//     boxes[i](j * .05 + 60+ j* 50, i * 40 + 40)
+// }
+// }
 }
 
 // draw()
@@ -124,33 +135,31 @@ function draw() {
   // Clear the background to black
   background(200);
   //
-  // if (state === "START") {
-  //   displayStartScreen();
-  // }
-  // else if (state === "STORY") {
-  //   displayStoryScreen();
-  //   // cone1.display();
-  //   // cone1.move();
-  // }
-  // else if (state === "PLAY") {
+  if (state === "START") {
+    displayStartScreen();
+  }
+  else if (state === "STORY") {
+    displayStoryScreen();
+    // cone1.display();
+    // cone1.move();
+  }
+  else if (state === "PLAY") {
   displayPlayScreen();
 
   let hedgehogOverLapping = false;
+  let foxOverLapping = false;
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < boxes.length; i++) {
     boxes[i].display();
     if (boxes[i].handleCollision(hedgehog)) {
       hedgehogOverLapping = true;
     }
-    // boxes[i].handleCollision(fox);
-    // boxes[i].reset();
-    }
-  for (let i = 0; i < 2; i++) {
-    boxes1[i].display();
-    if (boxes1[i].handleCollision(hedgehog)) {
-      hedgehogOverLapping = true;
-    // boxes1[i].handleCollision(fox);
-    // boxes1[i].reset();
+  }
+
+  for (let i = 0; i < boxes.length; i++) {
+    boxes[i].display();
+    if (boxes[i].handleFoxCollision(fox)) {
+      foxOverLapping = true;
     }
   }
 
@@ -160,10 +169,10 @@ function draw() {
     hedgehog.display(hedgehogOverLapping);
     // hedgehog.reset();
   //handle the input, movement, eating, and display for the fox
-    // fox.handleInput();
-    // fox.move();
-    // fox.display();
-  // }
+    fox.handleInput();
+    fox.move();
+    fox.display(foxOverLapping);
+  }
   // else if (state === "GAMEOVER") {
   //     showGameOver();
   // }
@@ -194,11 +203,7 @@ function displayStoryScreen() {
   textSize(20);
   textAlign(CENTER, CENTER);
   text(phrase0, width / 5, height / 3);
-  textSize(20);
-  textAlign(CENTER, CENTER);
-  let phrase1 = story1[storyIndex1];
-  textSize(20);
-  textAlign(CENTER, CENTER);
+  let phrase1 = story1[storyIndex1];;
   text(phrase1, width / 1.2, height / 1.2);
   push();
   // textAlign(RIGHT, RIGHT);
@@ -233,7 +238,7 @@ function displayStartScreen() {
   fill(20);
   textFont('Courier New', [20]);
   textStyle(BOLD);
-  text("start", width / 1.1, height / 1.1); //**COULD BE A BUTTON
+  text("start", width / 1.1, height / 1.1);
   pop();
 }
 
