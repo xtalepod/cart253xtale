@@ -17,7 +17,7 @@ class TestB {
     // Position
     this.x = x;
     this.y = y;
-    this.size = 20;
+    this.size = 40;
     // Display properties
     this.fillColor = fillColor;
   }
@@ -27,13 +27,13 @@ class TestB {
 
   // display
   //
-  // Draw the prey as an ellipse on the canvas
+  // Draw the hedgehog as an ellipse on the canvas
   // with a radius the same size as its current health.
   display() {
     push();
     noStroke();
     fill(this.fillColor);
-    rect(this.x, this.y, this.size, this.size);
+    ellipse(this.x, this.y, this.size, this.size);
     pop();
   }
 //This code is adapted from cart253-2019/games/game-oop-pong/js/Ball.js

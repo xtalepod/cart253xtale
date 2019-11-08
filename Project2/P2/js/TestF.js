@@ -11,7 +11,7 @@ class TestF {
   //
   // Sets the initial values for the fox's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, w, h,fillColor, speed, upKey, downKey, rightKey, leftKey, sprintKey) {
+  constructor(x, y, w, h, fillColor, speed, upKey, downKey, rightKey, leftKey, sprintKey) {
     // Position
     this.x = x;
     this.y = y;
@@ -23,10 +23,10 @@ class TestF {
     this.vy = 0;
     this.speed = speed;
     this.normalSpeed = speed;
-    this.sprintSpeed = 10
+    this.sprintSpeed = 20
     // Display properties
     //collision properties
-    this.top = this.y - this.h /2
+    this.top = this.y - this.h / 2
     this.bottom = this.y + this.h / 2
     this.left = this.x - this.w / 2
     this.right = this.x + this.w / 2
@@ -43,34 +43,30 @@ class TestF {
   // Checks if an arrow key is pressed and sets the fox's
   // velocity appropriately.
   handleInput() {
-    // // check if the predator is sprinting
-   if (keyIsDown(this.sprintKey)) {
-     this.speed = this.sprintSpeed;
-     console.log('where are you');
-   }
-   //to make it reset when shift is no longer pressed
-   else {
-     this.speed = this.normalSpeed;
-     console.log('these keys make it stop working');
-   }
+    // // check if the fox is sprinting
+    if (keyIsDown(this.sprintKey)) {
+      this.speed = this.sprintSpeed;
+      text("move swiftyly", width / 2, height / 1.1);
+
+    }
+    //to make it reset when shift is no longer pressed
+    else {
+      this.speed = this.normalSpeed;
+    }
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
-    }
-    else if (keyIsDown(this.rightKey)) {
+    } else if (keyIsDown(this.rightKey)) {
       this.vx = this.speed;
-    }
-    else {
+    } else {
       this.vx = 0;
     }
     // Vertical movement
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
-    }
-    else if (keyIsDown(this.downKey)) {
+    } else if (keyIsDown(this.downKey)) {
       this.vy = this.speed;
-    }
-    else {
+    } else {
       this.vy = 0;
     }
   }
@@ -78,7 +74,6 @@ class TestF {
   // move
   //
   // Updates the position according to velocity
-  // Lowers health (as a cost of living)
   // Handles wrapping
   move() {
     // Update position
@@ -96,30 +91,27 @@ class TestF {
     // Off the left or right
     if (this.x < 0) {
       this.x += width;
-    }
-    else if (this.x > width) {
+    } else if (this.x > width) {
       this.x -= width;
     }
     // Off the top or bottom
     if (this.y < 0) {
       this.y += height;
-    }
-    else if (this.y > height) {
+    } else if (this.y > height) {
       this.y -= height;
     }
   }
 
- // }
   // display
   //
-  // Draw the fox as an ellipse on the canvas
-  // with a radius the same size as its current health.
+  // Draw the fox as an square on the canvas
+  //add parameters if fox overlaps with a square change its size and fillColor
+  //else put it back to its starting parameters
   display(isFoxOverBox) {
     if (isFoxOverBox) {
       this.fillColor = 0;
-      this.w = 100;
-      this.h = 100;
     }
+
     else {
       this.fillColor = color(153, 255, 204);
       this.w = 70;
