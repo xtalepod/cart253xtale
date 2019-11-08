@@ -48,10 +48,10 @@ class TestB {
       // check if the box overlaps the hedgehog on y axis
       if (this.y + this.size > hedgehog.y && this.y < hedgehog.y + hedgehog.h) {
         this.fillColor = 255;
-        fill(20);
+        fill(0);
         textFont('Courier New', [20]);
         textStyle(BOLD);
-        text("survive", width / 2 + 350, height / 1.1);
+        text("survive", width / 2 + 350, height/1.09);
         this.hedgehogCollisions++;
         push();
         this.showHedgehogCollision = [
@@ -75,20 +75,23 @@ class TestB {
     if (this.x + this.size > fox.x && this.x < fox.x + fox.w) {
       //check if the box overlaps the fox on y axis
       if (this.y + this.size > fox.y && this.y < fox.y + fox.h) {
-        this.fillColor = 255;
-        fill(20);
+        this.fillColor = color(random(255,30,20));
+
+        // fill(255);
+        //set variables for text
         textFont('Courier New', [20]);
         textStyle(BOLD);
-        text("survival", width / 6, height/ 1.1);
-        this.foxCollisions++;
+        text("survival", width / 2 - 350, height/ 1.09);
+        pop();
         push();
+        this.foxCollisions++;
         this.showFoxCollision = [
-          "lord help me i do my best",
+          "lord help, me i do my best",
         ]
         textAlign(CENTER, CENTER) //what does this do?
         fill(255);
         textSize(50) //text size
-        text(random(this.showFoxCollision), width/2, height/1.5);
+        text(random(this.showFoxCollision), width/2, height/1.4);
         console.log("this.foxCollisions counter")
         pop();
         return true;
