@@ -129,43 +129,43 @@ function draw() {
   // Clear the background to black
   background(200);
   // //
-  // if (state === "START") {
-  //   displayStartScreen();
-  // } else if (state === "STORY") {
+  if (state === "START") {
+    displayStartScreen();
+  } else if (state === "STORY") {
     displayStoryScreen();
     // cone1.display();
     // cone1.move();
-//   } else if (state === "PLAY") {
-//     displayPlayScreen();
+  } else if (state === "PLAY") {
+    displayPlayScreen();
+
+    let hedgehogOverLapping = false;
+    let foxOverLapping = false;
+
+    for (let i = 0; i < boxes.length; i++) {
+      boxes[i].display();
+      if (boxes[i].handleCollision(hedgehog)) {
+        hedgehogOverLapping = true;
+      }
+    }
 //
-//     let hedgehogOverLapping = false;
-//     let foxOverLapping = false;
-//
-//     for (let i = 0; i < boxes.length; i++) {
-//       boxes[i].display();
-//       if (boxes[i].handleCollision(hedgehog)) {
-//         hedgehogOverLapping = true;
-//       }
-//     }
-//
-//     for (let i = 0; i < boxes.length; i++) {
-//       boxes[i].display();
-//       if (boxes[i].handleFoxCollision(fox)) {
-//         foxOverLapping = true;
-//       }
-//     }
-//
-//     //handle the input, movement, eating, and display for the hedgehog
-//     hedgehog.handleInput();
-//     hedgehog.move();
-//     hedgehog.display(hedgehogOverLapping);
-//     // hedgehog.reset();
-//     //handle the input, movement, eating, and display for the fox
-//     fox.handleInput();
-//     fox.move();
-//     fox.display(foxOverLapping);
-//   }
-// }
+    for (let i = 0; i < boxes.length; i++) {
+      boxes[i].display();
+      if (boxes[i].handleFoxCollision(fox)) {
+        foxOverLapping = true;
+      }
+    }
+
+    //handle the input, movement, eating, and display for the hedgehog
+    hedgehog.handleInput();
+    hedgehog.move();
+    hedgehog.display(hedgehogOverLapping);
+    // hedgehog.reset();
+    //handle the input, movement, eating, and display for the fox
+    fox.handleInput();
+    fox.move();
+    fox.display(foxOverLapping);
+  }
+}
 // else if (state === "GAMEOVER") {
 //     showGameOver();
 // }
@@ -186,17 +186,28 @@ function mousePressed() {
 
 //story state
 function displayStoryScreen() {
-  background(0, 204, 153)
+//set the background
+  background(204, 153, 255)
+//set the rectangle which will go behind phrase0
   rectMode(CENTER, CENTER);
-  fill(255);
-  rect(width / 5, height / 3, 250, 150);
-  fill(0);
+  fill(200);
+  ellipse(width / 2, height / 2, 100);
+//set the font color for all text
+//declare a variable for story0 and its index
   let phrase0 = story0[storyIndex0];
-  textSize(20);
+//set the text variables for phrase0
+  fill(20);
+  textSize(30);
   textAlign(CENTER, CENTER);
-  text(phrase0, width / 5, height / 3);
-  let phrase1 = story1[storyIndex1];;
-  text(phrase1, width / 1.2, height / 1.5);
+  text(phrase0, width / 2, height / 2);
+//declare a variable for story1 and its index
+  let phrase1 = story1[storyIndex1];
+//set the text variables for phrase0
+
+  fill(0);
+  textSize(10);
+  text(phrase1, width / 2, 80);
+//set the text variables and text for button of the screen instructions
   push();
   fill(20);
   textFont('Courier New', [20]);
@@ -206,19 +217,32 @@ function displayStoryScreen() {
   pop();
 
   //a little hedgehog avatar for the story screen to better prepare the player
+  //includes key instructions
     noStroke();
-    fill(255, 102, 204);
+    fill(26, 255, 140);
     rect(width/2 + 300, 110, 40, 40);
     textFont('Courier New', [20]);
     fill(5);
     text("hedgehog", width / 2 + 300, 150);
+    text("UP, DOWN, LEFT, RIGHT", width / 2 + 300, 175);
   //a little fox avatar for the story screen to better prepare the player
+  //includes key instructions
     noStroke();
-    fill(255, 153, 51);
+    fill(153, 255, 204);
     rect(width/2 - 300, 100, 70, 70);
     fill(5);
     textFont('Courier New', [20]);
     text("fox", width / 2 - 300, 150);
+    text("W,A,S,D + F", width / 2 - 300, 175);
+
+  //set the text variables instructions
+    fill(20);
+    textSize(10);
+    textStyle(BOLD);
+    text("instructions: get a pen and paper, explore the board", width / 2, height / 1.25);
+    text("write down what you read, do you understand now?",width / 2, height / 1.2)
+
+
   // corgi.move();
   // corgi.handleInput();
   // corgi.handleEating(cake1);
@@ -274,6 +298,7 @@ function displayPlayScreen() {
 }
 
 function keyPressed() {
+    console.log("why?");
   storyIndex0 += 1;
   storyIndex1 += 1;
   if (storyIndex0 >= story0.length) {
@@ -283,4 +308,3 @@ function keyPressed() {
     }
   }
 }
- }
