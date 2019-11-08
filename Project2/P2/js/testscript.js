@@ -128,44 +128,44 @@ function setup() {
 function draw() {
   // Clear the background to black
   background(200);
-  //
-  if (state === "START") {
-    displayStartScreen();
-  } else if (state === "STORY") {
+  // //
+  // if (state === "START") {
+  //   displayStartScreen();
+  // } else if (state === "STORY") {
     displayStoryScreen();
     // cone1.display();
     // cone1.move();
-  } else if (state === "PLAY") {
-    displayPlayScreen();
-
-    let hedgehogOverLapping = false;
-    let foxOverLapping = false;
-
-    for (let i = 0; i < boxes.length; i++) {
-      boxes[i].display();
-      if (boxes[i].handleCollision(hedgehog)) {
-        hedgehogOverLapping = true;
-      }
-    }
-
-    for (let i = 0; i < boxes.length; i++) {
-      boxes[i].display();
-      if (boxes[i].handleFoxCollision(fox)) {
-        foxOverLapping = true;
-      }
-    }
-
-    //handle the input, movement, eating, and display for the hedgehog
-    hedgehog.handleInput();
-    hedgehog.move();
-    hedgehog.display(hedgehogOverLapping);
-    // hedgehog.reset();
-    //handle the input, movement, eating, and display for the fox
-    fox.handleInput();
-    fox.move();
-    fox.display(foxOverLapping);
-  }
-}
+//   } else if (state === "PLAY") {
+//     displayPlayScreen();
+//
+//     let hedgehogOverLapping = false;
+//     let foxOverLapping = false;
+//
+//     for (let i = 0; i < boxes.length; i++) {
+//       boxes[i].display();
+//       if (boxes[i].handleCollision(hedgehog)) {
+//         hedgehogOverLapping = true;
+//       }
+//     }
+//
+//     for (let i = 0; i < boxes.length; i++) {
+//       boxes[i].display();
+//       if (boxes[i].handleFoxCollision(fox)) {
+//         foxOverLapping = true;
+//       }
+//     }
+//
+//     //handle the input, movement, eating, and display for the hedgehog
+//     hedgehog.handleInput();
+//     hedgehog.move();
+//     hedgehog.display(hedgehogOverLapping);
+//     // hedgehog.reset();
+//     //handle the input, movement, eating, and display for the fox
+//     fox.handleInput();
+//     fox.move();
+//     fox.display(foxOverLapping);
+//   }
+// }
 // else if (state === "GAMEOVER") {
 //     showGameOver();
 // }
@@ -186,7 +186,7 @@ function mousePressed() {
 
 //story state
 function displayStoryScreen() {
-  background(153, 255, 153)
+  background(0, 204, 153)
   rectMode(CENTER, CENTER);
   fill(255);
   rect(width / 5, height / 3, 250, 150);
@@ -198,13 +198,27 @@ function displayStoryScreen() {
   let phrase1 = story1[storyIndex1];;
   text(phrase1, width / 1.2, height / 1.5);
   push();
-  // textAlign(RIGHT, RIGHT);
   fill(20);
   textFont('Courier New', [20]);
   textStyle(BOLD);
   text("press any key to start", width / 2, height / 1.1);
   text("click the mouse to begin game play",width/2, height/1.06);
   pop();
+
+  //a little hedgehog avatar for the story screen to better prepare the player
+    noStroke();
+    fill(255, 102, 204);
+    rect(width/2 + 300, 110, 40, 40);
+    textFont('Courier New', [20]);
+    fill(5);
+    text("hedgehog", width / 2 + 300, 150);
+  //a little fox avatar for the story screen to better prepare the player
+    noStroke();
+    fill(255, 153, 51);
+    rect(width/2 - 300, 100, 70, 70);
+    fill(5);
+    textFont('Courier New', [20]);
+    text("fox", width / 2 - 300, 150);
   // corgi.move();
   // corgi.handleInput();
   // corgi.handleEating(cake1);
@@ -269,3 +283,4 @@ function keyPressed() {
     }
   }
 }
+ }
