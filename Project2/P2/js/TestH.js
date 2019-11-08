@@ -38,14 +38,22 @@ class TestH {
       "exist",
       "hed"]
   //variables for counting and displaying collisions
-    this.hedgehogCollisions = 0;
+    this.collisions = 0;
     this.showHedgehogCollision = [];
+    this.health;
+    this.maxHealth = 100;
+    this.overLappingCount = 0;
   }
 
   // handleInput
   //
   // Checks if an arrow key is pressed and sets the fox's
   // velocity appropriately.
+setup(){
+  this.health = this.maxHealth;
+
+}
+
   handleInput() {
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
@@ -68,7 +76,6 @@ class TestH {
   // move
   //
   // Updates the position according to velocity
-  // Lowers health (as a cost of living)
   // Handles wrapping
   move() {
     // Update position
@@ -80,7 +87,7 @@ class TestH {
 
   // handleWrapping
   //
-  // Checks if the fox has gone off the canvas and
+  // Checks if the hedgehog has gone off the canvas and
   // wraps it to the other side if so
   handleWrapping() {
     // Off the left or right
@@ -97,11 +104,23 @@ class TestH {
     }
   }
 
-  // }
+//a function to check the number of collisions, it isn't really health but calling it that
+checkHealth(){
+  if (boxes.x + boxes.size > this.x && boxes.x < this.x + this.w) {
+    // check if the box overlaps the hedgehog on y axis
+    if (boxes.y + boxes.size > this.y && this.y < this.y + this.h) {
+      this.health = this.maxHealth - 10
+      this.collisions += 1;
+      if (this.health === 0) {
+        state = "GAMEOVER"
+                console.log("health");
+      }
+    }
+  }
+}
   // display
   //
-  // Draw the fox as an ellipse on the canvas
-  // with a radius the same size as its current health.
+  // Draw the hedgehog as an square on the canvas
   display(isOverBox) {
     if (isOverBox) {
       this.fillColor = color(random(255), random(25), random(51))
@@ -111,17 +130,20 @@ class TestH {
       textFont('Courier New', [20]);
       textStyle(BOLD);
       text("survive", width / 2 + 350, height/1.09);
-      this.hedgehogCollisions++;
 
       push();
       this.showHedgehogCollision = [
-        "are you writing poetry yet?"
+        "are you writing poetry yet?",
+        "",
+        "",
+        "",
+        "",
+        "no"
       ]
       textAlign(CENTER, CENTER)
       fill(0);
       textSize(50)
       text(random(this.showHedgehogCollision), width/2, height/1.2);
-      console.log("this.hedgehogCollisions counter")
       pop();
 
     } else {

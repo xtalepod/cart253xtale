@@ -24,25 +24,25 @@ let boxes = [];
 //its like a diy poem generator!
 
 // the text
-let circleStory = [];
-
-let circleFoxStories = [
-  "survival",
-  "survival",
-  "survival"
-];
-
-//for the text
-let circleFoxStoriesIndex = 0;
-
-//the text
-let hedgehogBoxes = [
-  "survive",
-  "survive",
-  "survive"
-];
-//for the text
-let hedgehogIndex = 0;
+// let circleStory = [];
+//
+// let circleFoxStories = [
+//   "survival",
+//   "survival",
+//   "survival"
+// ];
+//
+// //for the text
+// let circleFoxStoriesIndex = 0;
+//
+// //the text
+// let hedgehogBoxes = [
+//   "survive",
+//   "survive",
+//   "survive"
+// ];
+// //for the text
+// let hedgehogIndex = 0;
 
 //declaring start and gameOver states
 let state = "START"; //there is another way to do this
@@ -135,16 +135,18 @@ function draw() {
     hedgehog.handleInput();
     hedgehog.move();
     hedgehog.display(hedgehogOverLapping);
+    hedgehog.setup();
+    hedgehog.checkHealth();
     // hedgehog.reset();
     //handle the input, movement, and display for the fox
     fox.handleInput();
     fox.move();
     fox.display(foxOverLapping);
   }
+  else if (state === "GAMEOVER") {
+    showGameOver();
 }
-// else if (state === "GAMEOVER") {
-//     showGameOver();
-// }
+}
 //
 function mousePressed() {
   //click rectangle to start game and sound
