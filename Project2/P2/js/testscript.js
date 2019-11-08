@@ -1,21 +1,32 @@
-//add parameter to hedhoge for word
-//random word thing in testscript paramter
+// // reference information related to the parable
+// // https://en.wikipedia.org/wiki/The_Hedgehog_and_the_Fox
+// // isaiah berlin "the hedgehog and the fox" https://assets.press.princeton.edu/chapters/s9981.pdf
+// //https://en.wikipedia.org/wiki/Archilochus
 
+//references related to code sourcing
+//daniel shiffman the coding train array series 7.1-7.3
+//https://www.youtube.com/watch?v=fBqaA7zRO58
+//https://www.youtube.com/watch?v=RXWO3mFuW-I
+//https://www.youtube.com/watch?v=VIQoUghHSxU
+//pj.j5 reference
+//https://p5js.org/reference/
+//pippin barr cart253 fall 2019
+// https://github.com/pippinbarr/cart253-2019
+//xtalepod repository cart253xtale
+//https://github.com/xtalepod/cart253xtale
 
+//HEDGEHOD AND FOX
 
-//from testscript
-
-//the fox and hedge hog are are non-traditional predators
+//the hedgehog and fox are are non-traditional predators
 //they appear on the screen as squares
-//the hedgehog is very good at 1 thing: survival.
-//the fox is good at many things to survive.
+//the hedgehog knows how to survive.
+//the fox understands survival.
 //the hedgehog and the fox move independantly of each other (allowing for 2 players)
-//and interact differently with objects on the storyboard (playing field)
-//get to know the hedgehog and the fox by visiting these objects
+//and interact  with objects (boxes) on the storyboard (playing field)
+
 
 let hedgehog;
 let fox;
-let boxes = [];
 
 //the boxes are non-traditional prey
 //they appear on the screen as circles with text that appears when the hedgehog of the fox overlap
@@ -23,30 +34,12 @@ let boxes = [];
 //you are encouraged to collect stories by writing them down on paper
 //its like a diy poem generator!
 
-// the text
-// let circleStory = [];
-//
-// let circleFoxStories = [
-//   "survival",
-//   "survival",
-//   "survival"
-// ];
-//
-// //for the text
-// let circleFoxStoriesIndex = 0;
-//
-// //the text
-// let hedgehogBoxes = [
-//   "survive",
-//   "survive",
-//   "survive"
-// ];
-// //for the text
-// let hedgehogIndex = 0;
+let boxes = [];
 
 //declaring start and gameOver states
 let state = "START"; //there is another way to do this
 let gameOver = false;
+
 //two arrays that display only on displayStoryScreen
 //0 story variables
 let story0 = [
@@ -68,11 +61,11 @@ let storyIndex1 = 0;
 
 //an array for the displayPlayScreen background of rectanlges which loosely resemble trees (if you look hard enough)
 let trees = [100, 25, 6, 20];
+let backgroudSound;
 
 
 //set anything that needs to be preloaded
-function preload() {
-}
+function preload() {}
 // setup()
 //
 // Sets up a canvas
@@ -80,9 +73,9 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   //creating the hedgohog(x, y, w, h,fillColor, speed, upKey, downKey, rightKey, leftKey) {
-  hedgehog = new TestH(60, 300, 40, 40, color(26, 255, 140), 5, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
+  hedgehog = new TestH(60, 300, 40, 40, color(26, 255, 140), 2.5, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
   //creating the fox(x, y,w,h,fillColor, speed, upKey, downKey, rightKey, leftKey) {
-  fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 1, 87, 83, 65, 68, 70);
+  fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 5, 87, 83, 65, 68, 70);
   //for loops to create the box objects (which are shaped like circles)
   push();
   for (let i = 0; i < 3; i++) {
@@ -97,7 +90,6 @@ function setup() {
     pop();
   }
 }
-console.log("here");
 
 // draw()
 //
@@ -132,24 +124,28 @@ function draw() {
     }
 
     //handle the input, movement, and display for the hedgehog
+    hedgehog.setup();
     hedgehog.handleInput();
     hedgehog.move();
-    hedgehog.display(hedgehogOverLapping);
-    hedgehog.setup();
+    ////*******related to gameOver state and and conviction: all health variables, setup(), checkHealth(), and check collision are attempting to visbily track 'health'(overlaps) and change to gameOver state
     hedgehog.checkHealth();
-    // hedgehog.reset();
+    hedgehog.display(hedgehogOverLapping);
+
     //handle the input, movement, and display for the fox
     fox.handleInput();
     fox.move();
     fox.display(foxOverLapping);
+
+    //     if (hedgehog.health === 0) {
+    //    state = "GAMEOVER"
+    //   }
+    //   // else if (state === "GAMEOVER") {
+    //   //   showGameOver();
   }
-  else if (state === "GAMEOVER") {
-    showGameOver();
-}
 }
 //
 function mousePressed() {
-  //click rectangle to start game and sound
+  //click rectangle to start game
   if (state === "START") {
     if (mouseX > width / 2 && mouseX < width * 2 && mouseY > height / 2 && mouseY < height * 2) {
       state = "STORY"
@@ -218,31 +214,20 @@ function displayStoryScreen() {
   textStyle(BOLD);
   text("instructions: get a pen and paper, explore the board", width / 2, height / 1.25);
   text("write down what you read, do you understand now?", width / 2, height / 1.2)
-
-
-  // corgi.move();
-  // corgi.handleInput();
-  // corgi.handleEating(cake1);
-  // corgi.handleEating(cake2);
-  // corgi.display();
-  // cake1.move();
-  // cake1.display();
 }
 
 //start state
 function displayStartScreen() {
   background(250, 198, 180)
-
+  //display the title of the game
   push();
   textAlign(CENTER, CENTER);
-  // textStyle(BOLD);
   fill(0);
   textFont('Courier New', [50]);
   text("hedgehog and fox", width / 2, height / 2); // Title
   pop();
-
+  //display the start button (area)
   push();
-  // textAlign(RIGHT, RIGHT);
   fill(20);
   textFont('Courier New', [20]);
   textStyle(BOLD);
@@ -259,9 +244,10 @@ function displayStartScreen() {
 
 }
 
-
+//play state
 function displayPlayScreen() {
   push();
+  //a for loop to display the correct number of trees in background evenly dispursed
   for (let i = 0; i < 10; i++) {
     x = i * 0.5 + 50
     y = i * 40 + 40
@@ -274,6 +260,16 @@ function displayPlayScreen() {
   pop();
 }
 
+//what would display the gameOver state with restart option
+// function showGameOver () {
+//   textSize(20);
+//   textAlign(CENTER, CENTER);
+//   fill(0);
+//   text("references", width / 2, height / 2);
+//
+// }
+
+//to scroll through the text arrays on the displayStoryScreen
 function keyPressed() {
   storyIndex0 += 1;
   storyIndex1 += 1;

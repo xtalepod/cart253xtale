@@ -1,39 +1,45 @@
-
+"use strict"
 // // fox
 // //
-// // A class that represents a simple fox
-// // controlled by the arrow keys. It can move around
-// // the screen and consume boxes objects to maintain its health.
-//
-class Fox {
+// // a class that represents a simple fox
+// // controlled by the arrow keys. it can move around
+// // the screen and overlap boxes to generate poetry and change states.
+// //ideally the fox does more things/different things than the hedgehog
+class TestF {
 
   // constructor
   //
   // Sets the initial values for the fox's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, speed, radius, upKey, downKey, rightKey, leftKey) {
+  constructor(x, y, w, h, fillColor, speed, upKey, downKey, rightKey, leftKey, sprintKey) {
     // Position
     this.x = x;
     this.y = y;
+    this.w = w;
+    this.h = h;
+    this.fillColor = fillColor;
     // Velocity and speed
     this.vx = 0;
     this.vy = 0;
     this.speed = speed;
-    // Health properties
-    this.maxHealth = radius;
-    this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
-    this.healthLossPerMove = 0.1;
-    this.healthGainPerEat = 1;
-    //this.boxesEaten = 0;
-
+    this.normalSpeed = speed;
+    this.sprintSpeed = 20
     // Display properties
-    this.radius = this.health; // Radius is defined in terms of health
+    //collision properties
+    this.top = this.y - this.h / 2
+    this.bottom = this.y + this.h / 2
+    this.left = this.x - this.w / 2
+    this.right = this.x + this.w / 2
     // Input properties
     this.upKey = upKey;
     this.downKey = downKey;
     this.leftKey = leftKey;
     this.rightKey = rightKey;
-    this.image = image;
+    this.sprintKey = sprintKey;
+
+  //variables for counting and displaying collisions
+    this.foxCollisions = 0;
+    this.showFoxCollision = [];
   }
 
   // handleInput
@@ -41,24 +47,30 @@ class Fox {
   // Checks if an arrow key is pressed and sets the fox's
   // velocity appropriately.
   handleInput() {
+    // // check if the fox is sprinting and if so display this text
+    if (keyIsDown(this.sprintKey)) {
+      this.speed = this.sprintSpeed;
+      text("swift movement", width / 2, height / 1.1);
+
+    }
+    //to make it reset when shift is no longer pressed
+    else {
+      this.speed = this.normalSpeed;
+    }
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
-    }
-    else if (keyIsDown(this.rightKey)) {
+    } else if (keyIsDown(this.rightKey)) {
       this.vx = this.speed;
-    }
-    else {
+    } else {
       this.vx = 0;
     }
     // Vertical movement
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
-    }
-    else if (keyIsDown(this.downKey)) {
+    } else if (keyIsDown(this.downKey)) {
       this.vy = this.speed;
-    }
-    else {
+    } else {
       this.vy = 0;
     }
   }
@@ -66,15 +78,11 @@ class Fox {
   // move
   //
   // Updates the position according to velocity
-  // Lowers health (as a cost of living)
   // Handles wrapping
   move() {
     // Update position
     this.x += this.vx;
     this.y += this.vy;
-    // // Update health
-    // this.health = this.health - this.healthLossPerMove;
-    this.health = constrain(this.health, 0, this.maxHealth);
     // Handle wrapping
     this.handleWrapping();
   }
@@ -87,56 +95,53 @@ class Fox {
     // Off the left or right
     if (this.x < 0) {
       this.x += width;
-    }
-    else if (this.x > width) {
+    } else if (this.x > width) {
       this.x -= width;
     }
     // Off the top or bottom
     if (this.y < 0) {
       this.y += height;
-    }
-    else if (this.y > height) {
+    } else if (this.y > height) {
       this.y -= height;
     }
   }
 
-  // handleEating
-  //
-  // Takes a boxes object as an argument and checks if the fox
-  // overlaps it. If so, reduces the boxes's health and increases
-  // the fox's. If the boxes dies, it gets reset.
-  handleEating(boxes) {
-
-    // Calculate distance from this fox to the boxes
-    let d = dist(this.x, this.y, boxes.x, boxes.y);
-    // Check if the distance is less than their two radii (an overlap)
-    if (d < this.radius + boxes.radius) {
-      // Increase fox health and constrain it to its possible range
-
-      this.health += this.healthGainPerEat;
-      this.health = constrain(this.health, 0, this.maxHealth);
-      console.log("count fox and story overlaps")
-      // // Decrease boxes x value by the same amount
-      boxes.health -= this.healthGainPerEat;
-      // Check if the boxes died and reset it if so
-      if (boxes.health < 0) {
-        boxes.reset();
-      }
-    }
-  }
-
-
-//
   // display
   //
-  // Draw the fox as an ellipse on the canvas
-  // with a radius the same size as its current health.
-  display() {
+  // Draw the fox as an square on the canvas
+  //add parameters if fox overlaps with a box change its size and fillColor
+  //else put it back to its starting parameters, show text when overlap happens
+  display(isFoxOverBox) {
+    if (isFoxOverBox) {
+      this.fillColor = 0;
+      fill(0);
+      textFont('Courier New', [20]);
+      textStyle(BOLD);
+      text("survival", width / 2 - 350, height/ 1.09);
+      pop();
+      push();
+      this.foxCollisions++;
+      this.showFoxCollision = [
+        "lord help, me i do my best",
+      ]
+      textAlign(CENTER, CENTER)
+      fill(255);
+      textSize(50)
+      text(random(this.showFoxCollision), width/2, height/1.4);
+      console.log("this.foxCollisions counter")
+      pop();
+    }
+
+    else {
+      this.fillColor = color(153, 255, 204);
+      this.w = 70;
+      this.h = 70;
+
+    }
     push();
-    this.radius = this.health;
     noStroke();
-    fill(20);
-    ellipse(this.x, this.y, this.radius * 1.9);
+    fill(this.fillColor);
+    rect(this.x, this.y, this.w, this.h);
     pop();
   }
 }

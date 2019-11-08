@@ -25,18 +25,16 @@ class TestB {
 
   }
 
-  //check if the hedgehog had come into contact with the box and if so display story
-
 
   // display
   //
-  // Draw the hedgehog as an ellipse on the canvas
+  // Draw the boxes as ellipse on the canvas
   // with a radius the same size as its current health.
   display() {
     push();
     noStroke();
     fill(this.fillColor);
-    ellipse(this.x, this.y, this.size, this.size);
+    ellipse(this.x, this.y, this.size);
     pop();
   }
   //This code is adapted from cart253-2019/games/game-oop-pong/js/Ball.js
@@ -46,9 +44,8 @@ class TestB {
       // check if the box overlaps the hedgehog on y axis
       if (this.y + this.size > hedgehog.y && this.y < hedgehog.y + hedgehog.h) {
         this.fillColor = 255;
-        hedgehog.collisions ++
-        console.log("hedhoge.collisions")
         return true;
+
       }
     } else {
       this.fillColor = color(255, 153, 153);

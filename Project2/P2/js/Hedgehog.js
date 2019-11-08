@@ -1,68 +1,76 @@
-
-
-
-// // hedgehog
+"use strict";
+// // hedgohog
 // //
-// // A class that represents a simple hedgehog
+// // A class that represents a simple fox
 // // controlled by the arrow keys. It can move around
 // // the screen and consume boxes objects to maintain its health.
 //
-class Hedgehog {
+class TestH {
 
   // constructor
   //
-  // Sets the initial values for the hedgehog's properties
+  // Sets the initial values for the fox's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, speed, radius, upKey, downKey, rightKey, leftKey) {
+  constructor(x, y, w, h, fillColor, speed, upKey, downKey, rightKey, leftKey, words) {
     // Position
     this.x = x;
     this.y = y;
+    this.w = w;
+    this.h = h;
+    this.fillColor = fillColor;
     // Velocity and speed
     this.vx = 0;
     this.vy = 0;
     this.speed = speed;
-    // Health properties
-    this.maxHealth = radius;
-    this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
-    this.healthLossPerMove = 0.1;
-    this.healthGainPerEat = 1;
-    // this.boxesEaten = 0;
-
     // Display properties
-    this.rect = rect;
-    this.radius = this.health; // Radius is defined in terms of health
-
+    //collision properties
+    this.top = this.y - this.h / 2
+    this.bottom = this.y + this.h / 2
+    this.left = this.x - this.w / 2
+    this.right = this.x + this.w / 2
     // Input properties
     this.upKey = upKey;
     this.downKey = downKey;
     this.leftKey = leftKey;
     this.rightKey = rightKey;
-
+    this.words = [
+      "survive",
+      "exist",
+      "hed"]
+  //variables for counting and displaying collisions
+    this.collisions = 0;
+    this.showHedgehogCollision = [];
+//variables for tracking "health" (overlaps)
+    this.health;
+    this.maxHealth = 100;
+    this.healthPenalty = 0.3
+  //overlapCounter is like "number of prey eaten" from P1 to count the "score"
+    this.overlapCounter = 0;
   }
 
   // handleInput
   //
-  // Checks if an arrow key is pressed and sets the hedgehog's
+  // Checks if an arrow key is pressed and sets the fox's
   // velocity appropriately.
+setup(){
+  this.health = this.maxHealth;
+}
+
   handleInput() {
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
-    }
-    else if (keyIsDown(this.rightKey)) {
+    } else if (keyIsDown(this.rightKey)) {
       this.vx = this.speed;
-    }
-    else {
+    } else {
       this.vx = 0;
     }
     // Vertical movement
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
-    }
-    else if (keyIsDown(this.downKey)) {
+    } else if (keyIsDown(this.downKey)) {
       this.vy = this.speed;
-    }
-    else {
+    } else {
       this.vy = 0;
     }
   }
@@ -70,18 +78,13 @@ class Hedgehog {
   // move
   //
   // Updates the position according to velocity
-  // Lowers health (as a cost of living)
   // Handles wrapping
   move() {
     // Update position
     this.x += this.vx;
     this.y += this.vy;
-    // // Update health
-    // this.health = this.health - this.healthLossPerMove;
-    this.health = constrain(this.health, 0, this.maxHealth);
     // Handle wrapping
     this.handleWrapping();
-
   }
 
   // handleWrapping
@@ -92,55 +95,66 @@ class Hedgehog {
     // Off the left or right
     if (this.x < 0) {
       this.x += width;
-    }
-    else if (this.x > width) {
+    } else if (this.x > width) {
       this.x -= width;
     }
     // Off the top or bottom
     if (this.y < 0) {
       this.y += height;
-    }
-    else if (this.y > height) {
+    } else if (this.y > height) {
       this.y -= height;
     }
   }
 
-  // handleEating
-  //
-  // Takes a boxes object as an argument and checks if the hedgehog
-  // overlaps it. If so, reduces the boxes's health and increases
-  // the hedgehog's. If the boxes dies, it gets reset.
-  handleEating(boxes) {
-    // Calculate distance from this hedgehog to the boxes
-    let d = dist(this.x, this.y, boxes.x, boxes.y);
-    // Check if the distance is less than their two radii (an overlap)
-    if (d < this.radius + boxes.radius);
-      // Increase hedgehog health and constrain it to its possible range
-      this.health += this.healthGainPerEat;
-      this.health = constrain(this.health, 0, this.maxHealth);
-      // // Decrease boxes health by the same amount
-      boxes.health -= this.healthGainPerEat;
-      // // Check if the boxes died and reset it if so
-      if (boxes.health < 1) {
-        boxes.reset();
+//a function to check the number of collisions, it isn't really health but calling it that
+checkHealth(){
+       console.log("health");
+  if (boxes.x + boxes.size > this.x && boxes.x < this.x + this.w) {
+    // check if the box overlaps the hedgehog on y axis
+    if (boxes.y + boxes.size > this.y && this.y < this.y + this.h) {
+      this.health = this.maxHealth - 10
+      hedgehog.collisions ++
+      console.log("hedhoge.collisions")
+
+      // this.collisions += 1;
+      // if (this.health === 0) {
+      //   state = "GAMEOVER"
+      //           console.log("health");
       }
     }
-
-
-//
+  }
   // display
   //
-  // Draw the hedgehog as an ellipse on the canvas
-  // with a radius the same size as its current health.
-  display() {
+  // Draw the hedgehog as an square on the canvas
+  display(isOverBox) {
+    if (isOverBox) {
+      this.fillColor = color(random(255), random(25), random(51))
+      this.w = 50;
+      this.h = 50;
+      fill(0);
+      textFont('Courier New', [20]);
+      textStyle(BOLD);
+      text("survive", width / 2 + 350, height/1.09);
+
+      push();
+      this.showHedgehogCollision = [
+        "are you writing poetry yet?"
+      ]
+      textAlign(CENTER, CENTER)
+      fill(0);
+      textSize(50)
+      text(random(this.showHedgehogCollision), width/2, height/1.2);
+      pop();
+
+    } else {
+      this.fillColor = color(26, 255, 140);
+      this.w = 40;
+      this.h = 40;
+    }
     push();
-      noStroke();
-      fill(40);
-      this.radius = this.health;
-      ellipse(this.x, this.y, this.radius*2);
-      // noStroke();
-      // fill(26,9,0);
-      // ellipse(this.x, this.y, this.radius*4);
+    noStroke();
+    fill(this.fillColor);
+    rect(this.x, this.y, this.w, this.h);
     pop();
-      }
+  }
 }
