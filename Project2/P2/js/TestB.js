@@ -21,10 +21,8 @@ class TestB {
     // Display properties
     this.fillColor = fillColor;
     //variables for counting and displaying collisions
-    this.hedgehogCollisions = 0;
-    this.showHedgehogCollision = [];
-    this.foxCollisions = 0;
-    this.showFoxCollision = [];
+
+
   }
 
   //check if the hedgehog had come into contact with the box and if so display story
@@ -48,21 +46,21 @@ class TestB {
       // check if the box overlaps the hedgehog on y axis
       if (this.y + this.size > hedgehog.y && this.y < hedgehog.y + hedgehog.h) {
         this.fillColor = 255;
-        fill(0);
-        textFont('Courier New', [20]);
-        textStyle(BOLD);
-        text("survive", width / 2 + 350, height/1.09);
-        this.hedgehogCollisions++;
-        push();
-        this.showHedgehogCollision = [
-          "are you writing poetry yet?",
-        ]
-        textAlign(CENTER, CENTER) //what does this do?
-        fill(0);
-        textSize(50) //text size
-        text(random(this.showHedgehogCollision), width/2, height/1.2);
-        console.log("this.hedgehogCollisions counter")
-        pop();
+        // fill(0);
+        // textFont('Courier New', [20]);
+        // textStyle(BOLD);
+        // text("survive", width / 2 + 350, height/1.09);
+        // this.hedgehogCollisions++;
+        // push();
+        // this.showHedgehogCollision = [
+        //   "are you writing poetry yet?",
+        // ]
+        // textAlign(CENTER, CENTER)
+        // fill(0);
+        // textSize(50)
+        // text(random(this.showHedgehogCollision), width/2, height/1.2);
+        // console.log("this.hedgehogCollisions counter")
+        // pop();
         return true;
       }
     } else {

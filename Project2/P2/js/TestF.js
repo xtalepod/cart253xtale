@@ -36,6 +36,10 @@ class TestF {
     this.leftKey = leftKey;
     this.rightKey = rightKey;
     this.sprintKey = sprintKey;
+
+  //variables for counting and displaying collisions
+    this.foxCollisions = 0;
+    this.showFoxCollision = [];
   }
 
   // handleInput
@@ -46,7 +50,7 @@ class TestF {
     // // check if the fox is sprinting
     if (keyIsDown(this.sprintKey)) {
       this.speed = this.sprintSpeed;
-      text("move swiftyly", width / 2, height / 1.1);
+      text("swift movement", width / 2, height / 1.1);
 
     }
     //to make it reset when shift is no longer pressed
@@ -110,6 +114,22 @@ class TestF {
   display(isFoxOverBox) {
     if (isFoxOverBox) {
       this.fillColor = 0;
+      fill(0);
+      textFont('Courier New', [20]);
+      textStyle(BOLD);
+      text("survival", width / 2 - 350, height/ 1.09);
+      pop();
+      push();
+      this.foxCollisions++;
+      this.showFoxCollision = [
+        "lord help, me i do my best",
+      ]
+      textAlign(CENTER, CENTER) //what does this do?
+      fill(255);
+      textSize(50) //text size
+      text(random(this.showFoxCollision), width/2, height/1.4);
+      console.log("this.foxCollisions counter")
+      pop();
     }
 
     else {

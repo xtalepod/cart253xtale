@@ -37,6 +37,9 @@ class TestH {
       "survive",
       "exist",
       "hed"]
+  //variables for counting and displaying collisions
+    this.hedgehogCollisions = 0;
+    this.showHedgehogCollision = [];
   }
 
   // handleInput
@@ -101,9 +104,26 @@ class TestH {
   // with a radius the same size as its current health.
   display(isOverBox) {
     if (isOverBox) {
-      this.fillColor = color(random(51), random(25), random(51))
+      this.fillColor = color(random(255), random(25), random(51))
       this.w = 50;
       this.h = 50;
+      fill(0);
+      textFont('Courier New', [20]);
+      textStyle(BOLD);
+      text("survive", width / 2 + 350, height/1.09);
+      this.hedgehogCollisions++;
+
+      push();
+      this.showHedgehogCollision = [
+        "are you writing poetry yet?"
+      ]
+      textAlign(CENTER, CENTER)
+      fill(0);
+      textSize(50)
+      text(random(this.showHedgehogCollision), width/2, height/1.2);
+      console.log("this.hedgehogCollisions counter")
+      pop();
+
     } else {
       this.fillColor = color(26, 255, 140);
       this.w = 40;
