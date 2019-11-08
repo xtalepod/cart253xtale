@@ -103,7 +103,7 @@ class TestH {
   // with a radius the same size as its current health.
   display(isOverBox) {
     if (isOverBox) {
-      this.fillColor = 0;
+      this.fillColor = color(random(51),random(25),random(51))
       this.w = 50;
       this.h = 50;
     }
