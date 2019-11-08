@@ -11,7 +11,7 @@ class TestF {
   //
   // Sets the initial values for the fox's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, w, h,fillColor, speed, upKey, downKey, rightKey, leftKey) {
+  constructor(x, y, w, h,fillColor, speed, upKey, downKey, rightKey, leftKey, sprintKey) {
     // Position
     this.x = x;
     this.y = y;
@@ -22,6 +22,8 @@ class TestF {
     this.vx = 0;
     this.vy = 0;
     this.speed = speed;
+    this.normalSpeed = speed;
+    this.sprintSpeed = 10
     // Display properties
     //collision properties
     this.top = this.y - this.h /2
@@ -33,6 +35,7 @@ class TestF {
     this.downKey = downKey;
     this.leftKey = leftKey;
     this.rightKey = rightKey;
+    this.sprintKey = sprintKey;
   }
 
   // handleInput
@@ -40,6 +43,16 @@ class TestF {
   // Checks if an arrow key is pressed and sets the fox's
   // velocity appropriately.
   handleInput() {
+    // // check if the predator is sprinting
+   if (keyIsDown(this.sprintKey)) {
+     this.speed = this.sprintSpeed;
+     console.log('where are you');
+   }
+   //to make it reset when shift is no longer pressed
+   else {
+     this.speed = this.normalSpeed;
+     console.log('these keys make it stop working');
+   }
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;

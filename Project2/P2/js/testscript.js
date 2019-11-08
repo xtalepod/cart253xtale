@@ -102,9 +102,9 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
 // constructor(x, y, w, h,fillColor, speed, upKey, downKey, rightKey, leftKey) {
-  hedgehog = new TestH(60, 300, 40, 40, color(26, 255, 140), 2, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
+  hedgehog = new TestH(60, 300, 40, 40, color(26, 255, 140), 5, UP_ARROW, DOWN_ARROW, RIGHT_ARROW, LEFT_ARROW);
   // constructor(x, y,w,h, speed, radius, upKey, downKey, rightKey, leftKey) {
-  fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 2, 87,83,65,68);
+  fox = new TestF(100, 40, 70, 70, color(153, 255, 204), 1, 87,83,65,68,70);
   // (x, y, size, fillColor) {
 push();
   for (let i = 0; i < 3; i++) {
