@@ -196,13 +196,14 @@ function displayStoryScreen() {
   textAlign(CENTER, CENTER);
   text(phrase0, width / 5, height / 3);
   let phrase1 = story1[storyIndex1];;
-  text(phrase1, width / 1.2, height / 1.2);
+  text(phrase1, width / 1.2, height / 1.5);
   push();
   // textAlign(RIGHT, RIGHT);
   fill(20);
   textFont('Courier New', [20]);
   textStyle(BOLD);
-  text("click any key", width / 2, height / 1.1);
+  text("press any key to start", width / 2, height / 1.1);
+  text("click the mouse to begin game play",width/2, height/1.06);
   pop();
   // corgi.move();
   // corgi.handleInput();
@@ -235,7 +236,7 @@ function displayStartScreen() {
 //a little hedgehog avatar for the start screen to better prepare the player
   noStroke();
   fill(26, 255, 140);
-  rect(width/2.5 + 55, height/2 + 60, 40, 40);
+  rect(width/2 - 50, height/2 + 60, 40, 40);
 //a little fox avatar for the start screen to better prepare the player
   noStroke();
   fill(153, 255, 204);
