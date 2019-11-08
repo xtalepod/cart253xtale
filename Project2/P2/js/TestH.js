@@ -11,7 +11,7 @@ class TestH {
   //
   // Sets the initial values for the fox's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, w, h,fillColor, speed, upKey, downKey, rightKey, leftKey) {
+  constructor(x, y, w, h, fillColor, speed, upKey, downKey, rightKey, leftKey, words) {
     // Position
     this.x = x;
     this.y = y;
@@ -24,7 +24,7 @@ class TestH {
     this.speed = speed;
     // Display properties
     //collision properties
-    this.top = this.y - this.h /2
+    this.top = this.y - this.h / 2
     this.bottom = this.y + this.h / 2
     this.left = this.x - this.w / 2
     this.right = this.x + this.w / 2
@@ -33,6 +33,10 @@ class TestH {
     this.downKey = downKey;
     this.leftKey = leftKey;
     this.rightKey = rightKey;
+    this.words = [
+      "survive",
+      "exist",
+      "hed"]
   }
 
   // handleInput
@@ -43,21 +47,17 @@ class TestH {
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
-    }
-    else if (keyIsDown(this.rightKey)) {
+    } else if (keyIsDown(this.rightKey)) {
       this.vx = this.speed;
-    }
-    else {
+    } else {
       this.vx = 0;
     }
     // Vertical movement
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
-    }
-    else if (keyIsDown(this.downKey)) {
+    } else if (keyIsDown(this.downKey)) {
       this.vy = this.speed;
-    }
-    else {
+    } else {
       this.vy = 0;
     }
   }
@@ -83,31 +83,28 @@ class TestH {
     // Off the left or right
     if (this.x < 0) {
       this.x += width;
-    }
-    else if (this.x > width) {
+    } else if (this.x > width) {
       this.x -= width;
     }
     // Off the top or bottom
     if (this.y < 0) {
       this.y += height;
-    }
-    else if (this.y > height) {
+    } else if (this.y > height) {
       this.y -= height;
     }
   }
 
- // }
+  // }
   // display
   //
   // Draw the fox as an ellipse on the canvas
   // with a radius the same size as its current health.
   display(isOverBox) {
     if (isOverBox) {
-      this.fillColor = color(random(51),random(25),random(51))
+      this.fillColor = color(random(51), random(25), random(51))
       this.w = 50;
       this.h = 50;
-    }
-    else {
+    } else {
       this.fillColor = color(26, 255, 140);
       this.w = 40;
       this.h = 40;

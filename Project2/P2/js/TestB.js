@@ -20,9 +20,14 @@ class TestB {
     this.size = 40;
     // Display properties
     this.fillColor = fillColor;
+    //variables for counting and displaying collisions
+    this.hedgehogCollisions = 0;
+    this.showHedgehogCollision = [];
+    this.foxCollisions = 0;
+    this.showFoxCollision = [];
   }
 
-//check if the hedgehog had come into contact with the box and if so display story
+  //check if the hedgehog had come into contact with the box and if so display story
 
 
   // display
@@ -36,41 +41,60 @@ class TestB {
     ellipse(this.x, this.y, this.size, this.size);
     pop();
   }
-//This code is adapted from cart253-2019/games/game-oop-pong/js/Ball.js
-handleCollision(hedgehog) {
-   // Check if the ball overlaps the hedgehog on x axi
-     if (this.x + this.size > hedgehog.x && this.x < hedgehog.x + hedgehog.w) {
-       // Check if the ball overlaps the hedgehog on y axis
-       if (this.y + this.size > hedgehog.y && this.y < hedgehog.y + hedgehog.h) {
-         this.fillColor = 255;
-         fill(20);
-         textFont('Courier New', [20]);
-         textStyle(BOLD);
-         text("survive", width / 1.1, height / 1.1);
-         return true;
-   }
- }
- else {
-   this.fillColor = color(255, 153, 153);
- }
-}
+  //This code is adapted from cart253-2019/games/game-oop-pong/js/Ball.js
+  handleCollision(hedgehog) {
+    // check if the box overlaps the hedgehog on x axi
+    if (this.x + this.size > hedgehog.x && this.x < hedgehog.x + hedgehog.w) {
+      // check if the box overlaps the hedgehog on y axis
+      if (this.y + this.size > hedgehog.y && this.y < hedgehog.y + hedgehog.h) {
+        this.fillColor = 255;
+        fill(20);
+        textFont('Courier New', [20]);
+        textStyle(BOLD);
+        text("survive", width / 2 + 350, height / 1.1);
+        this.hedgehogCollisions++;
+        push();
+        this.showHedgehogCollision = [
+          "are you writing poetry yet?",
+        ]
+        textAlign(CENTER, CENTER) //what does this do?
+        fill(0);
+        textSize(50) //text size
+        text(random(this.showHedgehogCollision), width/2, height/1.2);
+        console.log("this.hedgehogCollisions counter")
+        pop();
+        return true;
+      }
+    } else {
+      this.fillColor = color(255, 153, 153);
+    }
+  }
 
-handleFoxCollision(fox) {
-   // Check if the ball overlaps the fox on x axi
-
+  handleFoxCollision(fox) {
+    //check if the box overlaps the fox on x axi
     if (this.x + this.size > fox.x && this.x < fox.x + fox.w) {
-       // Check if the ball overlaps the fox on y axis
-    if (this.y + this.size > fox.y && this.y < fox.y + fox.h) {
-         this.fillColor = 255;
-         fill(20);
-         textFont('Courier New', [20]);
-         textStyle(BOLD);
-         text("survival", width /2, height / 1.1);
-         return true;
-   }
- }
- else {
-   this.fillColor = color(255, 153, 153);
- }
- }
+      //check if the box overlaps the fox on y axis
+      if (this.y + this.size > fox.y && this.y < fox.y + fox.h) {
+        this.fillColor = 255;
+        fill(20);
+        textFont('Courier New', [20]);
+        textStyle(BOLD);
+        text("survival", width / 6, height/ 1.1);
+        this.foxCollisions++;
+        push();
+        this.showFoxCollision = [
+          "lord help me i do my best",
+        ]
+        textAlign(CENTER, CENTER) //what does this do?
+        fill(255);
+        textSize(50) //text size
+        text(random(this.showFoxCollision), width/2, height/1.5);
+        console.log("this.foxCollisions counter")
+        pop();
+        return true;
+      }
+    } else {
+      this.fillColor = color(255, 153, 153);
+    }
+  }
 }

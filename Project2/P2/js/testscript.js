@@ -16,48 +16,39 @@
 let hedgehog;
 let fox;
 let boxes = [];
-let boxes1 = [];
 
-//the stories are non-traditional prey
-//they appear on the screen as squares with text that appears when the hedgehog of the fox overlap
-//the story squares teach us about the hedgehog and the fox
+//the boxes are non-traditional prey
+//they appear on the screen as circles with text that appears when the hedgehog of the fox overlap
+//the story circles teach us about the abstract nature of hedgehog and the fox
 //you are encouraged to collect stories by writing them down on paper
 //its like a diy poem generator!
 
 // the text
-let storyIndex = [];
+let circleStory = [];
 
-let foxBoxes = ["survival",
+let circleFoxStories = [
+  "survival",
   "survival",
   "survival"
 ];
 
 //for the text
-let foxIndex = 0;
+let circleFoxStoriesIndex = 0;
 
 //the text
-let hedgehogBoxes = ["survive",
+let hedgehogBoxes = [
+  "survive",
   "survive",
   "survive"
 ];
 //for the text
 let hedgehogIndex = 0;
 
-
-//**
-//this game has 4 state screens: start, story telling, role playing//diy poetry,game over or reference
-//****
-//start state stuff
-
+//declaring start and gameOver states
 let state = "START"; //there is another way to do this
-
-//****
-//storytelling stuff
-
-//an array to make rectangles which are the background and simulate a forest
-//story arrays
-//***
-//0 story
+let gameOver = false;
+//two arrays that display only on displayStoryScreen
+//0 story variables
 let story0 = [
   "the fox knows",
   "many things",
@@ -65,28 +56,19 @@ let story0 = [
   "knows one big thing.",
   "--archilochus"
 ];
-
-//0 index
 let storyIndex0 = 0;
-
-//1 story
+//1 story variables
 let story1 = [
   "who would you",
   "rather be?",
   "better yet",
   "who are you?"
 ];
-
-//1 index
 let storyIndex1 = 0;
 
+//an array for the displayPlayScreen background of rectanlges which loosely resemble trees (if you look hard enough)
 let trees = [100, 25, 6, 20];
 
-//roleplaying//diy poetry stuff
-
-
-//gameover or references state
-let gameOver = false;
 
 //set anything that needs to be preloaded
 function preload() {
@@ -115,6 +97,7 @@ function setup() {
     pop();
   }
 }
+console.log("here");
 
 // draw()
 //
