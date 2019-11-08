@@ -232,6 +232,15 @@ function displayStartScreen() {
   textStyle(BOLD);
   text("start", width / 1.1, height / 1.1);
   pop();
+//a little hedgehog avatar for the start screen to better prepare the player
+  noStroke();
+  fill(26, 255, 140);
+  rect(width/2.5 + 55, height/2 + 60, 40, 40);
+//a little fox avatar for the start screen to better prepare the player
+  noStroke();
+  fill(153, 255, 204);
+  rect(width/2, height/2 + 30, 70, 70);
+
 }
 
 
