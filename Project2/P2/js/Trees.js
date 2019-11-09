@@ -1,3 +1,6 @@
+//trees as a very simple array that helps display the trees in the play displayPlayScreen
+//even though its simple i'm keeping it for reference
+
 class Trees {
 
   // constructor

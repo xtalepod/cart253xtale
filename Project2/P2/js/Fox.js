@@ -5,7 +5,7 @@
 // // controlled by the arrow keys. it can move around
 // // the screen and overlap boxes to generate poetry and change states.
 // //ideally the fox does more things/different things than the hedgehog
-class TestF {
+class Fox {
 
   // constructor
   //
@@ -37,7 +37,7 @@ class TestF {
     this.rightKey = rightKey;
     this.sprintKey = sprintKey;
 
-  //variables for counting and displaying collisions
+  //variables for counting and displaying collisions theoretically
     this.foxCollisions = 0;
     this.showFoxCollision = [];
   }

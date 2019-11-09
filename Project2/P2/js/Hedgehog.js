@@ -1,17 +1,17 @@
 "use strict";
 // // hedgohog
 // //
-// // A class that represents a simple fox
+// // A class that represents a simple hedgehog
 // // controlled by the arrow keys. It can move around
-// // the screen and consume boxes objects to maintain its health.
-//
-class TestH {
-
+// // the screen and overlap with boxes to generate poetry
+////*******related to gameOver state and and conviction: all health variables, setup(), checkHealth(), and check collision are attempting to visbily track 'health'(overlaps) and change to gameOver state
+class Hedgehog {
+  // console.log("new Hedgehog");
   // constructor
   //
-  // Sets the initial values for the fox's properties
+  // Sets the initial values for the hedgehog's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, w, h, fillColor, speed, upKey, downKey, rightKey, leftKey, words) {
+  constructor(x, y, w, h, fillColor, speed, upKey, downKey, rightKey, leftKey) {
     // Position
     this.x = x;
     this.y = y;
@@ -35,9 +35,9 @@ class TestH {
     this.rightKey = rightKey;
     this.words = [
       "survive",
-      "exist",
-      "hed"]
-  //variables for counting and displaying collisions
+      ]
+
+//variables for counting and displaying collisions (theoretically)
     this.collisions = 0;
     this.showHedgehogCollision = [];
 //variables for tracking "health" (overlaps)
@@ -125,7 +125,7 @@ checkHealth(){
   }
   // display
   //
-  // Draw the hedgehog as an square on the canvas
+  // Draw the hedgehog as an square on the canvas, make text appear with it overlaps with the boxes and its colour change randomly
   display(isOverBox) {
     if (isOverBox) {
       this.fillColor = color(random(255), random(25), random(51))
