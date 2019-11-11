@@ -1,4 +1,7 @@
-class TestSkyFalling {
+//an object that moves on x and y axis coming from top to bottom
+//will be used another time but NOT during hedgehog and fox
+
+//class TestSkyFalling {
 
   // constructor
   //
