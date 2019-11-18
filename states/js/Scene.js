@@ -1,16 +1,6 @@
-// Door
-//
-// A class that represents door objects that can be found
-// by the player. When a player steps through them, it changes
-// the level to the next level.
-
-class TestPortal {
-  // constructor
-  //
-  // Sets the initial values for the Door's properties
-  // Either sets default values or uses the arguments provided
-  // ...state
-  constructor(x, y, width, height, state) {
+class Scene {
+  
+  constructor(x, y, width, height) {
     // Position
     this.x = x;
     this.y = y;
@@ -19,7 +9,7 @@ class TestPortal {
     this.height = height;
     // this.fillColor;
     //the state of the game
-    this.state = state;
+    // this.state = state;
   }
   //display()
   //
@@ -45,4 +35,10 @@ class TestPortal {
       }
     }
   }
+  mousePressed() {
+    // This will be called by the main program when it detects a mouse press
+  }
 }
+
+  // We could define more methods, depending on what we want our scenes to be able to do
+  // including more input events that could be called from the main script

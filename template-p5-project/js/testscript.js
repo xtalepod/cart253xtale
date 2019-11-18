@@ -1,16 +1,35 @@
-
 //the player
 let player;
 
-
-//the Walls
-let wall1;
-let wall2;
-
 //the portal and its properties
 let portal;
-let portalX;
-let portalY;
+// let portalX;
+// let portalY;
+
+//array containing the informations of the portals
+let portalProperties = [{
+    x: 400,
+    y: 500,
+    width: 20,
+    height: 40,
+  },
+  {
+    x: 700,
+    y: 100,
+    width: 60,
+    height: 50,
+  },
+  {
+    x: 400,
+    y: 100,
+    width: 20,
+    height: 90,
+  }
+];
+
+//array containing the portals
+
+let portalArray = [];
 
 //the key
 let key;
@@ -23,9 +42,9 @@ let state = "Menu";
 //array containing the informations of the walls
 let wallProperties = [{
     x: 400,
-    y: 100 +30,
+    y: 100 + 30,
     width: 200,
-    height: 30
+    height: 30,
   },
   {
     x: 200,
@@ -58,8 +77,7 @@ let wallArray = [];
 //preload()
 //
 //preloads the images and sounds
-function preload() {
-}
+function preload() {}
 // setup()
 //
 // Sets up a canvas
@@ -77,8 +95,13 @@ function setup() {
     wall = new TestWall(wallProperties[i].x, wallProperties[i].y, wallProperties[i].width, wallProperties[i].height);
     wallArray.push(wall);
   }
-  //The objects of level 1
-  portal = new TestPortal(portalX, portalY, 100, 200, "Level 1");
+//the portal array
+  for (let i = 0; i < portalProperties.length; i++) {
+    portal = new TestPortal(portalProperties[i].x, portalProperties[i].y, portalProperties[i].width, portalProperties[i].height, "portalState0");
+    portalArray.push(portal);
+  }
+  //The objects of level 1... , "Level 1"
+  // portal = new TestPortal(portalX, portalY, 100, 200);
   key = new TestKey(100, 700);
 }
 
@@ -86,7 +109,7 @@ function setup() {
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
-    background(200);
+  background(200);
   //putting the dungeon backgound under everything on the canvas
   // image(backgroundImg, 0, 0, width, height);
   // if (state === "Menu") {
@@ -98,33 +121,71 @@ function draw() {
   // }
   // if (state === "Level 1") {
 
-    player.handleInput();
-    // Move all the player
-    player.move();
-    //handling if the key is found
-    key.handleFound(player);
-    //handling the exit of the player
-    portal.handleExit(player);
-
-    portal.display();
-    key.display();
-
-    //the walls
-    //handling the solid characteristics of a wall object
-    //in relationship to the characters
-    for (let i = 0; i < wallArray.length; i++) {
-      wallArray[i].handleSolid(player);
-      wallArray[i].display();
-      }
-      player.display();
-
-    if (state === "portalState1") {
-    //Shows the game over screen and resets all values to starting values
-    player.reset();
-    key.isFound = false;
+  player.handleInput();
+  // Move all the player
+  player.move();
+  //handling if the key is found
+  key.handleFound(player);
+  //handling the exit of the player
+  for (let i = 0; i < portalArray.length; i++) {
+    portalArray[i].handleExit(player);
+    portalArray[i].display();
   }
- }
+  // portal.handleExit(player);
+  // portal.display();
+  //
+  key.display();
 
+  //the walls
+  //handling the solid characteristics of a wall object
+  //in relationship to the characters
+  for (let i = 0; i < wallArray.length; i++) {
+    wallArray[i].handleSolid(player);
+    wallArray[i].display();
+  }
+  player.display();
+//can you create a for loop to check
+  for (let i = 0; i < portalArray.length; i++) {
+
+      if (portalArray[i].state === "portalState1") {
+        //Shows the game over screen and resets all values to starting values
+        displayPortal(i);
+        player.reset();
+        key.isFound = false;
+      }
+    }
+}
+
+function displayPortal(portalIndex){
+  switch (portalIndex) {
+      case 0:
+      displayPortal0()
+      break;
+
+      case 1:
+      displayPortal1()
+      break;
+
+      case 2:
+      displayPortal2();
+      break;
+      }
+}
+
+function displayPortal0() {
+  background(0)
+}
+
+function displayPortal1() {
+  background(255)
+}
+
+function displayPortal2() {
+  background(50)
+}
+// function displayPortal2() {
+//   background(255)
+// }
 // mousePressed()
 //
 // //switches the state of the game, the screeens

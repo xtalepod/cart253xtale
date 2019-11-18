@@ -96,10 +96,6 @@ class TestPlayer {
   // Draw the prey as an image on the canvas
   // with a constant size that does not change with its health.
   display() {
-
-    stroke(10);
-    fill(this.fillColor);
-    ellipse(this.x, this.y, this.size);
     push();
     if (this.isMoving === true || this.isMovingSideways === true) {
       stroke(10);

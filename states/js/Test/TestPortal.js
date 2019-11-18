@@ -10,7 +10,7 @@ class TestPortal {
   // Sets the initial values for the Door's properties
   // Either sets default values or uses the arguments provided
   // ...state
-  constructor(x, y, width, height, state) {
+  constructor(x, y, width, height) {
     // Position
     this.x = x;
     this.y = y;
@@ -19,7 +19,7 @@ class TestPortal {
     this.height = height;
     // this.fillColor;
     //the state of the game
-    this.state = state;
+    // this.state = state;
   }
   //display()
   //
