@@ -1,11 +1,12 @@
 
 class GameOverScene extends Scene {
-  constructor(x, y, width, height){
-    super(x,y,width,height);
+  constructor(){
+    super();
   }
   draw() {
+    background(200);
     // Here we would draw the game over on the screen
-    text("GAME OVER!",1000,1000);
+    text("GAME OVER!",500,500);
   }
 
   mousePressed() {
