@@ -13,12 +13,11 @@ let portalArray = [];
 let milky;
 
 function setup() {
- createCanvas(1000, 800);
+ createCanvas(windowWidth,windowHeight);
   // Create the four scenes
-  titleScene = new TitleScene(30,40,500,600);
-  milky = createVideo('assets/milky.mp4', milkyLoad);
-  milky.size(-10,-10);
-  // milky.hide();
+  titleScene = new TitleScene();
+  milky = createVideo('assets/milky3.mp4', milkyLoad);
+  milky.hide();
   instructionsScene = new InstructionsScene();
   portalOne = new PortalOne();
   portalTwo = new PortalTwo();
@@ -36,13 +35,15 @@ function draw() {
   // In draw we just tell the current scene to draw
   // and whichever scene it is will display as per its class
   currentScene.draw();
-  image(milky, 10, 10);
+  imageMode(CENTER);
+  image(milky, width/2, height/2);
   // milky.resize(40,40);
 }
 
 function milkyLoad(){
   milky.loop();
-  milky.volume(0);
+  // milky.size(100,100);
+  milky.volume(3);
 }
 function mousePressed() {
   // In mousePressed we call the mousePressed of the current scene
@@ -52,6 +53,7 @@ function mousePressed() {
 
 function keyPressed() {
   milky.loop();
+  // milky.volume(30);
 }
 function setUpPortals(){
 

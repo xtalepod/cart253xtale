@@ -1,7 +1,9 @@
 class TitleScene extends Scene {
   constructor() {
     super();
-    // this.image = this.image;
+    // this.x = x;
+    // this.y = y;
+    // this.image = image;
     // this.milky;
   }
 
@@ -11,6 +13,8 @@ class TitleScene extends Scene {
   draw() {
     // Here we would draw the title on the screen
     background(255,190,190);
+    imageMode(CENTER);
+    // image(this.image,this.x,this.y)
     // this.image
   }
 
