@@ -18,4 +18,7 @@ class InstructionsScene extends Scene {
     console.log("go into play")
 
   }
+  // keyPressed() {
+  //   video.loop();
+  // }
 }

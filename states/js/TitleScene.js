@@ -1,13 +1,17 @@
 class TitleScene extends Scene {
   constructor() {
     super();
+    // this.image = this.image;
+    // this.milky;
   }
 
+// videoPreload(){
+//   this.video = createVideo ('assets/video.mp4')
+//   this.video.hide();
   draw() {
     // Here we would draw the title on the screen
-    text("My amazing game",300,30);
-    text("Click for instructions",500,20);
-
+    background(255,190,190);
+    // this.image
   }
 
   mousePressed() {
@@ -18,4 +22,8 @@ class TitleScene extends Scene {
     console.log("go into intructions")
 
   }
+  //
+  // keyPressed(){
+  //   this.image.loop();
+  // }
 }

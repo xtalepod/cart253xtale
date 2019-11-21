@@ -14,15 +14,10 @@ class TestPortal {
     // Position
     this.x = x;
     this.y = y;
-    //size
     this.width = width;
     this.height = height;
-      this.nextState = nextState;
-     console.log("STATE:: "+this.nextState);
-    // this.fillColor;
-    //the state of the game
-    //this.state = state;
-
+    this.nextState = nextState;
+    console.log("STATE:: "+this.nextState);
 
   }
 

@@ -20,10 +20,10 @@ class PortalThree extends PlayScene {
 
 
   //the walls
-  //handling the solid characteristics of a wall object
+  //handling the Collision characteristics of a wall object
   //in relationship to the characters
   for (let i = 0; i < this.wallArray.length; i++) {
-    this.wallArray[i].handleSolid(this.player);
+    this.wallArray[i].handleCollision(this.player);
     this.wallArray[i].display();
   }
   this.player.display();

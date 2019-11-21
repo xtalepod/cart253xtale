@@ -2,6 +2,7 @@ class PortalTwo extends PlayScene {
   constructor(){
     super();
     this.backgroundColor = color(0,255,0);
+    this.noiseScale = 0.5;
     //the wall array
     this.wallArray =[];
       for (let i = 0; i < this.wallProperties.length; i++) {
@@ -12,6 +13,12 @@ class PortalTwo extends PlayScene {
 
   draw() {
       background(this.backgroundColor);
+      background(255, 193, 170, 10);
+  for (let n = 0; n < width; n++) {
+    let noiseVal = noise((this.player.x + n) * this.noiseScale, this.player.y * his.noiseScale);
+    stroke(noiseVal * 30);
+    line(n, this.player.y + noiseVal * 100, n, height);
+  }
       this.player.handleInput();
       // Move all the player
       this.player.move();
@@ -20,10 +27,10 @@ class PortalTwo extends PlayScene {
 
 
   //the walls
-  //handling the solid characteristics of a wall object
+  //handling the Collision characteristics of a wall object
   //in relationship to the characters
   for (let i = 0; i < this.wallArray.length; i++) {
-    this.wallArray[i].handleSolid(this.player);
+    this.wallArray[i].handleCollision(this.player);
     this.wallArray[i].display();
   }
   this.player.display();

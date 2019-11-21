@@ -36,8 +36,16 @@ class TestPlayer {
     this.leftKey = 65; //A
     this.rightKey = 68; //D
     //booleans to know if the object is moving
-    this.isMoving = false;
-    this.isMovingSideways = false;
+    // this.isMoving = false;
+    // this.isMovingSideways = false;
+    // this.phrasesIndex = 0;
+    this.phrases = [
+      "once i am dead",
+      "to the left and right",
+      "this illusionary duplication",
+      "sinks abysmally and soars",
+      "fathomless air; my body"
+    ];
   }
 
   // handleInput
@@ -48,21 +56,21 @@ class TestPlayer {
     // Horizontal movement
     if (keyIsDown(this.leftKey)) {
       this.vx = -this.speed;
-      this.isMovingSideways = true;
+      // this.isMovingSideways = true;
     } else if (keyIsDown(this.rightKey)) {
       this.vx = this.speed;
-      this.isMovingSideways = true;
+      // this.isMovingSideways = true;
     } else {
       this.vx = 0;
-      this.isMovingSideways = false;
+      // this.isMovingSideways = false;
     }
     // Vertical movement
     if (keyIsDown(this.upKey)) {
       this.vy = -this.speed;
-      this.isMoving = true;
+      // this.isMoving = true;
     } else if (keyIsDown(this.downKey)) {
       this.vy = this.speed;
-      this.isMoving = true;
+      // this.isMoving = true;
     } else {
       this.vy = 0;
       this.isMoving = false;
@@ -101,13 +109,12 @@ class TestPlayer {
     fill(this.fillColor);
     ellipse(this.x, this.y, this.size);
     push();
-    if (this.isMoving === true || this.isMovingSideways === true) {
+    // if (this.isMoving === true || this.isMovingSideways === true) {
       stroke(10);
       fill(this.fillColor);
       ellipse(this.x, this.y, this.size);
     pop();
   }
-}
 // reset
   //
   // Set the position to a random location and reset health
