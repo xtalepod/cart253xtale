@@ -1,11 +1,10 @@
 //the player
 let player;
 
-//the portal and its properties
+//the portal
 let portal;
-// let portalX;
-// let portalY;
-
+//array containing the portals
+let portalArray = [];
 //array containing the informations of the portals
 let portalProperties = [{
     x: 400,
@@ -27,18 +26,13 @@ let portalProperties = [{
   }
 ];
 
-//array containing the portals
-
-let portalArray = [];
-
 //the key
 let key;
 
-
-//state variable containing the state of the game
-let state = "Menu";
-
-
+//the wall
+let wall;
+//array containing the walls
+let wallArray = [];
 //array containing the informations of the walls
 let wallProperties = [{
     x: 400,
@@ -71,26 +65,39 @@ let wallProperties = [{
     height: 30
   },
 ];
-//array containing the walls
-let wallArray = [];
 
-//preload()
-//
+//scene  stuff
+// //state variable containing the state of the game
+// let state = "Menu";
+
+let currentScene; // To store the current scene;
+let titleScene;
+let instructionsScene;
+let playScene;
+let gameOverScene;
+
+
 //preloads the images and sounds
 function preload() {}
-// setup()
-//
+
+
 // Sets up a canvas
 // Creates objects for the predator, the player, the potions and the walls
 function setup() {
   createCanvas(1000, 800);
-  //setting up the portal properties
-  portalX = width - 150;
-  portalY = height - 150;
 
-  player = new TestPlayer(100, 30, 6, color(255, 195, 195), 50);
 
-  //the wall array
+//scene stuff
+    titleScene = new TitleScene(30,40,500,600);
+    instructionsScene = new InstructionsScene();
+    playScene = new PlayScene();
+    gameOverScene = new GameOverScene();
+    currentScene = titleScene; // Because we start on the title
+
+//setting up the player
+    player = new TestPlayer(100, 30, 6, color(255, 195, 195), 50);
+
+//setting up the wall array
   for (let i = 0; i < wallProperties.length; i++) {
     wall = new TestWall(wallProperties[i].x, wallProperties[i].y, wallProperties[i].width, wallProperties[i].height);
     wallArray.push(wall);
@@ -100,8 +107,6 @@ function setup() {
     portal = new TestPortal(portalProperties[i].x, portalProperties[i].y, portalProperties[i].width, portalProperties[i].height, "portalState0");
     portalArray.push(portal);
   }
-  //The objects of level 1... , "Level 1"
-  // portal = new TestPortal(portalX, portalY, 100, 200);
   key = new TestKey(100, 700);
 }
 
@@ -109,48 +114,37 @@ function setup() {
 //
 // Handles input, movement, eating, and displaying for the system's objects
 function draw() {
-  background(200);
-  //putting the dungeon backgound under everything on the canvas
-  // image(backgroundImg, 0, 0, width, height);
-  // if (state === "Menu") {
-  //   //the menu image only for the menu
-  //   image(menuImg, 0, 0, width, height);
-  // }
-  // if (state === "Narrative") {
-  //   image(narrativeImg, 0, 0, width, height);
-  // }
-  // if (state === "Level 1") {
+    background(200);
+    currentScene.draw();
 
-  player.handleInput();
-  // Move all the player
-  player.move();
-  //handling if the key is found
-  key.handleFound(player);
+    // player.handleInput();
+    // // Move all the player
+    // player.move();
+    // //handling if the key is found
+    // key.handleFound(player);
 
 //eventually create a Screen class so that portal and wall arrays belong there
 // e.g. currentScreen = screen1;
 // for(i=0; ...)
 //      currentScreen.portalArray[i].handleExit(player);
 //      currentScreen.key.handleFound(player);
-...
+// ...
 // }
 
-//handling the exit of the player
-for (let i = 0; i < portalArray.length; i++) {
-    portalArray[i].handleExit(player);
-    portalArray[i].display();
-  }
-
-  for (let i = 0; i < wallArray.length; i++) {
-    wallArray[i].handleSolid(player);
-    wallArray[i].display();
-  }
+//the walls
+//handling the solid characteristics of a wall object
+//in relationship to the characters
+// for (let i = 0; i < portalArray.length; i++) {
+//     portalArray[i].handleExit(player);
+//     portalArray[i].display();
+//   }
+//
+//   for (let i = 0; i < wallArray.length; i++) {
+//     wallArray[i].handleSolid(player);
+//     wallArray[i].display();
+//   }
 
   key.display();
-
-  //the walls
-  //handling the solid characteristics of a wall object
-  //in relationship to the characters
 
   player.display();
 //can you create a for loop to check
@@ -192,20 +186,11 @@ function displayPortal1() {
 function displayPortal2() {
   background(50)
 }
-// function displayPortal2() {
-//   background(255)
-// }
+
 // mousePressed()
-//
-// //switches the state of the game, the screeens
-// function mousePressed() {
-//
-//   if (state === "Menu") {
-//     state = "Narrative";
-//   } else if (state === "Narrative") {
-//     state = "Level 1";
-//   } else if (state === "GameOver") {
-//     //Should reset all the values to beginning values
-//     state = "Menu";
-//   }
-// }
+
+function mousePressed() {
+  // In mousePressed we call the mousePressed of the current scene
+  // so it knows the mouse was pressed
+  currentScene.mousePressed();
+}
