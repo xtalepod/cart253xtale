@@ -93,4 +93,7 @@ class PlayScene extends Scene {
     }
     this.player.display();
   }
+  mousePressed() {
+    // This will be called by the main program when it detects a mouse press
+  }
 }

@@ -45,4 +45,13 @@ class TestWall {
       return;
     }
   }
+
+  handleCollisionPortalOne(character) {
+    if (character.x + character.size / 2 > this.x - this.width / 2 && character.x - character.size / 2 < this.x + this.width / 2 && character.y + character.size / 2 > this.y - this.height / 2 && character.y - character.size / 2 < this.y + this.height / 2) {
+      // We have an overlap - just like in pong with the ball and the paddle
+      // set velocity to 0
+      return true;
+    }
+    return false;
+  }
 }

@@ -14,8 +14,9 @@ class TitleScene extends Scene {
     // Here we would draw the title on the screen
     background(255,190,190);
     textSize(20);
-    fill(0)
-    text("click to continue")
+    fill(0);
+    textSize(20);
+    text("click to continue", 100,600);
     // imageMode(CENTER);
 
   }

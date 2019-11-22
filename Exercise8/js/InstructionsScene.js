@@ -8,8 +8,10 @@ class InstructionsScene extends Scene {
   draw() {
     background(200);
     // Here we would draw the instructions on the screen
-    // text("There is nothing to do because this is just an example!",200,200);
-    // text("Click to play",200,20);
+    textSize(20);
+    fill(0);
+    textSize(20);
+    text("will explain here for now click again", 50,50);
 
   }
 

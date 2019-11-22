@@ -1,3 +1,5 @@
+"use strict"
+
 
 let currentScene; // To store the current scene;
 let titleScene;
@@ -11,10 +13,8 @@ const NUMBER_PORTALS = 3;
 let health = 0;
 let portalArray = [];
 
-let milky;
-let milkyVideo;
-function preload (){
-}
+
+
 function setup() {
  createCanvas(windowWidth,windowHeight);
   // Create the four scenes
@@ -25,13 +25,10 @@ function setup() {
   portalThree = new PortalThree();
   playScene = new PlayScene();
   gameOverScene = new GameOverScene();
-  // milky = createVideo('assets/milky3.mp4', milkyLoad); //, milkyLoad
-  // milky.hide();
-  // milkyVideo = new Video(windowWidth/2,windowHeight/2,5,5,milky)
+
 
   currentScene = titleScene; // Because we start on the title
   setUpPortals();
-  // milkyLoad();
 }
 
 function draw() {
@@ -39,7 +36,7 @@ function draw() {
   // and whichever scene it is will display as per its class
   currentScene.draw();
   // imageMode(CENTER);
-  // image(milky, width/2, height/2);
+  // image(milky,100,100);
 }
 // function milkyLoad(){
 //   milky.loop();

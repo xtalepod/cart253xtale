@@ -60,21 +60,29 @@ class PortalOne extends PlayScene {
 
     // this.phraseGenerator = random(this.phrases[this.phrasesIndex]);
     textSize(30);
-    text(random(this.phrases[this.phrasesIndex]), 40, height/2)
+    text(this.phrases[this.phrasesIndex], 40, height/2)
     //the walls
     //handling the Collision this.playeristics of a wall object
     //in relationship to the this.players
     for (let i = 0; i < this.wallArray.length; i++) {
-      this.wallArray[i].handleCollision(this.player);
+
+      let isColliding = this.wallArray[i].handleCollisionPortalOne(this.player);
+      console.log(isColliding)
+      if(isColliding ==true){
+
+        if(this.phrasesIndex <this.phrases.length-1){
+             this.phrasesIndex +=1;
+         }
+         else{
+           this.phrasesIndex=0;
+         }
+
+      }//if collid
+        this.wallArray[i].handleCollision(this.player);
       this.wallArray[i].display();
     }
-      // this.wallArray[i].handleCollisionDisplay()
-      this.phrasesIndex += 1;
-      if (this.player.x + this.player.size / 2 > this.wallArray.x - this.wallArray.width / 2 && this.player.x - this.player.size / 2 <
-          this.wallArray.x + this.wallArray.width / 2 && this.player.y + this.player.size / 2 > this.wallArray.y - this.wallArray.height / 2 && this.player.y -
-          this.player.size / 2 < this.wallArray.y + this.wallArray.height / 2) {
-          this.phrasesIndex +=1;
-      }
+
+
 
     this.player.display();
   }
