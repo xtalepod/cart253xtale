@@ -32,8 +32,6 @@ function setup() {
   currentScene = titleScene; // Because we start on the title
   setUpPortals();
   // milkyLoad();
-
-
 }
 
 function draw() {

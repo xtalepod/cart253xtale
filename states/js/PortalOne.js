@@ -30,6 +30,18 @@ class PortalOne extends PlayScene {
         width: 200,
         height: 30
       },
+      {
+      x: 400,
+      y: 100 + 30,
+      width: 20,
+      height: 30,
+    },
+    {
+      x: 200,
+      y: 200,
+      width: 200,
+      height: 30
+    },
     ];
 
     this.wallArray = [];
