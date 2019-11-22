@@ -13,7 +13,7 @@ class TitleScene extends Scene {
   draw() {
     // Here we would draw the title on the screen
     background(255,190,190);
-    imageMode(CENTER);
+    // imageMode(CENTER);
     // image(this.image,this.x,this.y)
     // this.image
   }

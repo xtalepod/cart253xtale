@@ -15,7 +15,7 @@ class PortalTwo extends PlayScene {
       background(this.backgroundColor);
       background(255, 193, 170, 10);
   for (let n = 0; n < width; n++) {
-    let noiseVal = noise((this.player.x + n) * this.noiseScale, this.player.y * his.noiseScale);
+    let noiseVal = noise((this.player.x + n) * this.noiseScale, this.player.y * this.noiseScale);
     stroke(noiseVal * 30);
     line(n, this.player.y + noiseVal * 100, n, height);
   }

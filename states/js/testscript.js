@@ -10,24 +10,28 @@ let portalThree;
 const NUMBER_PORTALS = 3;
 let health = 0;
 let portalArray = [];
-let milky;
 
+let milky;
+let milkyVideo;
+function preload (){
+}
 function setup() {
  createCanvas(windowWidth,windowHeight);
   // Create the four scenes
   titleScene = new TitleScene();
-  milky = createVideo('assets/milky3.mp4', milkyLoad);
-  milky.hide();
   instructionsScene = new InstructionsScene();
   portalOne = new PortalOne();
   portalTwo = new PortalTwo();
   portalThree = new PortalThree();
   playScene = new PlayScene();
   gameOverScene = new GameOverScene();
-
+  milky = createVideo('assets/milky3.mp4'); //, milkyLoad
+  milky.hide();
+  milkyVideo = new Video(windowWidth/2,windowHeight/2,50,50,milky)
 
   currentScene = titleScene; // Because we start on the title
   setUpPortals();
+
 
 }
 
@@ -35,26 +39,23 @@ function draw() {
   // In draw we just tell the current scene to draw
   // and whichever scene it is will display as per its class
   currentScene.draw();
-  imageMode(CENTER);
-  image(milky, width/2, height/2);
-  // milky.resize(40,40);
+  // imageMode(CENTER);
+  // image(milky, width/2, height/2);
 }
-
-function milkyLoad(){
-  milky.loop();
-  // milky.size(100,100);
-  milky.volume(3);
-}
+// function milkyLoad(){
+//   milky.loop();
+//   milky.volume(3);
+// }
 function mousePressed() {
   // In mousePressed we call the mousePressed of the current scene
   // so it knows the mouse was pressed
   currentScene.mousePressed();
 }
 
-function keyPressed() {
-  milky.loop();
-  // milky.volume(30);
-}
+// function keyPressed() {
+//   milky.loop();
+//   // milky.volume(30);
+// }
 function setUpPortals(){
 
   //array containing the informations of the portals
