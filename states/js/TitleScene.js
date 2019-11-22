@@ -13,9 +13,11 @@ class TitleScene extends Scene {
   draw() {
     // Here we would draw the title on the screen
     background(255,190,190);
+    textSize(20);
+    fill(0)
+    text("click to continue")
     // imageMode(CENTER);
-    // image(this.image,this.x,this.y)
-    // this.image
+
   }
 
   mousePressed() {

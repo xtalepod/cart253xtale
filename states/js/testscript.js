@@ -25,12 +25,13 @@ function setup() {
   portalThree = new PortalThree();
   playScene = new PlayScene();
   gameOverScene = new GameOverScene();
-  milky = createVideo('assets/milky3.mp4'); //, milkyLoad
-  milky.hide();
-  milkyVideo = new Video(windowWidth/2,windowHeight/2,50,50,milky)
+  // milky = createVideo('assets/milky3.mp4', milkyLoad); //, milkyLoad
+  // milky.hide();
+  // milkyVideo = new Video(windowWidth/2,windowHeight/2,5,5,milky)
 
   currentScene = titleScene; // Because we start on the title
   setUpPortals();
+  // milkyLoad();
 
 
 }
@@ -54,8 +55,10 @@ function mousePressed() {
 
 // function keyPressed() {
 //   milky.loop();
-//   // milky.volume(30);
+//   milky.volume(3);
 // }
+
+
 function setUpPortals(){
 
   //array containing the informations of the portals
@@ -85,3 +88,28 @@ let portalProperties = [{
         let portal2 = new TestPortal(portalProperties[2].x, portalProperties[2].y, portalProperties[2].width, portalProperties[2].height,portalThree);
         portalArray.push(portal2);
 }
+
+// function setUpVideos() {
+
+  // let videoProperties = [
+      //   {
+      //   x : 40,
+      //   y : 50,
+      //   width : 100,
+      //   height : 100,
+      //   image : milky
+      //   },
+      //   { x : 100,
+      //     y : 100,
+      //     width : 40,
+      //     height : 50,
+      //     image : milky
+      //   },
+      // ];
+      // let videoArray = [];
+      // //the video array
+      //   let video1 = new Video(videoProperties[0].x, videoProperties[0].y, videoProperties[0].width, videoProperties[0].height,videoProperties[0].image);
+      //   videoArray.push(video1);
+      //   let video2 = new Video(videoProperties[1].x, videoProperties[1].y, videoProperties[1].width, videoProperties[1].height,videoProperties[1].image);
+      //   videoArray.push(video2);
+// }

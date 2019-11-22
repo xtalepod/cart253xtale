@@ -8,29 +8,27 @@ class PortalThree extends PlayScene {
     //     let wall = new TestWall(this.wallProperties[i].x+50, this.wallProperties[i].y+60, this.wallProperties[i].width, this.wallProperties[i].height);
     //     this.wallArray.push(wall);
     //   }
-    this.videoProperties = [
-      {
-      x : 40,
-      y : 50,
-      width : 100,
-      height : 100,
-      // image : milkyVideo
-      },
-      { x : 100,
-        y : 100,
-        width : 40,
-        height : 50,
-        // image : milkyVideo
-      },
-    ];
-    this.videoArray = [];
-    //the video array
-    for (let i = 0; i < this.videoProperties.length; i++) {
-      let movingPicture = new Video(this.videoProperties[i].x, this.videoProperties[i].y, this.videoProperties[i].width, this.videoProperties[i].height,this.videoProperties[i].image);
-      this.videoArray.push(movingPicture);
+    // this.videoProperties = [
+    //   {
+    //   x : 40,
+    //   y : 50,
+    //   width : 100,
+    //   height : 100,
+    //   // image : milkyVideo
+    //   },
+    //   { x : 100,
+    //     y : 100,
+    //     width : 40,
+    //     height : 50,
+    //     // image : milkyVideo
+    //   },
+    // ];
+    // this.videoArray = [];
+    // //the video array
+    // for (let i = 0; i < this.videoProperties.length; i++) {
+    //   let movingPicture = new Video(this.videoProperties[i].x, this.videoProperties[i].y, this.videoProperties[i].width, this.videoProperties[i].height,this.videoProperties[i].image);
+    //   this.videoArray.push(movingPicture);
   }
-}
-
   draw() {
       background(this.backgroundColor);
 

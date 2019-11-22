@@ -11,34 +11,46 @@ class PlayScene extends Scene {
     //array containing the portals
     //array containing the informations of the walls
     this.wallProperties = [{
-        x: 400,
-        y: 100 + 30,
-        width: 200,
-        height: 30,
+        x: 600,
+        y: 40,
+        width: 500,
+        height: 20,
+      },
+      {
+        x: 600,
+        y: 40 + 100,
+        width: 500,
+        height: 20,
+      },
+      {
+        x: 600 - 50,
+        y: 40 + 245,
+        width: 520,
+        height: 10,
       },
       {
         x: 200,
-        y: 200,
-        width: 200,
-        height: 30
+        y: 540,
+        width: 20,
+        height: 500
       },
       {
-        x: 600,
-        y: 535,
-        width: 200,
-        height: 30
+        x: 700 + 100,
+        y: 540,
+        width: 20,
+        height: 500
       },
       {
-        x: 600,
-        y: 285,
-        width: 30,
-        height: 200
+        x: 200 + 100,
+        y: 540,
+        width: 20,
+        height: 300
       },
       {
-        x: 900,
-        y: 500,
-        width: 250,
-        height: 30
+        x: 700,
+        y: 540 + 40,
+        width: 20,
+        height: 420
       },
     ];
     //array containing the walls
@@ -50,7 +62,7 @@ class PlayScene extends Scene {
     }
   }
 
-//a function that handles the global variables related to portals
+  //a function that handles the global variables related to portals
   handlePortalPosition() {
     console.log("health : " + health);
     if (health === NUMBER_PORTALS) {

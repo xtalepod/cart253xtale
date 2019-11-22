@@ -14,7 +14,7 @@ class TestKey {
     this.x = x;
     this.y = y;
     //size
-    this.size = 50;
+    this.size = 30;
     //Properties
     this.isFound = false;
   }
@@ -26,8 +26,8 @@ class TestKey {
   display() {
     if (this.isFound === false) {
       //Display
-      noStroke();
-      fill(0);
+      // stroke(20);
+      fill(color(255,255,0));
       ellipse(this.x, this.y, this.size);
     }
   }
