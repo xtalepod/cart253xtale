@@ -16,7 +16,7 @@ let portalArray = [];
 
 
 function setup() {
- createCanvas(windowWidth,windowHeight);
+ createCanvas(1000, 1000);
   // Create the four scenes
   titleScene = new TitleScene();
   instructionsScene = new InstructionsScene();
