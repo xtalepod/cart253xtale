@@ -80,7 +80,7 @@ class PlayScene extends Scene {
     this.wallArray = [];
     //the wall array
     for (let i = 0; i < this.wallProperties.length; i++) {
-      let wall = new TestWall(this.wallProperties[i].x, this.wallProperties[i].y, this.wallProperties[i].width, this.wallProperties[i].height);
+      // let wall = new TestWall(this.wallProperties[i].x, this.wallProperties[i].y, this.wallProperties[i].width, this.wallProperties[i].height);
       let wallNW = new TestWall(this.wallProperties[i].y-10, this.wallProperties[i].x+10, this.wallProperties[i].height, this.wallProperties[i].width);
       let wallNE = new TestWall(this.windowWidth/2 + this.wallProperties[i].x-30,this.wallProperties[i].y, this.wallProperties[i].width, this.wallProperties[i].height);
       let wallSW = new TestWall(this.wallProperties[i].x + 300, this.windowHeight - this.wallProperties[i].y, this.wallProperties[i].width, this.wallProperties[i].height);

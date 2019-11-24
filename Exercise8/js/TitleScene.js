@@ -2,15 +2,15 @@ class TitleScene extends Scene {
   constructor(image) {
     super();
     this.image = image;
-    this.a = height/2;
+    this.a = height/1.5;
   }
 
   draw() {
     // Here we would draw the title on the screen
     background(255,190,190);
 //https://p5js.org/examples/motion-linear.html
-    image(this.image,0,this.a,width,this.a);
-    this.a = this.a -0.5;
+    image(this.image,50,100,width/2,this.a);
+    this.a = this.a - 0.2;
     if (this.a < 0){
       this.a = height;
     }

@@ -11,14 +11,30 @@ let portalTwo;
 let portalThree;
 const NUMBER_PORTALS = 3;
 let health = 0;
+// let textures;
+
+//an array for the portals
 let portalArray = [];
 
+//IMAGES
 let imageTitleScene;
 let imagePlayScene;
+let imagePortalThree;
+//an array for textures pictures
+let portalThreeImages = [];
 
 function preload() {
   imageTitleScene = loadImage("assets/images/textures/image4.JPG");
   imagePlayScene = loadImage("assets/images/textures/image1.JPG");
+  imagePortalThree = loadImage("assets/images/textures/image4.JPG")
+
+  for (let i = 0; i < 4; i++){
+  portalThreeImages[0] = loadImage ("assets/images/textures/image4.JPG") //(`assets/images/portalThree${i}.jpg`);
+  portalThreeImages[1] = loadImage("assets/images/textures/image5.JPG")
+  portalThreeImages[2] = loadImage("assets/images/textures/image6.JPG")
+  portalThreeImages.push()
+
+  }
 }
 
 function setup() {
@@ -28,9 +44,10 @@ function setup() {
   instructionsScene = new InstructionsScene();
   portalOne = new PortalOne();
   portalTwo = new PortalTwo();
-  portalThree = new PortalThree();
+  portalThree = new PortalThree(50,70,80,portalThreeImages[1]);
   playScene = new PlayScene(imagePlayScene);
   gameOverScene = new GameOverScene();
+  // textures = new Textures(50,70,portalThreeImages[i])
 
 
   currentScene = titleScene; // Because we start on the title
@@ -44,6 +61,7 @@ function draw() {
   // variableEllipse(mouseX, mouseY, pmouseX, pmouseY);
 }
 
+// https://p5js.org/examples/drawing-patterns.html
 // function variableEllipse(x, y, px, py) {
 //   let speed = abs(x - px) + abs(y - py);
 //   stroke(speed);
