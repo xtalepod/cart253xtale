@@ -1,10 +1,11 @@
 class PlayScene extends Scene {
-  constructor() {
+  constructor(image) {
     super();
     this.windowWidth = windowWidth;
     this.windowHeight = windowHeight;
-    this.backgroundColor = 200;
-    this.image = loadImage("assets/images/textures/image1.JPG");
+    // this.backgroundColor = 200;
+    this.image = image;//loadImage("assets/images/textures/image1.JPG");
+    // this.tint = tint;
     //the player
     this.player = new TestPlayer(920, 300, 6, color(255, 195, 195), 20);
     //the key
@@ -111,9 +112,9 @@ class PlayScene extends Scene {
   }
 
   draw() {
+
     background(this.image);
-    // tint(0,255,19,190);
-    // image(this.image,0,0,width,height);
+    // tint(this.tint);
     this.player.handleInput();
     // Move all the player
     this.player.move();
@@ -127,16 +128,6 @@ class PlayScene extends Scene {
     }
     this.player.display();
   }
-
-  //
-  // display() {
-  // //   tint(0,255,,190);
-  //   imageMode(CENTER);
-  //   image(this.image,0,0,width,height);
-  //   // console.log(this.image);
-  // //
-  // }
-
   mousePressed() {
     // This will be called by the main program when it detects a mouse press
   }

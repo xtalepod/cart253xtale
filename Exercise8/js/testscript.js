@@ -14,22 +14,22 @@ let health = 0;
 let portalArray = [];
 
 let imageTitleScene;
-// let imagePlayScene;
+let imagePlayScene;
 
 function preload() {
-  imageTitleScene = loadImage("assets/images/textures/image1.JPG");
-  // imagePlayScene = loadImage("assets/images/textures/image4.JPG");
+  imageTitleScene = loadImage("assets/images/textures/image4.JPG");
+  imagePlayScene = loadImage("assets/images/textures/image1.JPG");
 }
 
 function setup() {
  createCanvas(windowWidth,windowHeight);
   // Create the four scenes
-  titleScene = new TitleScene();
+  titleScene = new TitleScene(imageTitleScene);
   instructionsScene = new InstructionsScene();
   portalOne = new PortalOne();
   portalTwo = new PortalTwo();
   portalThree = new PortalThree();
-  playScene = new PlayScene();
+  playScene = new PlayScene(imagePlayScene);
   gameOverScene = new GameOverScene();
 
 
@@ -41,9 +41,15 @@ function draw() {
   // In draw we just tell the current scene to draw
   // and whichever scene it is will display as per its class
   currentScene.draw();
-  // titleScene.display();
-  // playScene.display();
+  // variableEllipse(mouseX, mouseY, pmouseX, pmouseY);
 }
+
+// function variableEllipse(x, y, px, py) {
+//   let speed = abs(x - px) + abs(y - py);
+//   stroke(speed);
+//   image(imageTitleScene, x, y, speed, speed);
+// }
+
 function mousePressed() {
   // In mousePressed we call the mousePressed of the current scene
   // so it knows the mouse was pressed
