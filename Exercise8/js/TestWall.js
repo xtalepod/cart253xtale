@@ -25,7 +25,7 @@ class TestWall {
   display() {
     push();
     rectMode(CENTER);
-    fill(40);
+    fill(0);
     rect(this.x, this.y, this.width, this.height);
     pop();
   }

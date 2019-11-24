@@ -13,10 +13,16 @@ const NUMBER_PORTALS = 3;
 let health = 0;
 let portalArray = [];
 
+let imageTitleScene;
+// let imagePlayScene;
 
+function preload() {
+  imageTitleScene = loadImage("assets/images/textures/image1.JPG");
+  // imagePlayScene = loadImage("assets/images/textures/image4.JPG");
+}
 
 function setup() {
- createCanvas(1000, 1000);
+ createCanvas(windowWidth,windowHeight);
   // Create the four scenes
   titleScene = new TitleScene();
   instructionsScene = new InstructionsScene();
@@ -35,24 +41,14 @@ function draw() {
   // In draw we just tell the current scene to draw
   // and whichever scene it is will display as per its class
   currentScene.draw();
-  // imageMode(CENTER);
-  // image(milky,100,100);
+  // titleScene.display();
+  // playScene.display();
 }
-// function milkyLoad(){
-//   milky.loop();
-//   milky.volume(3);
-// }
 function mousePressed() {
   // In mousePressed we call the mousePressed of the current scene
   // so it knows the mouse was pressed
   currentScene.mousePressed();
 }
-
-// function keyPressed() {
-//   milky.loop();
-//   milky.volume(3);
-// }
-
 
 function setUpPortals(){
 
