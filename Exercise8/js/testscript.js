@@ -59,6 +59,24 @@ function draw() {
   // and whichever scene it is will display as per its class
   currentScene.draw();
   // variableEllipse(mouseX, mouseY, pmouseX, pmouseY);
+    push();
+    translate(width * 0.5, height * 0.5);
+    rotate(frameCount / 50.0);
+    polygon(5, 0, 50, 6);
+    pop();
+    //
+    // push();
+    // translate(width * 0.5, height * 0.5);
+    // rotate(frameCount / 50.0);
+    // polygon(0, 0, 80, 20);
+    // pop();
+
+    // push();
+    // translate(width * 0.8, height * 0.5);
+    // rotate(frameCount / -100.0);
+    // polygon(0, 0, 70, 7);
+    // pop();
+
 }
 
 // https://p5js.org/examples/drawing-patterns.html
@@ -67,6 +85,17 @@ function draw() {
 //   stroke(speed);
 //   image(imageTitleScene, x, y, speed, speed);
 // }
+
+function polygon(x, y, radius, npoints) {
+  let angle = TWO_PI / npoints;
+  beginShape();
+  for (let a = 0; a < TWO_PI; a += angle) {
+    let sx = x + cos(a) * radius;
+    let sy = y + sin(a) * radius;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
+}
 
 function mousePressed() {
   // In mousePressed we call the mousePressed of the current scene

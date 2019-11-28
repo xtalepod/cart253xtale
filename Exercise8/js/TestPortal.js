@@ -10,6 +10,8 @@ class TestPortal {
   // Sets the initial values for the Door's properties
   // Either sets default values or uses the arguments provided
   // ...state
+
+  //original constructor code!!!
   constructor(x, y, width, height,nextState) {
     // Position
     this.x = x;
@@ -21,11 +23,32 @@ class TestPortal {
 
   }
 
+  // constructor(x,y,radius,npoints)
+
 
   //display()
   //
   //Displays the door on the screen as an image
   display() {
+    // push();
+    // translate(width * 0.2, height * 0.5);
+    // rotate(frameCount / 200.0);
+    // polygon(0, 0, 82, 3);
+    // pop();
+    //
+    // push();
+    // translate(width * 0.5, height * 0.5);
+    // rotate(frameCount / 50.0);
+    // polygon(0, 0, 80, 20);
+    // pop();
+    //
+    // push();
+    // translate(width * 0.8, height * 0.5);
+    // rotate(frameCount / -100.0);
+    // polygon(0, 0, 70, 7);
+    // pop();
+
+
     push();
     rectMode(CENTER);
     fill(255);
@@ -52,4 +75,14 @@ class TestPortal {
       }
     }
   }
+  // 
+  // portalPolygon(x ,y,radius,npoints) {
+  //   let angle = TWO_PI /npoints;
+  //   beginShape()
+  //   for (let a = 0; a <TWO_PI; a += angle) {
+  //     let sx = x + cos(a) * radius;
+  //     let sy = y + sin(a) * radius;
+  //     vertex(sx,sy)
+  //   }
+  // }
 }

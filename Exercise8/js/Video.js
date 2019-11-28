@@ -10,8 +10,6 @@ class Video {
     this.width = width;
     this.height = height;
     this.image = image;
-    // this.image1 = image1;
-    // this.image2 = image2;
 
   }
 //
