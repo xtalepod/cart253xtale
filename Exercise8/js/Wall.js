@@ -4,7 +4,7 @@
 // through by the character.
 //
 
-class TestWall {
+class Wall {
 
   // constructor
   //

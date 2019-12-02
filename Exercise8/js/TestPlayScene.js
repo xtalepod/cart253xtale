@@ -1,4 +1,4 @@
-class PlayScene extends Scene {
+class TestPlayScene extends Scene {
   constructor(image) {
     super();
     this.windowWidth = windowWidth;
@@ -104,9 +104,10 @@ class PlayScene extends Scene {
     //handling if the key is found
     this.key.handleFound(this.player);
     // Here we would draw the game on the screen
-    for (let i = 0; i < portalArray.length; i++) {
-      portalArray[i].handleExit(this.player, this.key);
-      portalArray[i].display();
+    for (let i = 0; i < polyPortalArray.length; i++) {
+      polyPortalArray[i].handleExit(this.player, this.key);
+      polyPortalArray[i].display();
+      console.log("polyPortalArray[i]");
     }
     this.key.display();
   }

@@ -1,6 +1,6 @@
 "use strict"
 
-class PortalThree extends PlayScene {
+class PortalThree extends TestPlayScene {
   constructor(x ,y,r, image){
     super();
 

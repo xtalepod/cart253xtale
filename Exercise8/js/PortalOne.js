@@ -1,4 +1,4 @@
-class PortalOne extends PlayScene {
+class PortalOne extends TestPlayScene {
   constructor() {
     super();
     this.backgroundColor = color(255, 190, 190);
@@ -46,7 +46,7 @@ class PortalOne extends PlayScene {
 
     this.wallArray = [];
     for (let i = 0; i < this.wallProperties.length; i++) {
-      let wall = new TestWall(this.wallProperties[i].x + 50, this.wallProperties[i].y + 60, this.wallProperties[i].width, this.wallProperties[i].height);
+      let wall = new Wall(this.wallProperties[i].x + 50, this.wallProperties[i].y + 60, this.wallProperties[i].width, this.wallProperties[i].height);
       this.wallArray.push(wall);
     }
   }
