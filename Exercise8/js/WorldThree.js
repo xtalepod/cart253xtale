@@ -1,7 +1,7 @@
 "use strict"
 
-class PortalThree extends TestPlayScene {
-  constructor(x ,y,r, image){
+class WorldThree extends PlayScene {
+  constructor(x , y, r, image){
     super();
 
     this.backgroundColor = color(0,255,128);
@@ -22,40 +22,18 @@ class PortalThree extends TestPlayScene {
           },
         ];
     this.image = image;
-//
-// for (let i = 0; i++ < 10; 1 ++) {
-//   this.x = random(width);
-//   this.y = random (height);
-//   this.r = random(20,60);
-//   this.textureArray = random(texture);
-// }
-
-    // this.imageProperties = [{
-    //   x: 40,
-    //   y: 100,
-    //   width:50,
-    //   height:40,
-    //   image: this.image1
-    //
-    // }];
-    // this.textureArray = [];
-    //
-    // for (let i = 0; i < this.imageProperties.length; i++) {
-    //
-    // }
-
-    this.a = height/1.5;
+    this.a = 0;
   }
 
   draw() {
       background(this.backgroundColor);
 
-      image(this.image,0,this.a,width,this.a);
+      image(this.image,0,this.a, width,this.a);
       // this.image.resize(50,100);
-      this.a = this.a - 0.2;
-      if (this.a < 0){
-        this.a = height;
-      }
+      // this.a = this.a - 0.5;
+      // if (this.a < 0){
+      //   this.a = height;
+      // }
 
       image(this.milky, 600, 100,500,300); // draw a second copy to canvas
       image(this.milky, 200, 200,150,150); // draw a second copy to canvas

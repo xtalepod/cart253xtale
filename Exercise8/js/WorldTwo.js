@@ -1,4 +1,4 @@
-class PortalTwo extends TestPlayScene {
+class WorldTwo extends PlayScene {
   constructor(){
     super();
     this.backgroundColor = color(0,255,0);

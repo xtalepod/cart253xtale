@@ -1,3 +1,4 @@
+
 // Wall
 //adapted from https://fredlabbe.github.io/C253/Projects/Project2/
 // A class that represents wall objects that can't be passed

@@ -1,4 +1,4 @@
-class PlayScene extends Scene {
+ class PlayScene extends Scene {
   constructor(image) {
     super();
     this.windowWidth = windowWidth;
