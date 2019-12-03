@@ -2,6 +2,28 @@ class TitleScene extends Scene {
   constructor(image) {
     super();
     this.image = image;
+
+    //
+    //   this.pictureProperties = [{
+    //     x:50,
+    //     y:50,
+    //     width:100,
+    //     height:100
+    //     },
+    //     {
+    //     x:100,
+    //     y:100,
+    //     width:100,
+    //     height:100
+    //   }
+    //   ];
+    //
+    //   this.pictureArray = [];
+    //
+    //   for (let i = 0; i < this.pictureProperties.length; i++) {
+    //     let pictureTop = new Pictures (this.pictureProperties[i].y-10, this.pictureProperties[i].x+10, this.pictureProperties[i].height, this.pictureProperties[i].width);
+    //     this.pictureArray.push(pictureTop);
+
     // this.a = height/1.5;
   }
 
@@ -9,7 +31,7 @@ class TitleScene extends Scene {
     // Here we would draw the title on the screen
     background(255,190,190);
           // console.log(this.pictureArray[i].display);
-// 
+//
 // floor(random() * images.length)
 //           image(random(this.image,width/2,250,900,500));
           image(this.image,width/4,250,400,200);
@@ -61,23 +83,3 @@ class TitleScene extends Scene {
     //
     //   // this.sand = loadImage("assets/images/textures/image4.JPG");
     //   // this.water = loadImage("assets/images/textures/image1.JPG");
-    //
-    //   this.pictureProperties = [{
-    //     x:50,
-    //     y:50,
-    //     width:100,
-    //     height:100
-    //     },
-    //     {
-    //     x:100,
-    //     y:100,
-    //     width:100,
-    //     height:100
-    //   }
-    //   ];
-    //
-    //   this.pictureArray = [];
-    //
-    //   for (let i = 0; i < this.pictureProperties.length; i++) {
-    //     let pictureTop = new Pictures (this.pictureProperties[i].y-10, this.pictureProperties[i].x+10, this.pictureProperties[i].height, this.pictureProperties[i].width);
-    //     this.pictureArray.push(pictureTop);
