@@ -2,7 +2,10 @@ class TitleScene extends Scene {
   constructor(image) {
     super();
     this.image = image;
-
+    let titleSceneImages = [];  
+      titleSceneImages[0] = loadImage ("assets/images/textures/image4.JPG")
+      titleSceneImages[1] = loadImage("assets/images/textures/image5.JPG")
+      titleSceneImages[2] = loadImage("assets/images/textures/image6.JPG")
     //
     //   this.pictureProperties = [{
     //     x:50,
@@ -34,8 +37,12 @@ class TitleScene extends Scene {
 //
 // floor(random() * images.length)
 //           image(random(this.image,width/2,250,900,500));
-          image(this.image,width/4,250,400,200);
-          image(this.image,width/4,25,40,500);
+    
+    
+    let r = floor(random(0,titleSceneImages.length));
+    image( titleSceneImages[r],width/4,250,400,200);
+    r = floor(random(0,titleSceneImages.length));
+    image( titleSceneImages[r],width/4,25,40,500);
 
     // for (let i = 0; i < this.pictureArray.length; i++) {
     //   this.pictureArray[i].display();
