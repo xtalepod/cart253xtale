@@ -41,7 +41,7 @@ class TitleScene extends Scene {
     
     let r = floor(random(0,titleSceneImages.length));
     image( titleSceneImages[r],width/4,250,400,200);
-    r = floor(random(0,titleSceneImages.length));
+    let r = floor(random(0,titleSceneImages.length));
     image( titleSceneImages[r],width/4,25,40,500);
 
     // for (let i = 0; i < this.pictureArray.length; i++) {
