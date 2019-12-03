@@ -3,9 +3,9 @@ class TitleScene extends Scene {
     super();
     this.image = image;
     this.titleSceneImages = [];  
-    this.titleSceneImages[0] = loadImage ("assets/images/textures/image4.JPG")
-    this.titleSceneImages[1] = loadImage("assets/images/textures/image5.JPG")
-    this.titleSceneImages[2] = loadImage("assets/images/textures/image6.JPG")
+    this.titleSceneImages[0] = loadImage ("assets/images/textures/image4.JPG");
+    this.titleSceneImages[1] = loadImage("assets/images/textures/image5.JPG");
+    this.titleSceneImages[2] = loadImage("assets/images/textures/image6.JPG");
     //
     //   this.pictureProperties = [{
     //     x:50,
