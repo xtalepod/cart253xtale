@@ -29,8 +29,7 @@ function preload() {
   worldOneImages[1] = loadImage("assets/images/textures/image5.JPG")
   worldOneImages[2] = loadImage("assets/images/textures/image6.JPG")
   // worldOneImages.push()
-
-  }
+  // }
 }
 
 function setup() {
