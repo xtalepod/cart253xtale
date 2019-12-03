@@ -2,10 +2,10 @@ class TitleScene extends Scene {
   constructor(image) {
     super();
     this.image = image;
-    let titleSceneImages = [];  
-      titleSceneImages[0] = loadImage ("assets/images/textures/image4.JPG")
-      titleSceneImages[1] = loadImage("assets/images/textures/image5.JPG")
-      titleSceneImages[2] = loadImage("assets/images/textures/image6.JPG")
+    this.titleSceneImages = [];  
+    this.titleSceneImages[0] = loadImage ("assets/images/textures/image4.JPG")
+    this.titleSceneImages[1] = loadImage("assets/images/textures/image5.JPG")
+    this.titleSceneImages[2] = loadImage("assets/images/textures/image6.JPG")
     //
     //   this.pictureProperties = [{
     //     x:50,
