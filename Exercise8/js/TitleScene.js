@@ -10,7 +10,7 @@ class TitleScene extends Scene {
     background(255,190,190);
           // console.log(this.pictureArray[i].display);
 
-          image(random(this.image,width/2,250,900,500));
+          // image(random(this.image,width/2,250,900,500));
           image(this.image,width/4,250,400,200);
           image(this.image,width/4,25,40,500);
 
