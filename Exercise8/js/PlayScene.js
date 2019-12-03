@@ -4,7 +4,7 @@
     this.windowWidth = windowWidth;
     this.windowHeight = windowHeight;
     // this.backgroundColor = 200;
-    this.image = image;//loadImage("assets/images/textures/image1.JPG");
+    this.image = image;
     // this.tint = tint;
     //the player
     this.player = new TestPlayer(920, 300, 6, color(255, 195, 195), 20);

@@ -1,56 +1,45 @@
-"use strict"
-
 class WorldThree extends PlayScene {
-  constructor(x , y, r, image){
+  constructor(){
     super();
-
-    this.backgroundColor = color(0,255,128);
-    this.milky = createVideo('assets/milky3.mp4');
-    this.milky.hide();
-
-    this.videoProperties = [
-          {
-          x : 40,
-          y : 50,
-          width : 100,
-          height : 100,
-          },
-          { x : 100,
-            y : 100,
-            width : 40,
-            height : 50,
-          },
-        ];
-    this.image = image;
-    this.a = 0;
+    this.backgroundColor = color(0,255,0);
+    this.noiseScale = 0.5;
+    //the wall array
+    this.wallArray =[];
+      for (let i = 0; i < this.wallProperties.length; i++) {
+        let wall = new Wall(this.wallProperties[i].x+50, this.wallProperties[i].y+60, this.wallProperties[i].width, this.wallProperties[i].height);
+        this.wallArray.push(wall);
+      }
   }
 
   draw() {
       background(this.backgroundColor);
-
-      image(this.image,0,this.a, width,this.a);
-      // this.image.resize(50,100);
-      // this.a = this.a - 0.5;
-      // if (this.a < 0){
-      //   this.a = height;
-      // }
-
-      image(this.milky, 600, 100,500,300); // draw a second copy to canvas
-      image(this.milky, 200, 200,150,150); // draw a second copy to canvas
-
+      background(255, 193, 170, 10);
+  for (let n = 0; n < width; n++) {
+    let noiseVal = noise((this.player.x + n) * this.noiseScale, this.player.y * this.noiseScale);
+    stroke(noiseVal * 30);
+    line(n, this.player.y + noiseVal * 100, n, height);
+  }
       this.player.handleInput();
       // Move all the player
       this.player.move();
+
       this.handlePortalPosition();
-      this.player.display();
+
+
+  //the walls
+  //handling the Collision characteristics of a wall object
+  //in relationship to the characters
+  for (let i = 0; i < this.wallArray.length; i++) {
+    this.wallArray[i].handleCollision(this.player);
+    this.wallArray[i].display();
+  }
+  this.player.display();
   }
 
 
   handlePortalPosition(){
     super.handlePortalPosition();
   }
-  mousePressed() {
-    // This will be called by the main program when it detects a mouse press
-        this.milky.loop();
-  }
+
+
 }

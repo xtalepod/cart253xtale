@@ -1,94 +1,56 @@
+"use strict"
+
 class WorldOne extends PlayScene {
-  constructor() {
+  constructor(x , y, r, image){
     super();
-    this.backgroundColor = color(255, 190, 190);
-    this.phrasesIndex = 0;
-    this.phrases = [
-      "once i am dead",
-      "to the left and right",
-      "this illusionary duplication",
-      "sinks abysmally and soars",
-      "fathomless air; my body"
-    ];
-    // this.words = [
-    //   "hexagons",
-    //   "incessant",
-    //   "inaccessibile"
-    // ]
 
-    // this.textProperties = [{}]
-    //the wall array
-    this.wallProperties = [{
-        x: 400,
-        y: 100 + 30,
-        width: 20,
-        height: 30,
-      },
-      {
-        x: 200,
-        y: 200,
-        width: 200,
-        height: 30
-      },
-      {
-      x: 400,
-      y: 100 + 30,
-      width: 20,
-      height: 30,
-    },
-    {
-      x: 200,
-      y: 200,
-      width: 200,
-      height: 30
-    },
-    ];
+    this.backgroundColor = color(0,255,128);
+    this.milky = createVideo('assets/milky3.mp4');
+    this.milky.hide();
 
-    this.wallArray = [];
-    for (let i = 0; i < this.wallProperties.length; i++) {
-      let wall = new Wall(this.wallProperties[i].x + 50, this.wallProperties[i].y + 60, this.wallProperties[i].width, this.wallProperties[i].height);
-      this.wallArray.push(wall);
-    }
+    this.videoProperties = [
+          {
+          x : 40,
+          y : 50,
+          width : 100,
+          height : 100,
+          },
+          { x : 100,
+            y : 100,
+            width : 40,
+            height : 50,
+          },
+        ];
+    this.image = image;
+    this.a = 0;
   }
 
   draw() {
-    background(this.backgroundColor);
-    this.player.handleInput();
-    // Move all the player
-    this.player.move();
-    this.handlePortalPosition();
+      background(this.backgroundColor);
 
-    // this.phraseGenerator = random(this.phrases[this.phrasesIndex]);
-    textSize(30);
-    text(this.phrases[this.phrasesIndex], 40, height/2)
-    //the walls
-    //handling the Collision this.playeristics of a wall object
-    //in relationship to the this.players
-    for (let i = 0; i < this.wallArray.length; i++) {
+      // image(this.image,0,this.a, width,this.a);
+      // this.image.resize(50,100);
+      // this.a = this.a - 0.5;
+      // if (this.a < 0){
+      //   this.a = height;
+      // }
 
-      let isColliding = this.wallArray[i].handleCollisionPortalOne(this.player);
-      console.log(isColliding)
-      if(isColliding ==true){
+      image(this.milky, 600, 100,500,300); // draw a second copy to canvas
+      image(this.milky, 200, 200,150,150); // draw a second copy to canvas
 
-        if(this.phrasesIndex <this.phrases.length-1){
-             this.phrasesIndex +=1;
-         }
-         else{
-           this.phrasesIndex=0;
-         }
-
-      }//if collid
-        this.wallArray[i].handleCollision(this.player);
-      this.wallArray[i].display();
-    }
-
-
-
-    this.player.display();
+      this.player.handleInput();
+      // Move all the player
+      this.player.move();
+      this.handlePortalPosition();
+      this.player.display();
   }
 
-  // a function that handles which portal we're entering
-  handlePortalPosition() {
+
+  handlePortalPosition(){
     super.handlePortalPosition();
+  }
+  mousePressed() {
+    // This will be called by the main program when it detects a mouse press
+        this.milky.loop();
   }
 }
