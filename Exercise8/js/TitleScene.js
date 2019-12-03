@@ -2,10 +2,16 @@ class TitleScene extends Scene {
   constructor(image) {
     super();
     this.image = image;
-    this.titleSceneImages = [];  
-    this.titleSceneImages[0] = loadImage ("assets/images/textures/image4.JPG");
-    this.titleSceneImages[1] = loadImage("assets/images/textures/image5.JPG");
-    this.titleSceneImages[2] = loadImage("assets/images/textures/image6.JPG");
+    
+    
+//     this.titleSceneImages = [];  
+//     this.titleSceneImages[0] = loadImage ("assets/images/textures/image4.JPG");
+//     this.titleSceneImages[1] = loadImage("assets/images/textures/image5.JPG");
+//     this.titleSceneImages[2] = loadImage("assets/images/textures/image6.JPG");
+    
+    
+    
+    
     //
     //   this.pictureProperties = [{
     //     x:50,
@@ -39,10 +45,10 @@ class TitleScene extends Scene {
 //           image(random(this.image,width/2,250,900,500));
     
     
-    let r = floor(random(0,this.titleSceneImages.length));
-    image( this.titleSceneImages[r],width/4,250,400,200);
-    let r = floor(random(0,this.titleSceneImages.length));
-    image( this.titleSceneImages[r],width/4,25,40,500);
+//     let r = floor(random(0,this.titleSceneImages.length));
+//     image( this.titleSceneImages[r],width/4,250,400,200);
+//     let r = floor(random(0,this.titleSceneImages.length));
+//     image( this.titleSceneImages[r],width/4,25,40,500);
 
     // for (let i = 0; i < this.pictureArray.length; i++) {
     //   this.pictureArray[i].display();
