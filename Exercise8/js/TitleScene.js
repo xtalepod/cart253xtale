@@ -3,9 +3,12 @@ class TitleScene extends Scene {
     super();
     this.image = image;
     this.titleSceneImages = [];
-    this.titleSceneImages[0] = loadImage ("assets/images/textures/image4.JPG")
-    this.titleSceneImages[1] = loadImage("assets/images/textures/image5.JPG")
-    this.titleSceneImages[2] = loadImage("assets/images/textures/image6.JPG")
+    this.titleSceneImages[0] = loadImage ("assets/images/textures/image4.JPG");
+    this.titleSceneImages[1] = loadImage("assets/images/textures/image5.JPG");
+    this.titleSceneImages[2] = loadImage("assets/images/textures/image6.JPG");
+    this.random1 = floor(random(0,this.titleSceneImages.length));
+    this.random2 = floor(random(0,this.titleSceneImages.length));
+
     //
     //   this.pictureProperties = [{
     //     x:50,
@@ -39,10 +42,9 @@ class TitleScene extends Scene {
 //           image(random(this.image,width/2,250,900,500));
 
 
-    let r = floor(random(0,this.titleSceneImages.length));
-    image( this.titleSceneImages[r],width/4,250,400,200);
-    r = floor(random(0,this.titleSceneImages.length));
-    image( this.titleSceneImages[r],width/4,25,40,500);
+   
+    image(this.titleSceneImages[random1],width/4,250,400,200);
+    image(this.titleSceneImages[random2],width/4,25,40,500);
 
         //
         // let r = floor(random(0,this.titleSceneImages.length));
