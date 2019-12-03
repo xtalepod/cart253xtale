@@ -4,7 +4,7 @@
 // by the player. When the key is found, the player can
 // unlock the door to the next level.
 
-class TestKey {
+class Key {
   // constructor
   //
   // Sets the initial values for the Potion's properties

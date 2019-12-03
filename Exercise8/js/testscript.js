@@ -24,11 +24,11 @@ function preload() {
 
   playSceneBackground = loadImage("assets/images/textures/image4.JPG");
 
-  for (let i = 0; i < 3; i++){
+  // for (let i = 0; i < 3; i++){
   worldOneImages[0] = loadImage ("assets/images/textures/image4.JPG")
   worldOneImages[1] = loadImage("assets/images/textures/image5.JPG")
   worldOneImages[2] = loadImage("assets/images/textures/image6.JPG")
-  worldOneImages.push()
+  // worldOneImages.push()
 
   }
 }

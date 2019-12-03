@@ -3,13 +3,13 @@
     super();
     this.windowWidth = windowWidth;
     this.windowHeight = windowHeight;
-    // this.backgroundColor = 200;
+    // this.backgroundColor = 200;dfgdg
     this.image = image;
     // this.tint = tint;
     //the player
-    this.player = new TestPlayer(920, 300, 6, color(255, 195, 195), 20);
+    this.player = new Player(920, 300, 6, color(255, 195, 195), 20);
     //the key
-    this.key = new TestKey(100, 700);
+    this.key = new Key(100, 700);
     //array containing the portals
     //array containing the informations of the walls
     this.wallProperties = [ {x:	280	, y:	65	, width:	440	, height:	5	},
