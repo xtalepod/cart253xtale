@@ -43,8 +43,8 @@ class TitleScene extends Scene {
 
 
    
-    image(this.titleSceneImages[random1],width/4,250,400,200);
-    image(this.titleSceneImages[random2],width/4,25,40,500);
+    image(this.titleSceneImages[this.random1],width/4,250,400,200);
+    image(this.titleSceneImages[this.random2],width/4,25,40,500);
 
         //
         // let r = floor(random(0,this.titleSceneImages.length));
