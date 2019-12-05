@@ -21,6 +21,7 @@ class Portal {
     this.radius = radius,
     this.npoints = npoints;
     this.nextState = nextState;
+    // this.frameCount = 20;
     console.log("STATE:: "+this.nextState);
 
   }
@@ -35,8 +36,9 @@ class Portal {
     push();
     // rectMode(CENTER);
     fill(255);
-    // rect(this.x, this.y, this.width, this.height);
-    this.polygon(this.x,this.y,this.radius,this.npoints)
+    translate(this.x, this.y);
+    rotate(frameCount / 10)
+    this.polygon(0, 0, this.radius,this.npoints)
     pop();
   }
   //
@@ -69,6 +71,12 @@ class Portal {
     vertex(sx, sy);
   }
   endShape(CLOSE);
+    console.log("polygon");
 }
-
 }
+//   rotatePolygon() {
+//   // translate(width * 0.5, height * 0.5);
+//   // rotate(frameCount / 50.0)
+//
+//
+// }

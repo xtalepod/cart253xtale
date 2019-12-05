@@ -35,8 +35,8 @@ class WorldOne extends PlayScene {
     portalArray[1].y = 300;
     portalArray[1].nextState = worldThree;
 
-    // key.x = 150;
-    // key.y = 300;
+    key.x = 150;
+    key.y = 300;
 
       background(this.backgroundColor);
 
