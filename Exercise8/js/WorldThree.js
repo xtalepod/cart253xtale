@@ -13,7 +13,20 @@ class WorldThree extends PlayScene {
 
   draw() {
       background(this.backgroundColor);
-      background(255, 193, 170, 10);
+
+//setting the portalProperties to change position and states
+      portalArray[0].x = 150;
+      portalArray[0].y = 50;
+      portalArray[0].nextState = worldOne;
+
+      portalArray[1].x = 150;
+      portalArray[1].y = 200;
+      portalArray[1].nextState = worldTwo;
+
+      key.x = width/2;
+      key.y = 250;
+
+      // background(255, 193, 170, 10);
   for (let n = 0; n < width; n++) {
     let noiseVal = noise((this.player.x + n) * this.noiseScale, this.player.y * this.noiseScale);
     stroke(noiseVal * 30);

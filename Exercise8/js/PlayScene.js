@@ -9,7 +9,7 @@
     //the player
     this.player = new Player(920, 300, 6, color(255, 195, 195), 20);
     //the key
-    this.key = new Key(100, 700);
+    // key = new Key(width/2 - 50, height/2);
     //array containing the portals
     //array containing the informations of the walls
     this.wallProperties = [ {x:	280	, y:	65	, width:	440	, height:	5	},
@@ -102,13 +102,13 @@
       currentScene = gameOverScene;
     }
     //handling if the key is found
-    this.key.handleFound(this.player);
+    key.handleFound(this.player);
     // Here we would draw the game on the screen
     for (let i = 0; i < portalArray.length; i++) {
-      portalArray[i].handleExit(this.player, this.key);
+      portalArray[i].handleExit(this.player, key);
       portalArray[i].display();
     }
-    this.key.display();
+    key.display();
   }
 
   draw() {

@@ -7,7 +7,6 @@ class WorldOne extends PlayScene {
     this.backgroundColor = color(0,255,128);
     this.milky = createVideo('assets/milky3.mp4');
     this.milky.hide();
-
     this.videoProperties = [
           {
           x : 40,
@@ -26,6 +25,19 @@ class WorldOne extends PlayScene {
   }
 
   draw() {
+
+//setting the portalProperties to change position and states
+    portalArray[0].x = 500;
+    portalArray[0].y = 50;
+    portalArray[0].nextState = worldTwo;
+
+    portalArray[1].x = 150;
+    portalArray[1].y = 300;
+    portalArray[1].nextState = worldThree;
+
+    // key.x = 150;
+    // key.y = 300;
+
       background(this.backgroundColor);
 
       // image(this.image,0,this.a, width,this.a);

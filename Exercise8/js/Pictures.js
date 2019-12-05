@@ -4,17 +4,23 @@ class Pictures {
   //
   // Sets the initial values for the Potion's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, width, height, image) {
+  constructor(x, y, r, image) {
     //Position
     this.x = x;
     this.y = y;
-    this.width = width;
-    this.height = height;
-    this.image = image;
+    this.r = r;
+    // a variable for the image for the background array
+    this.sandPatterns = [];
+    this.sandPattern = this.sandPatterns;
    }
+
+   move() {
+    this.x = this.x + random(-2, 2);
+    this.y = this.y + random(-2, 2);
+  }
 
   display(){
     imageMode(CENTER);
-    image(this.image,this.x,this.y,this.width,this.height);
+    image(this.sandPattern,this.x,this.y,this.r,this.r);
     }
   }

@@ -53,6 +53,19 @@ class WorldTwo extends PlayScene {
 
   draw() {
     background(this.backgroundColor);
+
+//setting the portalProperties to change position and states
+    portalArray[0].x = 150;
+    portalArray[0].y = 50;
+    portalArray[0].nextState = worldOne;
+
+    portalArray[1].x = 150;
+    portalArray[1].y = 200;
+    portalArray[1].nextState = worldThree;
+
+    key.x = 100;
+    key.y = 250;
+
     this.player.handleInput();
     // Move all the player
     this.player.move();

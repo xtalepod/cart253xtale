@@ -12,12 +12,14 @@ class Portal {
   // ...state
 
   //original constructor code!!!
-  constructor(x, y, width, height,nextState) {
+  constructor(x, y,radius,npoints,nextState) {
     // Position
     this.x = x;
     this.y = y;
-    this.width = width;
-    this.height = height;
+    this.width = radius*2;
+    this.height = radius*2;
+    this.radius = radius,
+    this.npoints = npoints;
     this.nextState = nextState;
     console.log("STATE:: "+this.nextState);
 
@@ -31,9 +33,10 @@ class Portal {
   //Displays the door on the screen as an image
   display() {
     push();
-    rectMode(CENTER);
+    // rectMode(CENTER);
     fill(255);
-    rect(this.x, this.y, this.width, this.height);
+    // rect(this.x, this.y, this.width, this.height);
+    this.polygon(this.x,this.y,this.radius,this.npoints)
     pop();
   }
   //
@@ -56,4 +59,16 @@ class Portal {
       }
     }
   }
+
+  polygon (x, y, radius, npoints) {
+  let angle = TWO_PI / npoints;
+  beginShape();
+  for (let a = 0; a < TWO_PI; a += angle) {
+    let sx = x + cos(a) * radius;
+    let sy = y + sin(a) * radius;
+    vertex(sx, sy);
+  }
+  endShape(CLOSE);
+}
+
 }
