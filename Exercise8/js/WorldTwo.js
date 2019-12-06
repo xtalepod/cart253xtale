@@ -16,6 +16,9 @@ class WorldTwo extends PlayScene {
     //   "inaccessibile"
     // ]
 
+    // let angleX = 0.0;
+    // let angleY = 0.0;
+    
     // this.textProperties = [{}]
     //the wall array
     this.wallProperties = [{
@@ -53,6 +56,18 @@ class WorldTwo extends PlayScene {
 
   draw() {
     background(this.backgroundColor);
+
+    //   push();
+    // rotateY(angleY);
+    // box(60);
+    // translate(50,0,50); // Translation in 3D!
+    // rotateX(angleX);
+    // rect(0,0,30,40);
+    // angleX += 0.01;
+    // angleY -= 0.01;
+    // pop();
+
+
 
 //setting the portalProperties to change position and states
     portalArray[0].x = 150;

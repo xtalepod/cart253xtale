@@ -95,7 +95,7 @@
     }
   }
 
-  //a function that handles the global variables related to portals
+  //a function that handles the global variables related to portals. if health = the totoal number of portals visited, "game" is over
   handlePortalPosition() {
     console.log("health : " + health);
     if (health === NUMBER_PORTALS) {
@@ -108,6 +108,7 @@
       portalArray[i].handleExit(this.player, key);
       portalArray[i].display();
     }
+    //display the key from a global variable
     key.display();
   }
 

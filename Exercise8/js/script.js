@@ -21,7 +21,6 @@ let playSceneBackground;
 
 //an array for textures pictures
 let worldOneImages = [];
-
 function preload() {
 
   playSceneBackground = loadImage("assets/images/textures/image4.JPG");
@@ -52,13 +51,14 @@ function setup() {
   gameOverScene = new GameOverScene();
   key = new Key (50,50);
 
-  currentScene = titleScene; // Because we start on the title
+  currentScene = worldThree; // Because we start on the title
   setUpPortals();
 }
 
 function draw() {
   // In draw we just tell the current scene to draw
   // and whichever scene it is will display as per its class
+  background(0);
   currentScene.draw();
 
 }

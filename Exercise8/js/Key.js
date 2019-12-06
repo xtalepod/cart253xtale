@@ -27,8 +27,10 @@ class Key {
     if (this.isFound === false) {
       //Display
       // stroke(20);
+      push();
       fill(color(255,255,0));
       ellipse(this.x, this.y, this.size);
+      pop();
     }
   }
 
