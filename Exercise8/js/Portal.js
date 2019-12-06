@@ -12,18 +12,18 @@ class Portal {
   // ...state
 
   //original constructor code!!!
-  constructor(x, y,radius,npoints,nextState) {
+  constructor(x, y, radius, npoints, nextState) {
     // Position
     this.x = x;
     this.y = y;
-    this.width = radius*2;
-    this.height = radius*2;
+    this.width = radius * 2;
+    this.height = radius * 2;
     this.radius = radius,
     this.npoints = npoints;
     this.nextState = nextState;
     // this.theScale = 2;
 
-    console.log("STATE:: "+this.nextState);
+    console.log("STATE:: " + this.nextState);
 
   }
 
@@ -42,7 +42,7 @@ class Portal {
     translate(this.x, this.y);
     rotate(frameCount / 10)
     // scale(this.theScale);
-    this.polygon(0, 0, this.radius,this.npoints)
+    this.polygon(0, 0, this.radius, this.npoints)
     pop();
 
     // this.theScale += 0.1
@@ -50,7 +50,7 @@ class Portal {
   //
   //Checks if the player found the door by taking the distance
   //between the two objects. If yes, it changes the scenes.
-  handleExit(player,key) {
+  handleExit(player, key) {
 
     if (key.isFound === true) {
       //console.log(this.x, this.y, player.x, player.y, this.width, player.size);
@@ -67,17 +67,17 @@ class Portal {
       }
     }
   }
-//adapted from https://p5js.org/examples/form-regular-polygon.html
-  polygon (x, y, radius, npoints) {
+  //adapted from https://p5js.org/examples/form-regular-polygon.html
+  polygon(x, y, radius, npoints) {
 
-  let angle = TWO_PI / npoints;
-  beginShape();
-  for (let a = 0; a < TWO_PI; a += angle) {
-    let sx = x + cos(a) * radius;
-    let sy = y + sin(a) * radius;
-    vertex(sx, sy);
-  }
-  endShape(CLOSE);
-    console.log("polygon");
+    let angle = TWO_PI / npoints;
+    beginShape();
+    for (let a = 0; a < TWO_PI; a += angle) {
+      let sx = x + cos(a) * radius;
+      let sy = y + sin(a) * radius;
+      vertex(sx, sy);
+    }
+    endShape(CLOSE);
+    // console.log("polygon");
   }
 }

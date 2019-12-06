@@ -21,12 +21,13 @@ let playSceneBackground;
 
 //an array for textures pictures
 let worldOneImages = [];
+
 function preload() {
 
   playSceneBackground = loadImage("assets/images/textures/image4.JPG");
 
   // for (let i = 0; i < 3; i++){
-  worldOneImages[0] = loadImage ("assets/images/textures/image4.JPG")
+  worldOneImages[0] = loadImage("assets/images/textures/image4.JPG")
   worldOneImages[1] = loadImage("assets/images/textures/image5.JPG")
   worldOneImages[2] = loadImage("assets/images/textures/image6.JPG")
   // worldOneImages.push()
@@ -34,13 +35,13 @@ function preload() {
 }
 
 function setup() {
- createCanvas(windowWidth, windowHeight);
-//create the scenes and worlds
+  createCanvas(windowWidth, windowHeight);
+  //create the scenes and worlds
 
   titleScene = new TitleScene();
 
   //the three worlds come before playScene and gameOverScene
-  worldOne = new WorldOne(50,70,80,worldOneImages[3]);
+  worldOne = new WorldOne(50, 70, 80, worldOneImages[3]);
   worldTwo = new WorldTwo();
   worldThree = new WorldThree();
   worldArray.push(worldOne);
@@ -49,10 +50,9 @@ function setup() {
 
   playScene = new PlayScene(playSceneBackground);
   gameOverScene = new GameOverScene();
-  key = new Key (50,50);
+  key = new Key(50, 50);
 
-  currentScene = worldOne
-  ; // Because we start on the title
+  currentScene = worldTwo;; // Because we start on the title
   setUpPortals();
 }
 
@@ -70,18 +70,17 @@ function mousePressed() {
   currentScene.mousePressed();
 }
 
-function setUpPortals(){
-//   //array containing the informations of the portals
-let portalProperties = [
-    {
-      x: windowWidth/2,
-      y: windowHeight/2,
+function setUpPortals() {
+  //   //array containing the informations of the portals
+  let portalProperties = [{
+      x: windowWidth / 2,
+      y: windowHeight / 2,
       radius: 20,
       npoints: 6,
     },
     {
-      x: windowWidth/1.5,
-      y: windowHeight/2,
+      x: windowWidth / 1.5,
+      y: windowHeight / 2,
       radius: 20,
       npoints: 8,
     },
@@ -94,11 +93,11 @@ let portalProperties = [
   ];
 
   //a for loop for the portals
-for (let i = 0; i < portalProperties.length; i++) {
-        let portal = new Portal(portalProperties[i].x, portalProperties[i].y, portalProperties[i].radius, portalProperties[i].npoints,worldArray[i]);
-        portalArray.push(portal);
-        // let portal1 = new Portal(portalProperties[1].x, portalProperties[1].y, portalProperties[1].radius, portalProperties[1].npoints,worldTwo);
-        // portalArray.push(portal1);
-      }
+  for (let i = 0; i < portalProperties.length; i++) {
+    let portal = new Portal(portalProperties[i].x, portalProperties[i].y, portalProperties[i].radius, portalProperties[i].npoints, worldArray[i]);
+    portalArray.push(portal);
+    // let portal1 = new Portal(portalProperties[1].x, portalProperties[1].y, portalProperties[1].radius, portalProperties[1].npoints,worldTwo);
+    // portalArray.push(portal1);
+  }
 
 }
