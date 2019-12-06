@@ -28,6 +28,7 @@ class Key {
       //Display
       // stroke(20);
       push();
+      noStroke();
       fill(color(255,255,0));
       ellipse(this.x, this.y, this.size);
       pop();

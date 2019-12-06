@@ -105,12 +105,13 @@ class Player {
   // with a constant size that does not change with its health.
   display() {
 
-    stroke(10);
-    fill(this.fillColor);
-    ellipse(this.x, this.y, this.size);
+    // stroke(100);
+    // fill(this.fillColor);
+    // ellipse(this.x, this.y, this.size);
     push();
     // if (this.isMoving === true || this.isMovingSideways === true) {
-      stroke(10);
+      stroke(255);
+      strokeWeight(4)
       fill(this.fillColor);
       ellipse(this.x, this.y, this.size);
     pop();
@@ -121,7 +122,7 @@ class Player {
   // and size back to default
   reset() {
     // Random position
-    this.x = 100;
+    this.x = 1000;
     this.y = 50;
     // Default health
     // this.health = this.maxHealth;

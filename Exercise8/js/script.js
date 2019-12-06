@@ -51,7 +51,8 @@ function setup() {
   gameOverScene = new GameOverScene();
   key = new Key (50,50);
 
-  currentScene = worldThree; // Because we start on the title
+  currentScene = worldOne
+  ; // Because we start on the title
   setUpPortals();
 }
 

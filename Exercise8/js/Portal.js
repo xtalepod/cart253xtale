@@ -21,8 +21,8 @@ class Portal {
     this.radius = radius,
     this.npoints = npoints;
     this.nextState = nextState;
-    this.theScale = 2;
-    // this.frameCount = 20;
+    // this.theScale = 2;
+
     console.log("STATE:: "+this.nextState);
 
   }
@@ -36,14 +36,15 @@ class Portal {
   //adapted from https://p5js.org/examples/form-regular-polygon.html
 
   display() {
-    push();
     // rectMode(CENTER);
-    fill(25);
+    fill(255);
+    push();
     translate(this.x, this.y);
     rotate(frameCount / 10)
     // scale(this.theScale);
     this.polygon(0, 0, this.radius,this.npoints)
     pop();
+
     // this.theScale += 0.1
   }
   //
@@ -68,7 +69,7 @@ class Portal {
   }
 //adapted from https://p5js.org/examples/form-regular-polygon.html
   polygon (x, y, radius, npoints) {
-    push();
+
   let angle = TWO_PI / npoints;
   beginShape();
   for (let a = 0; a < TWO_PI; a += angle) {
@@ -78,11 +79,5 @@ class Portal {
   }
   endShape(CLOSE);
     console.log("polygon");
+  }
 }
-}
-//   rotatePolygon() {
-//   // translate(width * 0.5, height * 0.5);
-//   // rotate(frameCount / 50.0)
-//
-//
-// }

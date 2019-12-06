@@ -7,7 +7,7 @@
     this.image = image;
     // this.tint = tint;
     //the player
-    this.player = new Player(920, 300, 6, color(255, 195, 195), 20);
+    this.player = new Player(100,100, 6, color(255, 195, 195), 20);
     //the key
     // key = new Key(width/2 - 50, height/2);
     //array containing the portals

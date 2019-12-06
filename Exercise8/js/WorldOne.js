@@ -7,6 +7,7 @@ class WorldOne extends PlayScene {
     this.backgroundColor = color(0,255,128);
     this.milky = createVideo('assets/milky3.mp4');
     this.milky.hide();
+    this.player = new Player (100,100, 6, color(0,153,153), 20)
     this.videoProperties = [
           {
           x : 40,
@@ -27,16 +28,16 @@ class WorldOne extends PlayScene {
   draw() {
 
 //setting the portalProperties to change position and states
-    portalArray[0].x = 500;
-    portalArray[0].y = 50;
+    portalArray[0].x = width/4 - 50 ;
+    portalArray[0].y = height/2;
     portalArray[0].nextState = worldTwo;
 
-    portalArray[1].x = 150;
-    portalArray[1].y = 300;
+    portalArray[1].x = width/2 + 450;
+    portalArray[1].y = height/2;
     portalArray[1].nextState = worldThree;
 
-    key.x = 150;
-    key.y = 300;
+    key.x = width/2;
+    key.y = height/3 + 400;
 
       background(this.backgroundColor);
 
@@ -46,9 +47,9 @@ class WorldOne extends PlayScene {
       // if (this.a < 0){
       //   this.a = height;
       // }
-
-      image(this.milky, 600, 100,500,300); // draw a second copy to canvas
-      image(this.milky, 200, 200,150,150); // draw a second copy to canvas
+      imageMode(CENTER);
+      image(this.milky, width/2, height/2,windowWidth,windowHeight); // draw a second copy to canvas
+      image(this.milky, width/2, height/3,width/2,height/2); // draw a second copy to canvas
 
       this.player.handleInput();
       // Move all the player
