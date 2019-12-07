@@ -5,6 +5,24 @@
      this.windowHeight = windowHeight;
      // this.backgroundColor = 200;dfgdg
      this.image = image;
+     this.mussleImage = loadImage("assets/images/textures/shells.png");
+     this.otherImage = loadImage("assets/images/textures/image5.JPG")
+
+//information related to Picture objects including: 3 arrays, the number of pictures to display, and a for loop to set up the word array that determins position, velocity, radius, color, and declration of a new word
+// adapted from https://github.com/pippinbarr/cart253-2019/blob/master/modules/core-arrays/core-arrays.md
+     this.catchPicturesIndex = 0;
+     this.catchPictures = [this.mussleImage];
+     this.numPictures = 10;
+
+     this.pictureArray = [];
+     for (let i = 0; i < this.numPictures; i ++) {
+       let x = random(width + 100, height + 100);
+       let y = random(width,height);
+       let speed = random(-2,20);
+       let radius = random(5,10);
+       let pictureDisplay = this.catchPictures[Math.floor(random(this.catchPictures.length))];
+       this.pictureArray.push(new Picture(x, y, speed, radius, pictureDisplay));
+     }
      // this.tint = tint;
      //the player
      this.player = new Player(800, 100, 6, color(255, 195, 195), 20);
@@ -285,26 +303,18 @@
      }
    }
 
-   //a function that handles the global variables related to portals. if health = the totoal number of portals visited, "game" is over
-   handlePortalPosition() {
-     console.log("health : " + health);
-     if (health === NUMBER_PORTALS) {
-       currentScene = gameOverScene;
-     }
-     //handling if the key is found
-     key.handleFound(this.player);
-     // Here we would draw the game on the screen
-     for (let i = 0; i < portalArray.length; i++) {
-       portalArray[i].handleExit(this.player, key);
-       portalArray[i].display();
-     }
-     //display the key from a global variable
-     key.display();
-   }
-
    draw() {
 
      background(this.image);
+
+     image(this.mussleImage,width/2,height/2,300);
+push();
+     for (let i = 0; i < this.pictureArray.length; i++) {
+       this.pictureArray[i].move();
+       this.pictureArray[i].handleWrapping();
+       this.pictureArray[i].display();
+     }
+pop();
      // tint(this.tint);
      this.player.handleInput();
      // Move all the player
@@ -319,6 +329,25 @@
      }
      this.player.display();
    }
+
+
+//a function that handles the global variables related to portals. if health = the totoal number of portals visited, "game" is over
+   handlePortalPosition() {
+     console.log("health : " + health);
+     if (health === NUMBER_PORTALS) {
+       currentScene = gameOverScene;
+     }
+//handling if the key is found
+     key.handleFound(this.player);
+// Here we would draw the game on the screen
+     for (let i = 0; i < portalArray.length; i++) {
+       portalArray[i].handleExit(this.player, key);
+       portalArray[i].display();
+     }
+//display the key from a global variable
+     key.display();
+   }
+
    mousePressed() {
      // This will be called by the main program when it detects a mouse press
    }

@@ -24,7 +24,7 @@ let worldOneImages = [];
 
 function preload() {
 
-  playSceneBackground = loadImage("assets/images/textures/image4.JPG");
+  playSceneBackground = loadImage("assets/images/textures/image1.JPG");
 
   // for (let i = 0; i < 3; i++){
   worldOneImages[0] = loadImage("assets/images/textures/image4.JPG")
@@ -52,7 +52,7 @@ function setup() {
   gameOverScene = new GameOverScene();
   key = new Key(50, 50);
 
-  currentScene = titleScene; // Because we start on the title
+  currentScene = playScene; // Because we start on the title
   setUpPortals();
 }
 

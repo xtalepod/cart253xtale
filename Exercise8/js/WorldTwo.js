@@ -13,7 +13,7 @@ class WorldTwo extends PlayScene {
       "fathomless air; my body"
     ];
 
-//information related to Word objects including 3 arrays, the number of words to display, and a for loop to set up the word array that determins position, velocity, radius, color, and declration of a new word
+//information related to Word objects including: 3 arrays, the number of words to display, and a for loop to set up the word array that determins position, velocity, radius, color, and declration of a new word
 // adapted from https://github.com/pippinbarr/cart253-2019/blob/master/modules/core-arrays/core-arrays.md
     this.catchWordsIndex = 0;
     this.catchWords = [
@@ -75,7 +75,7 @@ class WorldTwo extends PlayScene {
   draw() {
     background(this.backgroundColor);
     for (let i = 0; i < this.wordsArray.length; i++) {
-      this.wordsArray[i].draw();
+      this.wordsArray[i].display();
       this.wordsArray[i].move();
       this.wordsArray[i].handleWrapping();
       // this.wordsArray[i].handleCollision(this.player);

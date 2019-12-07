@@ -35,6 +35,10 @@ class Player {
     this.downKey = 83; //S
     this.leftKey = 65; //A
     this.rightKey = 68; //D
+    //booleans to know if the object is moving
+    // this.isMoving = false;
+    // this.isMovingSideways = false;
+    // this.phrasesIndex = 0;
     this.phrases = [
       "once i am dead",
       "to the left and right",
@@ -88,8 +92,8 @@ class Player {
 
   // handleBoundaries()
   //
-  // Checks if the player has gone off the canvas and
-  // prevents it from going off, as a wall would do
+  // Checks if the prey has gone off the canvas and
+  // prevents it from it, as a wall would do
   handleBoundaries() {
     this.x = constrain(this.x, 0 + this.size / 2, width - this.size);
     this.y = constrain(this.y, 0 + this.size / 2, height - this.size);
@@ -97,22 +101,31 @@ class Player {
 
   // display
   //
-  // draw the play as an ellipse on the canvas
+  // Draw the prey as an image on the canvas
+  // with a constant size that does not change with its health.
   display() {
+
+    // stroke(10);
+    // fill(this.fillColor);
+    // ellipse(this.x, this.y, this.size);
     push();
-      stroke(255);
-      strokeWeight(4)
+    // if (this.isMoving === true || this.isMovingSideways === true) {
+      stroke(10);
       fill(this.fillColor);
       ellipse(this.x, this.y, this.size);
     pop();
   }
 // reset
   //
-  // Set the position to a specific location and reassign size
+  // Set the position to a random location and reset health
+  // and size back to default
   reset() {
     // Random position
-    this.x = 1000;
+    this.x = 100;
     this.y = 50;
+    // Default health
+    // this.health = this.maxHealth;
+    // Default size
     this.size = this.size;
   }
 }

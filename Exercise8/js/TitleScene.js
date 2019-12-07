@@ -57,6 +57,7 @@ class TitleScene extends Scene {
     //  }
 
      //
+     //***should have an if statement here that if scenechanges images stop moving
      push();
          image(this.titleSceneImages[2],50,100,width/2,this.a);
          image(this.titleSceneImages[2],this.a,250,this.a,250);
