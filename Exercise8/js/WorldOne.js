@@ -56,6 +56,7 @@ class WorldOne extends PlayScene {
       this.player.move();
       this.handlePortalPosition();
       this.player.display();
+      // noLoop();
   }
 
 
@@ -64,6 +65,6 @@ class WorldOne extends PlayScene {
   }
   mousePressed() {
     // This will be called by the main program when it detects a mouse press
-        this.milky.loop();
+        this.milky.play();
   }
 }

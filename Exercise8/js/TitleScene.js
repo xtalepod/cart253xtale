@@ -59,7 +59,7 @@ class TitleScene extends Scene {
      //
      push();
          image(this.titleSceneImages[2],50,100,width/2,this.a);
-         image(this.titleSceneImages[this.random1],this.a,250,this.a,250);
+         image(this.titleSceneImages[2],this.a,250,this.a,250);
          image(this.titleSceneImages[2],this.a,30,this.a,500);
          this.a = this.a + 2;
          if (this.a < 0){
@@ -69,8 +69,9 @@ class TitleScene extends Scene {
 
       push();
           image(this.titleSceneImages[2],100,10,width/2,this.c);
-          image(this.titleSceneImages[this.random1],this.c,250,this.c,250);
-          image(this.titleSceneImages[2],this.c,30,this.c,20);
+            image(this.titleSceneImages[2],this.c,250,this.c,250);
+          image(this.titleSceneImages[2],this.c + 800, 600,this.c - 200,250);
+          image(this.titleSceneImages[2],this.c,30,1000,200);
           this.c = this.c -2;
           if (this.c < 0){
             this.c = height - 10;
@@ -86,11 +87,18 @@ class TitleScene extends Scene {
     // image( this.titleSceneImages[r],width/4,250,400,200);
     // r = floor(random(0,this.titleSceneImages.length));
     // image( this.titleSceneImages[r],width/4,25,40,500);
+// push();
+//     textSize(50);
+//     fill(0);
+//     textSize(20);
+//     text("click to continue", 100,600);
+  // pop();
 
-    textSize(20);
     fill(0);
-    textSize(20);
-    text("click to continue", 100,600);
+    textSize(50);
+    text("...click anywhere to continue", 100,600);
+
+
   }
   mousePressed() {
     // state and instructionsScene are global variables defined in the main script

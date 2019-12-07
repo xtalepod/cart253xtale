@@ -52,7 +52,7 @@ function setup() {
   gameOverScene = new GameOverScene();
   key = new Key(50, 50);
 
-  currentScene = worldTwo;; // Because we start on the title
+  currentScene = titleScene; // Because we start on the title
   setUpPortals();
 }
 
