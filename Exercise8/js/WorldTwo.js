@@ -15,7 +15,7 @@ class WorldTwo extends PlayScene {
 
 //information related to Word objects including: 3 arrays, the number of words to display, and a for loop to set up the word array that determins position, velocity, radius, color, and declration of a new word
 // adapted from https://github.com/pippinbarr/cart253-2019/blob/master/modules/core-arrays/core-arrays.md
-    this.catchWordsIndex = 0;
+    // this.catchWordsIndex = 0;
     this.catchWords = [
       "life",
       "is",

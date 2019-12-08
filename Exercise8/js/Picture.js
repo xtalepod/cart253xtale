@@ -11,6 +11,10 @@ class Picture {
     this.speed = speed;
     this.pictureDisplay = pictureDisplay;
     this.radius = radius;
+    this.vx = 0;
+    this.vy = 0;
+    this.tx = random(0,1000);
+    this.ty = random(0,1000);
 
     // // a variable for the image for the background array
     // this.sandPatterns = [];
@@ -18,8 +22,8 @@ class Picture {
    }
 
    move() {
-    this.x = this.x + random(1, -1);
-    this.y = this.y + random(-1, 1);
+    this.x = this.x - 0.2; //random(1, -1);
+    this.y = this.y - 1; //random(-1, 1);
   }
 
   //terris P2 TestSkyFalling
@@ -36,6 +40,7 @@ class Picture {
     } else if (this.y > height) {
       this.y -= height;
     }
+    // console.log("handleWrapping" + "picture")
   }
 
 

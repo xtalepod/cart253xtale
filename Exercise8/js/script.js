@@ -1,6 +1,6 @@
 "use strict"
 
-
+//variables holding all the states
 let currentScene; // To store the current scene;
 let titleScene;
 let playScene;
@@ -9,50 +9,61 @@ let worldArray = [];
 let worldOne;
 let worldTwo;
 let worldThree;
+//a constant to check how many portals have been visited. health starts at zero and as you visit portals increases to 7, then the performance is over
 const NUMBER_PORTALS = 7;
 let health = 0;
-
 //an array for the portals
 let portalArray = [];
+//an array for the shapes
+let shapeArray = [];
+//a variable for the key
 let key;
 
-//background image for the playScene
+//background images
 let playSceneBackground;
+let worldThreeBackground;
 
-//an array for textures pictures
-let worldOneImages = [];
+//audio from milky video
+let milkyAudio;
+// //an array for textures pictures
+// let worldOneImages = [];
 
 function preload() {
 
+  milkyAudio = loadSound("assets/sounds/milky3.mp3");
   playSceneBackground = loadImage("assets/images/textures/image1.JPG");
+  worldThreeBackground = loadImage("assets/images/textures/image4.JPG")
 
-  // for (let i = 0; i < 3; i++){
-  worldOneImages[0] = loadImage("assets/images/textures/image4.JPG")
-  worldOneImages[1] = loadImage("assets/images/textures/image5.JPG")
-  worldOneImages[2] = loadImage("assets/images/textures/image6.JPG")
-  // worldOneImages.push()
-  // }
+  // // for (let i = 0; i < 3; i++){
+  // worldOneImages[0] = loadImage("assets/images/textures/image4.JPG")
+  // worldOneImages[1] = loadImage("assets/images/textures/image5.JPG")
+  // worldOneImages[2] = loadImage("assets/images/textures/image6.JPG")
+  // // worldOneImages.push()
+  // // }
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //create the scenes and worlds
 
+  //setting up the start screen
   titleScene = new TitleScene();
-
-  //the three worlds come before playScene and gameOverScene
-  worldOne = new WorldOne(50, 70, 80, worldOneImages[3]);
+  //setting up the three worlds
+  worldOne = new WorldOne(50, 70, 80,playSceneBackground);// worldOneImages[3]
+    worldArray.push(worldOne);
   worldTwo = new WorldTwo();
-  worldThree = new WorldThree();
-  worldArray.push(worldOne);
-  worldArray.push(worldTwo);
-  worldArray.push(worldThree);
-
+    worldArray.push(worldTwo);
+  worldThree = new WorldThree(worldThreeBackground,milkyAudio);
+    console.log("milkyAudio");
+    worldArray.push(worldThree);
+//setting up and the playScene and gameOverScene
   playScene = new PlayScene(playSceneBackground);
   gameOverScene = new GameOverScene();
+
+//setting up the key
   key = new Key(50, 50);
 
-  currentScene = playScene; // Because we start on the title
+  currentScene = worldThree; // Because we start on the title
+//a function to set up the portals
   setUpPortals();
 }
 
@@ -61,7 +72,6 @@ function draw() {
   // and whichever scene it is will display as per its class
   background(0);
   currentScene.draw();
-
 }
 
 function mousePressed() {
@@ -82,22 +92,36 @@ function setUpPortals() {
       x: windowWidth / 1.5,
       y: windowHeight / 2,
       radius: 20,
-      npoints: 8,
+      npoints: 6,
     },
-    // {
-    //   x: windowWidth/1.5,
-    //   y: windowHeight/2,
-    //   radius: 20,
-    //   npoints: 10,
-    // },
   ];
 
   //a for loop for the portals
   for (let i = 0; i < portalProperties.length; i++) {
     let portal = new Portal(portalProperties[i].x, portalProperties[i].y, portalProperties[i].radius, portalProperties[i].npoints, worldArray[i]);
     portalArray.push(portal);
-    // let portal1 = new Portal(portalProperties[1].x, portalProperties[1].y, portalProperties[1].radius, portalProperties[1].npoints,worldTwo);
-    // portalArray.push(portal1);
   }
 
+  function setUpShapes() {
+    //   //array containing the informations of the portals
+    let shapeProperties = [{
+        x: windowWidth / 2,
+        y: windowHeight / 2,
+        radius: 20,
+        npoints: 6,
+      },
+      {
+        x: windowWidth / 1.5,
+        y: windowHeight / 2,
+        radius: 20,
+        npoints: 6,
+      },
+    ];
+
+    //a for loop for the portals
+    for (let i = 0; i < shapeProperties.length; i++) {
+      let shape = new Portal(shapeProperties[i].x, shapeProperties[i].y, shapeProperties[i].radius, shapeProperties[i].npoints, worldArray[i]);
+      shapeArray.push(portal);
+    }
+}
 }

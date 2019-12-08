@@ -1,6 +1,8 @@
+"use strict"
+
 class Word {
   constructor(x, y, speed, color, radius, wordText) {
-    console.log("this.catchWords");
+    // console.log("this.catchWords");
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -45,7 +47,7 @@ class Word {
   // }
 
 
-  draw() {
+  display() {
     textSize(50);
     textAlign(CENTER, CENTER);
     fill(this.color);
