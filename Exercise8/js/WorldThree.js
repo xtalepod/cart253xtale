@@ -1,30 +1,14 @@
 class WorldThree extends PlayScene {
   constructor(image, sound) {
     super();
-    // this.backgroundColor = color(255);
-    this.noiseScale = 0.01;
+    this.noiseScale = 0.1;
     this.angle = 0;
     this.radius = 20;
-    // this.imageTest = loadImage ("assets/images/textures/image4.JPG");
     this.player = new Player(0, 0, 6, color(255, 195, 195), 20)
     this.image = image;
     this.sound = sound;
     this.sound.play();
-    // this.milky = createVideo('assets/milky3.mp4');
-    // this.milky.hide();
     this.player = new Player(100, 100, 6, color(0, 153, 153), 20)
-
-    // this.catchShape = [];
-    // this.numShapes = 5;
-    // this.shapeArray = [];
-    // for (let i = 0; i < this.numShapes; i ++) {
-    //   let x = random(width + 100, height + 100);
-    //   let y = random(width,height);
-    //   // let speed = random(-2,20);
-    //   let radius = random(5,10);
-    //   let shapeDisplay = this.catchShape[Math.floor(random(this.catchShape.length))];
-    //   this.shapeArray.push(new Shape(x, y, radius, npoints);
-    // }
 
 
     //the wall array
@@ -65,11 +49,13 @@ class WorldThree extends PlayScene {
     portalArray[0].x = 150;
     portalArray[0].y = 50;
     portalArray[0].radius = 50;
+    // portalArray[0].fillColor = color(0);
     portalArray[0].nextState = worldOne;
 
     portalArray[1].x = 300;
     portalArray[1].y = 200;
     portalArray[1].radius = 40;
+    // portalArray[1].fillColor = color(0);
     portalArray[1].nextState = worldTwo;
 
     key.x = width / 2;
@@ -85,9 +71,16 @@ class WorldThree extends PlayScene {
       let noiseVal = noise((this.player.y + n) * this.noiseScale, this.player.x * this.noiseScale);
 
       push();
-      stroke(noiseVal * 50, 153, 153);
-      line(n + 400, this.player.x + noiseVal * 1000, n + 10, 900);
+      strokeWeight(5)
+      stroke(noiseVal * 500, 153, 200);
+      line(n + 400, this.player.y + noiseVal * 1000, n + 10, 900);
       pop();
+
+      // push();
+      // strokeWeight(1)
+      // stroke(noiseVal * 500, 153, 200);
+      // line(n - 400, this.player.x + noiseVal * 1000, n + 10, 900);
+      // pop();
 
       // push();
       // stroke(noiseVal * 200,40,30);
@@ -103,6 +96,12 @@ class WorldThree extends PlayScene {
     //   this.wallArray[i].handleCollision(this.player);
     //   this.wallArray[i].display();
     // }
+
+
+        fill(255);
+        textSize(50);
+        text("electroaccoustic music click to compose", width/2.5,700);
+
   }
 
 

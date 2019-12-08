@@ -10,38 +10,6 @@ class TitleScene extends Scene {
     this.random1 = floor(random(0,this.titleSceneImages.length));
     this.random2 = floor(random(0,this.titleSceneImages.length));
 
-    // this.sandPatterns = [];
-    //
-    // for (let i = 0; i < 10; i++) {
-    //    this.x = random(width);
-    //    this.y = random(height);
-    //    this.r = random(20, 60);
-    //    this.b = new Pictures(this.x,this.y,this.r);
-    //    this.pictures.sandPatterns.push(this.b);
-    //  }
-
-
-    //
-    //   this.pictureProperties = [{
-    //     x:50,
-    //     y:50,
-    //     width:100,
-    //     height:100
-    //     },
-    //     {
-    //     x:100,
-    //     y:100,
-    //     width:100,
-    //     height:100
-    //   }
-    //   ];
-    //
-    //   this.pictureArray = [];
-    //
-    //   for (let i = 0; i < this.pictureProperties.length; i++) {
-    //     let pictureTop = new Pictures (this.pictureProperties[i].y-10, this.pictureProperties[i].x+10, this.pictureProperties[i].height, this.pictureProperties[i].width);
-    //     this.pictureArray.push(pictureTop);
-
     this.a = height/1.5;
     this.c = height/2;
   }
@@ -50,14 +18,6 @@ class TitleScene extends Scene {
     // Here we would draw the title on the screen
     background(this.titleSceneImages[2]);
 
-
-    // for (let i = 0; i < sandPatterns.length; i++) {
-    //    this.sandPatterns.[i].move();
-    //    this.sandPatterns[i].display();
-    //  }
-
-     //
-     //***should have an if statement here that if scenechanges images stop moving
      push();
          image(this.titleSceneImages[2],50,100,width/2,this.a);
          image(this.titleSceneImages[2],this.a,250,this.a,250);
@@ -88,12 +48,7 @@ class TitleScene extends Scene {
     // image( this.titleSceneImages[r],width/4,250,400,200);
     // r = floor(random(0,this.titleSceneImages.length));
     // image( this.titleSceneImages[r],width/4,25,40,500);
-// push();
-//     textSize(50);
-//     fill(0);
-//     textSize(20);
-//     text("click to continue", 100,600);
-  // pop();
+
 
     fill(0);
     textSize(50);

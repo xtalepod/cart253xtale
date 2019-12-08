@@ -11,7 +11,6 @@ class Portal {
   // Either sets default values or uses the arguments provided
   // ...state
 
-  //original constructor code!!!
   constructor(x, y, radius, npoints, nextState) {
     // Position
     this.x = x;
@@ -21,8 +20,7 @@ class Portal {
     this.radius = radius,
     this.npoints = npoints;
     this.nextState = nextState;
-    // this.theScale = 2;
-
+    // this.color = color;
     console.log("STATE:: " + this.nextState);
 
   }
@@ -34,20 +32,18 @@ class Portal {
   //adapted from https://p5js.org/examples/form-regular-polygon.html
 
   display() {
-    // rectMode(CENTER);
-    fill(255);
+    rectMode(CENTER);
     push();
+    fill(255,153,153);
     translate(this.x, this.y);
     rotate(frameCount / 10)
-    // scale(this.theScale);
     this.polygon(0, 0, this.radius, this.npoints)
     pop();
-
-    // this.theScale += 0.1
   }
   //
   //Checks if the player found the door by taking the distance
   //between the two objects. If yes, it changes the scenes.
+  //adapted from Fred P2
   handleExit(player, key) {
 
     if (key.isFound === true) {
@@ -56,18 +52,15 @@ class Portal {
       // Check if the distance is less than their two radii (an overlap)
       //and changes the level depending on what level it currently is
       if (d < this.width / 2 + player.size / 2) {
-        //this.state = this.nextState;
         health++;
-        //console.log("STATE:: "+this.nextState);
         currentScene = this.nextState;
         key.isFound = false;
-
       }
     }
   }
-  //adapted from https://p5js.org/examples/form-regular-polygon.html
-  polygon(x, y, radius, npoints) {
 
+//from https://p5js.org/examples/form-regular-polygon.html
+  polygon(x, y, radius, npoints) {
     let angle = TWO_PI / npoints;
     beginShape();
     for (let a = 0; a < TWO_PI; a += angle) {
@@ -76,6 +69,5 @@ class Portal {
       vertex(sx, sy);
     }
     endShape(CLOSE);
-    // console.log("polygon");
   }
 }

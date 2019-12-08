@@ -53,7 +53,6 @@ function setup() {
   worldTwo = new WorldTwo();
     worldArray.push(worldTwo);
   worldThree = new WorldThree(worldThreeBackground,milkyAudio);
-    console.log("milkyAudio");
     worldArray.push(worldThree);
 //setting up and the playScene and gameOverScene
   playScene = new PlayScene(playSceneBackground);
@@ -86,12 +85,14 @@ function setUpPortals() {
       x: windowWidth / 2,
       y: windowHeight / 2,
       radius: 20,
+      // portalColor: color(random(255), random(255), random(255)),
       npoints: 6,
     },
     {
       x: windowWidth / 1.5,
       y: windowHeight / 2,
       radius: 20,
+      // portalColor: color(random(255), random(255), random(255)),
       npoints: 6,
     },
   ];
@@ -102,26 +103,26 @@ function setUpPortals() {
     portalArray.push(portal);
   }
 
-  function setUpShapes() {
-    //   //array containing the informations of the portals
-    let shapeProperties = [{
-        x: windowWidth / 2,
-        y: windowHeight / 2,
-        radius: 20,
-        npoints: 6,
-      },
-      {
-        x: windowWidth / 1.5,
-        y: windowHeight / 2,
-        radius: 20,
-        npoints: 6,
-      },
-    ];
-
-    //a for loop for the portals
-    for (let i = 0; i < shapeProperties.length; i++) {
-      let shape = new Portal(shapeProperties[i].x, shapeProperties[i].y, shapeProperties[i].radius, shapeProperties[i].npoints, worldArray[i]);
-      shapeArray.push(portal);
-    }
-}
+//   function setUpShapes() {
+//     //   //array containing the informations of the portals
+//     let shapeProperties = [{
+//         x: windowWidth / 2,
+//         y: windowHeight / 2,
+//         radius: 20,
+//         npoints: 6,
+//       },
+//       {
+//         x: windowWidth / 1.5,
+//         y: windowHeight / 2,
+//         radius: 20,
+//         npoints: 6,
+//       },
+//     ];
+//
+//     //a for loop for the portals
+//     for (let i = 0; i < shapeProperties.length; i++) {
+//       let shape = new Portal(shapeProperties[i].x, shapeProperties[i].y, shapeProperties[i].radius, shapeProperties[i].npoints, worldArray[i]);
+//       shapeArray.push(portal);
+//     }
+// }
 }
