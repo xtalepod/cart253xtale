@@ -9,30 +9,15 @@ class Key {
   //
   // Sets the initial values for the Potion's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y) {
+  constructor(x, y, size) {
     //Position
     this.x = x;
     this.y = y;
     //size
     this.size = 30;
-    //Properties
     this.isFound = false;
-  }
-
-  ///display()
-  //
-  //Displays the key at the received coordinates. If it is found,
-  //it is not displayed.
-  display() {
-    if (this.isFound === false) {
-      //Display
-      // stroke(20);
-      push();
-      noStroke();
-      fill(color(255,255,0));
-      ellipse(this.x, this.y, this.size);
-      pop();
-    }
+    this.angle = 0;
+    // this.fillColor = color(map(sin(this.angle), -4, 4, 20, 300), map(cos(this.angle), 5, 153, 255, 100), 100);
   }
 
   //handleHealing()
@@ -47,6 +32,29 @@ class Key {
     if (d < this.size + player.size) {
       // keySFX.play()
       this.isFound = true;
+    }
+  }
+  ///display()
+  //
+  //Displays the key at the received coordinates. If it is found,
+  //it is not displayed.
+  display() {
+    if (this.isFound === false) {
+      //Display
+
+      // push();
+      // noStroke();
+      // this.fillColor = color(map(sin(this.angle), -4, 4, 20, 300), map(cos(this.angle), 5, 153, 255, 100), 100);
+      // fill(this.fillColor);
+      // ellipse(width / 2, height / 2, this.size);
+      // this.angle += 0.5;
+      // pop();
+
+      push();
+      noStroke();
+      fill(color(255,255,0));
+      ellipse(this.x, this.y, this.size);
+      pop();
     }
   }
 }

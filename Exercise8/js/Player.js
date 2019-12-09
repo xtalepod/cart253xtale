@@ -110,7 +110,8 @@ class Player {
     // ellipse(this.x, this.y, this.size);
     push();
     // if (this.isMoving === true || this.isMovingSideways === true) {
-      stroke(10);
+    strokeWeight(1.5)
+      stroke(40);
       fill(this.fillColor);
       ellipse(this.x, this.y, this.size);
     pop();

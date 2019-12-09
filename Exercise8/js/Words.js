@@ -1,14 +1,15 @@
 "use strict"
 
 class Word {
-  constructor(x, y, speed, color, radius, wordText) {
+  constructor(x, y, speed, color, radius, wordText,wordSize) {
     // console.log("this.catchWords");
     this.x = x;
     this.y = y;
     this.speed = speed;
     this.color = color;
     this.radius = radius;
-    this.wordText = wordText
+    this.wordText = wordText;
+    this.wordSize = wordSize;
   }
 
 
@@ -34,7 +35,7 @@ class Word {
     }
   }
   display() {
-    textSize(50);
+    textSize(this.wordSize);
     textAlign(CENTER, CENTER);
     fill(this.color);
     text(this.wordText, this.x, this.y);

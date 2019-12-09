@@ -34,9 +34,10 @@ class Portal {
   display() {
     rectMode(CENTER);
     push();
-    fill(255,153,153);
+    noStroke();
+    fill(255);
     translate(this.x, this.y);
-    rotate(frameCount / 10)
+    rotate(frameCount / 30)
     this.polygon(0, 0, this.radius, this.npoints)
     pop();
   }

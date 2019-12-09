@@ -2,7 +2,6 @@ class WorldTwo extends PlayScene {
   constructor() {
     super();
     this.backgroundColor = color(255, 190, 190);
-
 //information related to wall and player collision for this world. Includes an index and an array of words.
     this.phrasesIndex = 0;
     this.phrases = [
@@ -68,6 +67,7 @@ class WorldTwo extends PlayScene {
       let wall = new Wall(this.wallProperties[i].x + 50, this.wallProperties[i].y + 60, this.wallProperties[i].width, this.wallProperties[i].height);
       this.wallArray.push(wall);
     }
+    this.angle = 0;
   }
 
 
@@ -81,6 +81,9 @@ class WorldTwo extends PlayScene {
       // this.wordsArray[i].handleCollision(this.player);
     }
 
+//setting the player functions
+    this.player.handleInput();
+    this.player.move();
 //setting the portalProperties to change position and states
     portalArray[0].x = 150;
     portalArray[0].y = 50;
@@ -90,11 +93,11 @@ class WorldTwo extends PlayScene {
     portalArray[1].nextState = worldThree;
     this.handlePortalPosition();
 //setting the specific key location for this world
+push();
     key.x = 100;
     key.y = 250;
-//setting the player functions
-    this.player.handleInput();
-    this.player.move();
+    key.size = 50;
+pop();
 //information for the text that appears when the player touches the walls
     textSize(30);
     text(this.phrases[this.phrasesIndex], 40, height / 2)
