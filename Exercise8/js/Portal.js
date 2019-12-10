@@ -36,7 +36,7 @@ class Portal {
     rectMode(CENTER);
     push();
     noStroke();
-    fill(255);
+    fill(this.fillColor);
     translate(this.x, this.y);
     rotate(frameCount / 30)
     this.polygon(0, 0, this.radius, this.npoints)

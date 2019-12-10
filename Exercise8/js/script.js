@@ -61,7 +61,7 @@ function setup() {
 //setting up the key
   key = new Key(50, 50,40);
 
-  currentScene = playScene; // Because we start on the title
+  currentScene = worldOne; // Because we start on the title
 //a function to set up the portals
   setUpPortals();
 }
@@ -86,6 +86,7 @@ function setUpPortals() {
       y: windowHeight / 2,
       radius: 20,
       npoints: 6,
+      // col: color(255,153,153),
     },
     {
       x: windowWidth / 1.5,

@@ -9,20 +9,13 @@ class WorldOne extends PlayScene {
     this.milky.hide();
     this.player = new Player (100,100, 6, color(0,153,153), 20)
     this.image = image;
-    // this.shelfPropertities = [
-    //   {
-    //   x:20,
-    //   y:200,
-    //   width:20,
-    //   height:20,
-    // }];
 
     this.shelfProperties = [
-    {x:	width/2	, y:	height/3 + 150	, width: 500	, height:	20, fillColor: 255	},
-    {x:	width/2 + 60	, y: height/3 + 225	, width: 500	, height:	20, fillColor: 125	},
-    {x:	width/2 + 120	, y: height/3 + 300, width:	500	, height:	20,fillColor: 0	},
-    {x:width/2 + 180, y: height/3 + 375, width:	500	, height:	20, fillColor: 45	},
-    {x:width/2 + 260, y: height/3 + 450, width:	500	, height:	20, fillColor: 50	},
+    {x:	width/2	, y:	height/3 + 150	, width: 500	, height:	20, fillColor: color(155,290,155)},
+    {x:	width/2 + 60	, y: height/3 + 225	, width: 500	, height:	20, fillColor: color(155,290,155)},
+    {x:	width/2 + 120	, y: height/3 + 300, width:	500	, height:	20,fillColor:color(155,290,155)	},
+    {x:width/2 + 180, y: height/3 + 375, width:	500	, height:	20, fillColor: color(155,290,155)	},
+    {x:width/2 + 260, y: height/3 + 450, width:	500	, height:	20, fillColor: color(155,290,155)	},
   ];
     this.shelfArray = [];
     // //the wall array which looks like a cube of sorts in this level
@@ -59,10 +52,12 @@ class WorldOne extends PlayScene {
 
     portalArray[0].x = width/4 - 50 ;
     portalArray[0].y = height/2;
+    portalArray[0].fillColor = 0;
     // portalArray[0].nextState = worldTwo;
 
     portalArray[1].x = width/2 + 450;
     portalArray[1].y = height/2;
+    portalArray[0].fillColor = 0;
     portalArray[1].nextState = worldThree;
     this.handlePortalPosition();
 
