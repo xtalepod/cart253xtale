@@ -9,13 +9,14 @@ class Key {
   //
   // Sets the initial values for the Potion's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, size) {
+  constructor(x, y, size, col) {
     //Position
     this.x = x;
     this.y = y;
     //size
     this.size = 30;
     this.isFound = false;
+    this.fillColor = col;
     this.angle = 0;
   }
 
@@ -51,7 +52,7 @@ class Key {
 
       push();
       noStroke();
-      fill(0);
+      fill(this.fillColor);
       ellipse(this.x, this.y, this.size);
       pop();
     }

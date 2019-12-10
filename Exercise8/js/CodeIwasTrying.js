@@ -413,3 +413,14 @@
 
 
   // portalArray[0].fillColor = color(0);
+  //
+  // FROM TITLE SCENE MOVING IMAGES WITH SEB
+  // image(this.titleSceneImages[2],400,400,400,400)
+  // image(this.titleSceneImages[this.random1],250,250,250,250);
+  // image(this.titleSceneImages[this.random2],width/5,height/2,100,500);
+
+
+  // let r = floor(random(0,this.titleSceneImages.length));
+  // image( this.titleSceneImages[r],width/4,250,400,200);
+  // r = floor(random(0,this.titleSceneImages.length));
+  // image( this.titleSceneImages[r],width/4,25,40,500);

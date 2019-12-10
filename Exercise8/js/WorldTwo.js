@@ -8,7 +8,7 @@ class WorldTwo extends WorldOne {
     this.noiseScale = 0.01;
     this.angle = 0;
     this.radius = 20;
-    this.player = new Player(width / 2 + 500, height / 2, 6, color(102, 255, 102), 50)
+    this.player = new Player(width / 2, height/2 - 400, 6, color(155, 255, 155), 50)
     this.image = image;
     this.sound = sound;
     this.sound.play();
@@ -106,8 +106,10 @@ class WorldTwo extends WorldOne {
     // portalArray[1].nextState = worldTwo;
     pop();
     //information to set up the key location and size on start
-    key.x = 370;
-    key.y = 761
+    key.x = width/2;
+    key.y = height/2 + 140;
+    key.size = 80;
+    key.fillColor = color(255, 230, 204);
     key.display();
     //information
     this.player.handleInput();

@@ -18,7 +18,7 @@ class Portal {
     this.width = radius * 2;
     this.height = radius * 2;
     this.radius = radius,
-    this.npoints = npoints;
+      this.npoints = npoints;
     this.nextState = nextState;
     this.fillColor = 255;
     // this.color = color;
@@ -61,7 +61,7 @@ class Portal {
     }
   }
 
-//from https://p5js.org/examples/form-regular-polygon.html
+  //from https://p5js.org/examples/form-regular-polygon.html
   polygon(x, y, radius, npoints) {
     let angle = TWO_PI / npoints;
     beginShape();

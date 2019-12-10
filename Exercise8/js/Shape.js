@@ -17,7 +17,7 @@ class Shape {
     this.width = radius * 2;
     this.height = radius * 2;
     this.radius = radius,
-    this.npoints = npoints;
+      this.npoints = npoints;
     // this.theScale = 2;
 
   }

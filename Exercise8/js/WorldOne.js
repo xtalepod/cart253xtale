@@ -8,6 +8,8 @@
      this.mussleImage = loadImage("assets/images/textures/shells.png");
      //an index and an array for the phrases that will appear when the player touches the walls
      this.phrasesIndex = 0;
+     //the poetry found here was written by jorges luis borges in his short story LIBRARY OF BABLE
+     //https://maskofreason.files.wordpress.com/2011/02/the-library-of-babel-by-jorge-luis-borges.pdf
      this.phrases = [
        "once i am dead",
        "to the left and right",
@@ -185,7 +187,7 @@
      //for loop and boolean to handle the collision between the wall and the player2 + check for collision and IF true then move through phraseIndex array
      for (let i = 0; i < this.wallArray.length; i++) {
        let isColliding = this.wallArray[i].handleCollision(this.player2);
-       console.log(isColliding);
+       // console.log(isColliding);
        if (isColliding == true) {
          if (this.phrasesIndex < this.phrases.length - 1) {
            this.phrasesIndex += 1;
