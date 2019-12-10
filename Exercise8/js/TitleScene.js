@@ -41,11 +41,11 @@ class TitleScene extends Scene {
 
     fill(0);
     textSize(50);
-    text("...click anywhere to continue", 100, height/2 + 300);
+    text("...click anywhere to continue", 100, height / 2 + 300);
     fill(0);
     textSize(50);
-    text("find the key enter the portal", 100, height/2 + 350);
-    text("WSAD to move", 100, height/2 + 400);
+    text("find the key enter the portal", 100, height / 2 + 350);
+    text("WSAD to move", 100, height / 2 + 400);
 
 
   }

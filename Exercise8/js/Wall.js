@@ -37,14 +37,14 @@ class Wall {
     }
     return false;
   }
-//display()
-//
-//Displays the wall on the screen as a rectangle
-display() {
-  push();
-  rectMode(CENTER);
-  fill(this.fillColor);
-  rect(this.x, this.y, this.width, this.height);
-  pop();
-}
+  //display()
+  //
+  //Displays the wall on the screen as a rectangle
+  display() {
+    push();
+    rectMode(CENTER);
+    fill(this.fillColor);
+    rect(this.x, this.y, this.width, this.height);
+    pop();
+  }
 }
