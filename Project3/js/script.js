@@ -1,4 +1,5 @@
 "use strict"
+//explore new worlds//a digital art piece by christale terris
 
 //variables holding all the states
 let currentScene; // To store the current scene;
