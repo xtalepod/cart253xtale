@@ -17,7 +17,6 @@ class Key {
     this.size = 30;
     this.isFound = false;
     this.angle = 0;
-    // this.fillColor = color(map(sin(this.angle), -4, 4, 20, 300), map(cos(this.angle), 5, 153, 255, 100), 100);
   }
 
   //handleHealing()

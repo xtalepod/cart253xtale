@@ -3,13 +3,12 @@
 //variables holding all the states
 let currentScene; // To store the current scene;
 let titleScene;
-let playScene;
-let worldArray = [];
 let worldOne;
+let worldArray = [];
 let worldTwo;
-let worldThree;
+let worldGameOver;
 //a constant to check how many portals have been visited. health starts at zero and as you visit portals increases to 7, then the performance is over
-const NUMBER_PORTALS = 2;
+const NUMBER_PORTALS = 3;
 let health = 0;
 //an array for the portals
 let portalArray = [];
@@ -19,8 +18,8 @@ let shapeArray = [];
 let key;
 
 //background images
-let playSceneBackground;
-let worldThreeBackground;
+let worldOneBackground;
+let worldTwoBackground;
 
 //audio from milky video
 let milkyAudio;
@@ -30,8 +29,8 @@ let milkyAudio;
 function preload() {
 
   milkyAudio = loadSound("assets/sounds/milky3.mp3");
-  playSceneBackground = loadImage("assets/images/textures/image1.JPG");
-  worldThreeBackground = loadImage("assets/images/textures/image10.JPG")
+  worldOneBackground = loadImage("assets/images/textures/image1.JPG");
+  worldTwoBackground = loadImage("assets/images/textures/image10.JPG")
 }
 
 function setup() {
@@ -40,19 +39,17 @@ function setup() {
   //setting up the start screen
   titleScene = new TitleScene();
   //setting up the three worlds
-  worldOne = new WorldOne(50, 70, 80,playSceneBackground);// worldOneImages[3]
+  worldOne = new WorldOne(worldOneBackground);// worldOneImages[3]
     worldArray.push(worldOne);
-  worldTwo = new WorldTwo();
+  worldTwo = new WorldTwo(worldTwoBackground,milkyAudio);
     worldArray.push(worldTwo);
-  worldThree = new WorldThree(worldThreeBackground,milkyAudio);
-    worldArray.push(worldThree);
-//setting up and the playScene
-  playScene = new PlayScene(playSceneBackground);
+  worldGameOver = new GameOverWorld(worldTwoBackground,milkyAudio);
+    worldArray.push(worldGameOver);
 
 // setting up the key
   key = new Key(50, 50,40);
 
-  currentScene = worldOne; // Because we start on the title
+  currentScene = worldGameOver; // Because we start on the title
 //a function to set up the portals
   setUpPortals();
 }

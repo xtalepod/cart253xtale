@@ -60,8 +60,8 @@ class TitleScene extends Scene {
     // state and instructionsScene are global variables defined in the main script
     // and we use them to change the current state of the program
     // so this will switch the state to the instructions
-    currentScene = playScene;
-    console.log("go into playScene")
+    currentScene = worldOne;
+    console.log("go into worldOne")
   }
  }
   //
