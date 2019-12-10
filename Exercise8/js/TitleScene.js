@@ -57,32 +57,3 @@ class TitleScene extends Scene {
     console.log("go into worldOne")
   }
 }
-//
-// keyPressed(){
-//   this.image.loop();
-// }
-
-//https://p5js.org/examples/motion-linear.html
-
-// push();
-// image(this.image,50,100,width/2,this.a);
-// this.a = this.a - 0.2;
-// if (this.a < 0){
-//   this.a = height;
-// }
-// pop();
-// image(this.image,width/2,250,900,500);
-// image(this.image,width/4,250,400,200);
-// image(this.image,width/4,25,40,500);
-
-//   this.titleSceneImages;
-//
-//   for (let i = 0; i < 3; i++){
-//   titleSceneImages[0] = loadImage ("assets/images/textures/image4.JPG")
-//   titleSceneImages[1] = loadImage("assets/images/textures/image5.JPG")
-//   titleSceneImages[2] = loadImage("assets/images/textures/image6.JPG")
-//   titleSceneImages.push()
-// };
-//
-//   // this.sand = loadImage("assets/images/textures/image4.JPG");
-//   // this.water = loadImage("assets/images/textures/image1.JPG");

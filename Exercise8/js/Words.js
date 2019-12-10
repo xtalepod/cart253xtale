@@ -2,7 +2,6 @@
 
 class Word {
   constructor(x, y, speed, color, radius, wordText,wordSize) {
-    // console.log("this.catchWords");
     this.x = x;
     this.y = y;
     this.speed = speed;

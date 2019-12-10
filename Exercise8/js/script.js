@@ -39,7 +39,7 @@ function setup() {
   //setting up the start screen
   titleScene = new TitleScene();
   //setting up the three worlds
-  worldOne = new WorldOne(worldOneBackground);// worldOneImages[3]
+  worldOne = new WorldOne(worldOneBackground);
     worldArray.push(worldOne);
   worldTwo = new WorldTwo(worldTwoBackground,milkyAudio);
     worldArray.push(worldTwo);
@@ -74,7 +74,6 @@ function setUpPortals() {
       y: windowHeight / 2,
       radius: 20,
       npoints: 6,
-      // col: color(255,153,153),
     },
     {
       x: windowWidth / 1.5,

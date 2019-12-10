@@ -15,15 +15,11 @@ class Picture {
     this.vy = 0;
     this.tx = random(0,1000);
     this.ty = random(0,1000);
-
-    // // a variable for the image for the background array
-    // this.sandPatterns = [];
-    // this.sandPattern = this.sandPatterns;
    }
 
    move() {
-    this.x = this.x - 0.2; //random(1, -1);
-    this.y = this.y - 1; //random(-1, 1);
+    this.x = this.x - 0.2;
+    this.y = this.y - 1;
   }
 
   //terris P2 TestSkyFalling
@@ -40,14 +36,12 @@ class Picture {
     } else if (this.y > height) {
       this.y -= height;
     }
-    // console.log("handleWrapping" + "picture")
   }
 
 
   display(){
     push();
     imageMode(CENTER);
-    // resize(100,70);
     image(this.pictureDisplay,this.x,this.y,this.r,this.r);
     pop();
     }

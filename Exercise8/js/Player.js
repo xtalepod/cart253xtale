@@ -23,10 +23,6 @@ class Player {
     this.vx = 0;
     this.vy = 0;
     this.speed = speed;
-
-    // // Health properties
-    // this.maxHealth = size;
-    // this.health = this.maxHealth; // Must be AFTER defining this.maxHealth
     // Display properties
     this.fillColor = fillColor;
     this.size = size;
@@ -35,10 +31,6 @@ class Player {
     this.downKey = 83; //S
     this.leftKey = 65; //A
     this.rightKey = 68; //D
-    //booleans to know if the object is moving
-    // this.isMoving = false;
-    // this.isMovingSideways = false;
-    // this.phrasesIndex = 0;
     this.phrases = [
       "once i am dead",
       "to the left and right",
@@ -86,7 +78,6 @@ class Player {
     // Update position
     this.x += this.vx;
     this.y += this.vy;
-  //  console.log(this.vx);
     this.handleBoundaries();
   }
 
@@ -105,28 +96,18 @@ class Player {
   // with a constant size that does not change with its health.
   display() {
 
-    // stroke(10);
-    // fill(this.fillColor);
-    // ellipse(this.x, this.y, this.size);
     push();
-    // if (this.isMoving === true || this.isMovingSideways === true) {
     strokeWeight(1.5)
-      stroke(40);
-      fill(this.fillColor);
-      ellipse(this.x, this.y, this.size);
+    stroke(40);
+    fill(this.fillColor);
+    ellipse(this.x, this.y, this.size);
     pop();
   }
-// reset
-  //
-  // Set the position to a random location and reset health
-  // and size back to default
+  // reset
   reset() {
     // Random position
     this.x = 100;
     this.y = 50;
-    // Default health
-    // this.health = this.maxHealth;
-    // Default size
     this.size = this.size;
   }
 }

@@ -40,16 +40,6 @@ class Key {
   //it is not displayed.
   display() {
     if (this.isFound === false) {
-      //Display
-
-      // push();
-      // noStroke();
-      // this.fillColor = color(map(sin(this.angle), -4, 4, 20, 300), map(cos(this.angle), 5, 153, 255, 100), 100);
-      // fill(this.fillColor);
-      // ellipse(width / 2, height / 2, this.size);
-      // this.angle += 0.5;
-      // pop();
-
       push();
       noStroke();
       fill(this.fillColor);

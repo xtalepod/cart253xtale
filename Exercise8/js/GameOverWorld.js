@@ -101,11 +101,6 @@ class GameOverWorld extends WorldOne {
     key.display();
     pop();
 
-    // for (let i = 0; i < this.shelfArray.length; i++) {
-    //   this.shelfArray[i].handleCollision(this.player);
-    //   this.shelfArray[i].display();
-    // }
-
     //text information to go with the phraseIndex and display when this.player2 collides with the wallArray
     textSize(50);
     text(this.phrases[this.phrasesIndex], width / 2 + 300, height / 2)

@@ -103,7 +103,6 @@ class WorldTwo extends WorldOne {
     portalArray[1].y = height/2 - 350;
     portalArray[1].radius = 40;
     portalArray[1].fillColor = color(255, 204, 153);
-    // portalArray[1].nextState = worldTwo;
     pop();
     //information to set up the key location and size on start
     key.x = width/2;

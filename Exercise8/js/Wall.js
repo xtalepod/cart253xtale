@@ -37,13 +37,6 @@ class Wall {
     }
     return false;
   }
-  // 
-  // handleCollisionPortalOne(character) {
-  //   if (character.x + character.size / 2 > this.x - this.width / 2 && character.x - character.size / 2 < this.x + this.width / 2 && character.y + character.size / 2 > this.y - this.height / 2 && character.y - character.size / 2 < this.y + this.height / 2) {
-  //     return true;
-  //   }
-  //   return false;
-  //   }
 //display()
 //
 //Displays the wall on the screen as a rectangle
