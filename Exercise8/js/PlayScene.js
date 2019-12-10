@@ -1,8 +1,10 @@
  class PlayScene extends Scene {
    constructor(image) {
      super();
-     this.windowWidth = windowWidth;
-     this.windowHeight = windowHeight;
+     this.windowWidth = width;
+     // this.windowWidth = windowWidth;
+     this.windowHeight = height;
+     // this.windowHeight = windowHeight;
      this.image = image;
      this.mussleImage = loadImage("assets/images/textures/shells.png");
 
@@ -22,44 +24,63 @@
      }
 
 //the player
-     this.player = new Player(640, 666, 6, color(255, 195, 195), 35);
+     this.player = new Player(820, 666, 6, color(255, 195, 195), 35);
      this.player2 = new Player(165, 300, 6, color(221, 153, 255), 25)
      //array containing the informations for the walls in this level
+
+     this.cube1x = 30
+     this.cube1y = 30
+
+     this.cube0x = 90
+     this.cube0y = 60
+
      this.wallProperties = [
-     {x:	180	, y:	35	, width:	300	, height:	10	},
-     {x:	180	, y:	295	, width:	300	, height:	10	},
-     {x:	35	, y:	165	, width:	10	, height:	250	},
-     {x:	325	, y:	165	, width:	10	, height:	250	}
+     {x:	180	, y:	35	, width:	300	, height:	10, fillColor: 0},
+     {x:	180	, y:	295	, width:	300	, height:	10, fillColor: 0},
+     {x:	35	, y:	165	, width:	10	, height:	250, fillColor: 0},
+     {x:	325	, y:	165	, width:	10	, height:	250, fillColor: 0},
    ];
+
      this.wallArray = [];
   // //the wall arrays and their properties which looks cube-ish in this level
      for (let i = 0; i < this.wallProperties.length; i++) {
-         let wallNW = new Wall(this.wallProperties[i].y - 10, this.wallProperties[i].x, this.wallProperties[i].height, this.wallProperties[i].width);
-         this.wallArray.push(wallNW);
+         let cube1 = new Wall(this.wallProperties[i].x + this.cube1x, this.wallProperties[i].y + this.cube1y, this.wallProperties[i].width, this.wallProperties[i].height,this.wallProperties[i].fillColor);
+         this.wallArray.push(cube1);
+         let cube0 = new Wall(this.wallProperties[i].y + this.cube0x, this.wallProperties[i].x + this.cube0y, this.wallProperties[i].height, this.wallProperties[i].width,this.wallProperties[i].fillColor);
+         this.wallArray.push(cube0);
          // let wallNE = new Wall(this.wallProperties[i].y - 10 + 400, this.wallProperties[i].x + 400, this.wallProperties[i].height, this.wallProperties[i].width);
          // this.wallArray.push(wallNE);
-         let wallSW = new Wall (this.wallProperties[i].x + 1300, this.windowHeight - this.wallProperties[i].y, this.wallProperties[i].width, this.wallProperties[i].height);//(this.wallProperties[i].y + 200, this.wallProperties[i].x + 100, this.wallProperties[i].height, this.wallProperties[i].width);
-         this.wallArray.push(wallSW)
-           let wallSE = new Wall(this.windowWidth - this.wallProperties[i].y, this.windowHeight - this.wallProperties[i].x, this.wallProperties[i].height, this.wallProperties[i].width);
-       this.wallArray.push(wallSE);
+         // let wallSW = new Wall (this.wallProperties[i].x + this.windowWidth/2, this.windowHeight - this.wallProperties[i].y, this.wallProperties[i].width, this.wallProperties[i].height);//(this.wallProperties[i].y + 200, this.wallProperties[i].x + 100, this.wallProperties[i].height, this.wallProperties[i].width);
+         // this.wallArray.push(wallSW)
+           // let wallSE = new Wall(this.windowWidth - this.wallProperties[i].y, this.windowHeight - this.wallProperties[i].x, this.wallProperties[i].height, this.wallProperties[i].width);
+       // this.wallArray.push(wallSE);
      }
+this.cube2x = 560;
+this.cube2y = 400;
+
+this.cube3x = 100;
+this.cube3y = 500;
+
      this.wallProperties2 = [
-     {x:	180	, y:	35	, width:	250	, height:	10	},
-     {x:	180	, y:	295	, width:	250	, height:	10	},
-     {x:	230	, y:	200	, width:	10	, height:	200	},
-     {x:	300	, y:	165	, width:	10	, height:	250	}
+     {x:	180	, y:	35	, width:	250	, height:	10, fillColor: 0	},
+     {x:	180	, y:	295	, width:	250	, height:	10,fillColor: 0	},
+     {x:	230	, y:	200	, width:	10	, height:	200, fillColor: 0	},
+     {x:	300	, y:	165	, width:	10	, height:	250, fillColor: 0	}
    ];
      this.wallArray2 = [];
      // //the wall array which looks like a cube of sorts in this level
      for (let i = 0; i < this.wallProperties2.length; i++) {
-         let wallNE2 = new Wall(this.wallProperties2[i].y - 10 + 400, this.wallProperties2[i].x + 400, this.wallProperties2[i].height, this.wallProperties2[i].width);
-         this.wallArray.push(wallNE2);
-         let wallSW2 = new Wall (this.wallProperties2[i].x + 1300, this.windowHeight - this.wallProperties2[i].y, this.wallProperties2[i].width, this.wallProperties2[i].height);
-         this.wallArray.push(wallSW2)
-         let wallSW3 = new Wall (this.wallProperties2[i].x + 1300, this.windowHeight - this.wallProperties2[i].y - 500, this.wallProperties2[i].width, this.wallProperties2[i].height);
-         this.wallArray.push(wallSW3)
-         let wallSE2 = new Wall(this.windowWidth - this.wallProperties2[i].y, this.windowHeight - this.wallProperties2[i].x, this.wallProperties2[i].height, this.wallProperties2[i].width);
-       this.wallArray.push(wallSE2);
+         let cube2 = new Wall(this.wallProperties2[i].x + this.cube2x, this.wallProperties2[i].y + this.cube2y, this.wallProperties2[i].width, this.wallProperties2[i].height,this.wallProperties2[i].fillColor);
+         let cube3 = new Wall(this.wallProperties2[i].y + this.cube3x, this.wallProperties2[i].x + this.cube3y, this.wallProperties2[i].height, this.wallProperties2[i].width, this.wallProperties2[i].fillColor);
+         this.wallArray.push(cube2);
+         this.wallArray.push(cube3);
+
+         // let wallSW2 = new Wall (this.wallProperties2[i].x + 1300, this.windowHeight - this.wallProperties2[i].y, this.wallProperties2[i].width, this.wallProperties2[i].height);
+         // this.wallArray.push(wallSW2)
+         // let wallSW3 = new Wall (this.wallProperties2[i].x + 1300, this.windowHeight - this.wallProperties2[i].y - 500, this.wallProperties2[i].width, this.wallProperties2[i].height);
+         // this.wallArray.push(wallSW3)
+         // let wallSE2 = new Wall(this.windowWidth - this.wallProperties2[i].y, this.windowHeight - this.wallProperties2[i].x, this.wallProperties2[i].height, this.wallProperties2[i].width);
+       // this.wallArray.push(wallSE2);
      }
    }
 
@@ -67,18 +88,22 @@
 
      background(this.image);
 
-     portalArray[0].x = 150 ;
-     portalArray[0].y = 180
+     portalArray[0].x = 180 + this.cube1x ;
+     portalArray[0].y = 35 + 250/2 + this.cube1y;
      // portalArray[0].nextState = worldThree;
      portalArray[0].radius = 70;
 
-     portalArray[1].x = 560
-     portalArray[1].y = 545
+     portalArray[1].x = 250/2 + this.cube2x;
+     // portalArray[1].x = 560
+     portalArray[1].y = 35 + 270/2 + this.cube2y;
+     // portalArray[1].y = 545
      portalArray[1].nextState = worldThree;
      portalArray[1].radius = 60;
 
-     key.x = 1566;
-     key.y = 200;
+     key.x = 370;
+     key.y = 761
+  //display the key from a global variable
+          key.display();
 
 push();
      for (let i = 0; i < this.pictureArray.length; i++) {
@@ -91,6 +116,7 @@ pop();
    // Move all the players and handle their input
       this.player.handleInput();
       this.player.move();
+      // console.log("this.player.move" + this.player.x + this.player.y);
 
       this.player2.handleInput();
       this.player2.move();
@@ -130,8 +156,6 @@ pop();
        portalArray[i].handleExit(this.player, key);
        portalArray[i].display();
      }
-//display the key from a global variable
-     key.display();
    }
 
    mousePressed() {

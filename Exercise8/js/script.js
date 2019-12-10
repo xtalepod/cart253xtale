@@ -61,7 +61,7 @@ function setup() {
 //setting up the key
   key = new Key(50, 50,40);
 
-  currentScene = gameOverScene; // Because we start on the title
+  currentScene = playScene; // Because we start on the title
 //a function to set up the portals
   setUpPortals();
 }

@@ -20,6 +20,7 @@ class Portal {
     this.radius = radius,
     this.npoints = npoints;
     this.nextState = nextState;
+    this.fillColor = 255;
     // this.color = color;
     console.log("STATE:: " + this.nextState);
 

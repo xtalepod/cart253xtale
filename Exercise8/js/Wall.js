@@ -11,13 +11,14 @@ class Wall {
   //
   // Sets the initial values for the Wall's properties
   // Either sets default values or uses the arguments provided
-  constructor(x, y, width, height) {
+  constructor(x, y, width, height, col) {
     // Position
     this.x = x;
     this.y = y;
     //size
     this.width = width;
     this.height = height;
+    this.fillColor = col;
   }
 
   //
@@ -48,7 +49,7 @@ class Wall {
 display() {
   push();
   rectMode(CENTER);
-  fill(0);
+  fill(this.fillColor);
   rect(this.x, this.y, this.width, this.height);
   pop();
 }
