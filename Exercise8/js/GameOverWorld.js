@@ -9,15 +9,15 @@ class GameOverWorld extends WorldOne {
     this.backgroundColor = color(0,255,128);
     this.milky = createVideo('assets/milky3.mp4');
     this.milky.hide();
-    this.player = new Player (100,100, 6, color(0,153,153), 20)
+    this.player = new Player (100,100, 6, color(0), 20)
     this.image = image;
 
     this.shelfProperties = [
     {x:	width/2	, y:	height/3 + 150	, width: 500	, height:	20, fillColor: color(155,255,155)},
-    {x:	width/2 + 60	, y: height/3 + 225	, width: 500	, height:	20, fillColor: color(155,255,155)},
-    {x:	width/2 + 120	, y: height/3 + 300, width:	500	, height:	20,fillColor: color(155,255,155)},
-    {x:width/2 + 180, y: height/3 + 375, width:	500	, height:	20, fillColor: color(155,255,155)	},
-    {x:width/2 + 260, y: height/3 + 450, width:	500	, height:	20, fillColor: color(155,255,155)	},
+    {x:	width/2 + 60	, y: height/3 + 225	, width: 500	, height:	20, fillColor: color(255,204,153)},
+    {x:	width/2 + 120	, y: height/3 + 300, width:	500	, height:	20,fillColor: color(255,217,179)},
+    {x:width/2 + 180, y: height/3 + 375, width:	500	, height:	20, fillColor: color(255,230,204)	},
+    {x:width/2 + 260, y: height/3 + 450, width:	500	, height:	20, fillColor: color(255,243,230)	},
   ];
 
   this.shelfArray = [];
@@ -40,19 +40,21 @@ class GameOverWorld extends WorldOne {
 //setting the portalProperties to change position and states
 
     portalArray[0].x = width/4 - 50 ;
-    portalArray[0].y = height/2;
-    portalArray[0].fillColor = 0;
+    portalArray[0].y = height/2 + 200;
+    portalArray[0].fillColor = color(255,217,179);
+    portalArray[0].radius = 60;
     // portalArray[0].nextState = worldTwo;
 
     portalArray[1].x = width/2 + 450;
     portalArray[1].y = height/2;
-    portalArray[1].fillColor = 0;
+    portalArray[1].fillColor = color(255,217,179);
+    portalArray[1].radius = 100;
     portalArray[1].nextState = titleScene;
     this.handlePortalPosition();
 
 push();
-key.x = 370;
-key.y = 761
+key.x = width/2 + 240
+key.y = height/1.5 - 20
 key.display();
 pop();
 
@@ -72,6 +74,7 @@ pop();
       this.player.handleInput();
       this.player.move();
       this.player.display();
+      console.log(this.player + this.player.x + this.player.y);
   }
 
 
