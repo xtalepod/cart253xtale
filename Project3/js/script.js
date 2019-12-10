@@ -25,7 +25,6 @@ let worldTwoBackground;
 //audio from milky video
 let milkyAudio;
 // //an array for textures pictures
-// let worldOneImages = [];
 
 function preload() {
 
@@ -50,7 +49,7 @@ function setup() {
 // setting up the key
   key = new Key(50, 50,40);
 
-  currentScene = worldTwo; // Because we start on the title
+  currentScene = titleScene; // Because we start on the title
 //a function to set up the portals
   setUpPortals();
 }
