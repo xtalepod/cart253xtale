@@ -4,7 +4,6 @@
 let currentScene; // To store the current scene;
 let titleScene;
 let playScene;
-let gameOverScene;
 let worldArray = [];
 let worldOne;
 let worldTwo;
@@ -33,13 +32,6 @@ function preload() {
   milkyAudio = loadSound("assets/sounds/milky3.mp3");
   playSceneBackground = loadImage("assets/images/textures/image1.JPG");
   worldThreeBackground = loadImage("assets/images/textures/image10.JPG")
-
-  // // for (let i = 0; i < 3; i++){
-  // worldOneImages[0] = loadImage("assets/images/textures/image4.JPG")
-  // worldOneImages[1] = loadImage("assets/images/textures/image5.JPG")
-  // worldOneImages[2] = loadImage("assets/images/textures/image6.JPG")
-  // // worldOneImages.push()
-  // // }
 }
 
 function setup() {
@@ -54,14 +46,13 @@ function setup() {
     worldArray.push(worldTwo);
   worldThree = new WorldThree(worldThreeBackground,milkyAudio);
     worldArray.push(worldThree);
-//setting up and the playScene and gameOverScene
+//setting up and the playScene
   playScene = new PlayScene(playSceneBackground);
-  gameOverScene = new GameOverScene(50, 70, 80,playSceneBackground);
 
 //setting up the key
   key = new Key(50, 50,40);
 
-  currentScene = worldOne; // Because we start on the title
+  currentScene = playScene; // Because we start on the title
 //a function to set up the portals
   setUpPortals();
 }

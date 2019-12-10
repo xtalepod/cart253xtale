@@ -8,6 +8,16 @@
      this.image = image;
      this.mussleImage = loadImage("assets/images/textures/shells.png");
 
+//an index and an array for the phrases that will appear when the player touches the walls
+this.phrasesIndex = 0;
+this.phrases = [
+  "once i am dead",
+  "to the left and right",
+  "this illusionary duplication",
+  "sinks abysmally and soars",
+  "fathomless air; my body"
+];
+
 //information related to Picture objects including: 3 arrays, the number of pictures to display, and a for loop to set up the word array that determins position, velocity, radius, color, and declration of a new word
 // adapted from https://github.com/pippinbarr/cart253-2019/blob/master/modules/core-arrays/core-arrays.md
 
@@ -48,13 +58,8 @@
          this.wallArray.push(cube1);
          let cube0 = new Wall(this.wallProperties[i].y + this.cube0x, this.wallProperties[i].x + this.cube0y, this.wallProperties[i].height, this.wallProperties[i].width,this.wallProperties[i].fillColor);
          this.wallArray.push(cube0);
-         // let wallNE = new Wall(this.wallProperties[i].y - 10 + 400, this.wallProperties[i].x + 400, this.wallProperties[i].height, this.wallProperties[i].width);
-         // this.wallArray.push(wallNE);
-         // let wallSW = new Wall (this.wallProperties[i].x + this.windowWidth/2, this.windowHeight - this.wallProperties[i].y, this.wallProperties[i].width, this.wallProperties[i].height);//(this.wallProperties[i].y + 200, this.wallProperties[i].x + 100, this.wallProperties[i].height, this.wallProperties[i].width);
-         // this.wallArray.push(wallSW)
-           // let wallSE = new Wall(this.windowWidth - this.wallProperties[i].y, this.windowHeight - this.wallProperties[i].x, this.wallProperties[i].height, this.wallProperties[i].width);
-       // this.wallArray.push(wallSE);
      }
+
 this.cube2x = 560;
 this.cube2y = 400;
 
@@ -72,16 +77,254 @@ this.cube3y = 500;
      for (let i = 0; i < this.wallProperties2.length; i++) {
          let cube2 = new Wall(this.wallProperties2[i].x + this.cube2x, this.wallProperties2[i].y + this.cube2y, this.wallProperties2[i].width, this.wallProperties2[i].height,this.wallProperties2[i].fillColor);
          let cube3 = new Wall(this.wallProperties2[i].y + this.cube3x, this.wallProperties2[i].x + this.cube3y, this.wallProperties2[i].height, this.wallProperties2[i].width, this.wallProperties2[i].fillColor);
-         this.wallArray.push(cube2);
-         this.wallArray.push(cube3);
-
-         // let wallSW2 = new Wall (this.wallProperties2[i].x + 1300, this.windowHeight - this.wallProperties2[i].y, this.wallProperties2[i].width, this.wallProperties2[i].height);
-         // this.wallArray.push(wallSW2)
-         // let wallSW3 = new Wall (this.wallProperties2[i].x + 1300, this.windowHeight - this.wallProperties2[i].y - 500, this.wallProperties2[i].width, this.wallProperties2[i].height);
-         // this.wallArray.push(wallSW3)
-         // let wallSE2 = new Wall(this.windowWidth - this.wallProperties2[i].y, this.windowHeight - this.wallProperties2[i].x, this.wallProperties2[i].height, this.wallProperties2[i].width);
-       // this.wallArray.push(wallSE2);
+         this.wallArray2.push(cube2);
+         this.wallArray2.push(cube3);
      }
+
+
+         this.mazeProperties = [
+           { x: 280,
+             y: 65,
+             width: 440,
+             height: 10
+           },
+           {
+             x: 55,
+             y: 270,
+             width: 10,
+             height: 420
+           },
+           {
+             x: 85,
+             y: 475,
+             width: 70,
+             height: 10
+           },
+           {
+             x: 125,
+             y: 425,
+             width: 10,
+             height: 110
+           },
+           {
+             x: 125,
+             y: 270,
+             width: 10,
+             height: 120
+           },
+           {
+             x: 90,
+             y: 215,
+             width: 60,
+             height: 10
+           },
+           {
+             x: 115,
+             y: 165,
+             width: 110,
+             height: 10
+           },
+           {
+             x: 115,
+             y: 115,
+             width: 110,
+             height: 10
+           },
+           {
+             x: 215,
+             y: 130,
+             width: 10,
+             height: 40
+           },
+           {
+             x: 235,
+             y: 115,
+             width: 50,
+             height: 10
+           },
+           {
+             x: 265,
+             y: 170,
+             width: 10,
+             height: 100
+           },
+           {
+             x: 210,
+             y: 215,
+             width: 100,
+             height: 10
+           },
+           {
+             x: 165,
+             y: 275,
+             width: 10,
+             height: 110
+           },
+           {
+             x: 220,
+             y: 325,
+             width: 100,
+             height: 10
+           },
+           {
+             x: 265,
+             y: 295,
+             width: 10,
+             height: 50
+           },
+           {
+             x: 240,
+             y: 265,
+             width: 60,
+             height: 10
+           },
+           {
+             x: 315,
+             y: 95,
+             width: 10,
+             height: 50
+           },
+           {
+             x: 395,
+             y: 115,
+             width: 150,
+             height: 10
+           },
+           {
+             x: 465,
+             y: 170,
+             width: 10,
+             height: 100
+           },
+           {
+             x: 485,
+             y: 215,
+             width: 30,
+             height: 10
+           },
+           {
+             x: 375,
+             y: 165,
+             width: 90,
+             height: 10
+           },
+           {
+             x: 415,
+             y: 195,
+             width: 10,
+             height: 50
+           },
+           {
+             x: 360,
+             y: 215,
+             width: 100,
+             height: 10
+           },
+           {
+             x: 365,
+             y: 300,
+             width: 10,
+             height: 60
+           },
+           {
+             x: 335,
+             y: 275,
+             width: 50,
+             height: 10
+           },
+           {
+             x: 315,
+             y: 325,
+             width: 10,
+             height: 90
+           },
+           {
+             x: 480,
+             y: 265,
+             width: 40,
+             height: 10,
+           },
+           {
+             x: 415,
+             y: 320,
+             width: 10,
+             height: 100
+           },
+           {
+             x: 460,
+             y: 325,
+             width: 80,
+             height: 10
+           },
+           {
+             x: 315,
+             y: 375,
+             width: 210,
+             height: 10
+           },
+           {
+             x: 165,
+             y: 435,
+             width: 10,
+             height: 130
+           },
+           {
+             x: 215,
+             y: 405,
+             width: 10,
+             height: 50
+           },
+           {
+             x: 245,
+             y: 425,
+             width: 50,
+             height: 10
+           },
+           {
+             x: 365,
+             y: 405,
+             width: 10,
+             height: 50
+           },
+           {
+             x: 335,
+             y: 425,
+             width: 50,
+             height: 10
+           },
+           {
+             x: 315,
+             y: 465,
+             width: 10,
+             height: 70
+           },
+           {
+             x: 285,
+             y: 475,
+             width: 50,
+             height: 10
+           },
+           {
+             x: 215,
+             y: 485,
+             width: 10,
+             height: 30
+           }
+       ];
+
+       this.mazeArray = [];
+       // //the maze array
+       for (let i = 0; i < this.mazeProperties.length; i++) {
+         let wall = new Wall(this.mazeProperties[i].x, this.mazeProperties[i].y, this.mazeProperties[i].width, this.mazeProperties[i].height, 0);
+         // let wallNW = new Wall(this.mazeProperties[i].y - 10, this.mazeProperties[i].x + 10, this.mazeProperties[i].height, this.mazeProperties[i].width);
+         // let wallNE = new Wall(this.windowWidth / 2 + this.mazeProperties[i].x - 30, this.mazeProperties[i].y, this.mazeProperties[i].width, this.mazeProperties[i].height);
+         // let wallSW = new Wall(this.mazeProperties[i].x + 300, this.windowHeight - this.mazeProperties[i].y, this.mazeProperties[i].width, this.mazeProperties[i].height);
+         // let wallSE = new Wall(this.windowWidth - this.mazeProperties[i].y, this.windowHeight - this.mazeProperties[i].x, this.mazeProperties[i].height, this.mazeProperties[i].width);
+         this.mazeArray.push(wall);
+         // this.wallArray.push(wallNE);
+         // this.wallArray.push(wallSW);
+         // this.wallArray.push(wallSE);
+        }
    }
 
    draw() {
@@ -128,26 +371,43 @@ pop();
        this.wallArray[i].handleCollision(this.player);
        this.wallArray[i].display();
      }
-     for (let i = 0; i < this.wallArray.length; i++) {
-       this.wallArray[i].handleCollision(this.player2);
-     }
+     //handle collision for the player stuck in the box
+     // for (let i = 0; i < this.wallArray.length; i++) {
+     //   this.wallArray[i].handleCollision(this.player2);
+     // }
 
      for (let i = 0; i < this.wallArray2.length; i++) {
-       this.wallArray2[i].handleCollision(this.player,this.player2);
-       // this.wallArray2[i].handleCollision(this.player2);
+       this.wallArray2[i].handleCollision(this.player);
        this.wallArray2[i].display();
      }
+
+     textSize(50);
+     text(this.phrases[this.phrasesIndex], width/2, height / 2)
+ //handle the collision between the wall and the player + check for collision and IF true then move through phraseIndex array
+     for (let i = 0; i < this.wallArray.length; i++) {
+       let isColliding = this.wallArray[i].handleCollision(this.player2);
+        console.log(isColliding);
+       if (isColliding == true) {
+         // console.log("are we here");
+         if (this.phrasesIndex < this.phrases.length - 1) {
+           this.phrasesIndex += 1;
+         } else {
+           this.phrasesIndex = 0;
+         }
+       }
+       this.wallArray[i].handleCollision(this.player);
+       this.wallArray[i].display();
+     }
+
       this.player.display();
       this.player2.display();
-   // this.player.display();
-   // this.player2.
  }
 
 //a function that handles the global variables related to portals. if health = the total number of portals visited the performance is over
    handlePortalPosition() {
-     console.log("health : " + health);
+     // console.log("health : " + health);
      if (health === NUMBER_PORTALS) {
-       currentScene = gameOverScene;
+       currentScene = worldOne;
      }
 //handling if the key is found
      key.handleFound(this.player);

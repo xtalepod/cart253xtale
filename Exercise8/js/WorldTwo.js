@@ -67,7 +67,7 @@ class WorldTwo extends PlayScene {
       let wall = new Wall(this.wallProperties[i].x + 50, this.wallProperties[i].y + 60, this.wallProperties[i].width, this.wallProperties[i].height);
       this.wallArray.push(wall);
     }
-    this.angle = 0;
+    // this.angle = 0;
   }
 
 
@@ -78,12 +78,12 @@ class WorldTwo extends PlayScene {
       this.wordsArray[i].display();
       this.wordsArray[i].move();
       this.wordsArray[i].handleWrapping();
-      // this.wordsArray[i].handleCollision(this.player);
     }
 
 //setting the player functions
     this.player.handleInput();
     this.player.move();
+    this.player.display();
 //setting the portalProperties to change position and states
     portalArray[0].x = 150;
     portalArray[0].y = 50;
@@ -99,22 +99,21 @@ push();
     key.size = 50;
 pop();
 //information for the text that appears when the player touches the walls
-    textSize(30);
-    text(this.phrases[this.phrasesIndex], 40, height / 2)
-//handle the collision between the wall and the player + check for collision and IF true then move through phraseIndex array
-    for (let i = 0; i < this.wallArray.length; i++) {
-      let isColliding = this.wallArray[i].handleCollisionPortalOne(this.player);
-      if (isColliding == true) {
-        if (this.phrasesIndex < this.phrases.length - 1) {
-          this.phrasesIndex += 1;
-        } else {
-          this.phrasesIndex = 0;
+      textSize(30);
+      text(this.phrases[this.phrasesIndex], 40, height / 2)
+  //handle the collision between the wall and the player + check for collision and IF true then move through phraseIndex array
+      for (let i = 0; i < this.wallArray.length; i++) {
+        let isColliding = this.wallArray[i].handleCollisionPortalOne(this.player);
+        if (isColliding == true) {
+          if (this.phrasesIndex < this.phrases.length - 1) {
+            this.phrasesIndex += 1;
+          } else {
+            this.phrasesIndex = 0;
+          }
         }
+        this.wallArray[i].handleCollision(this.player);
+        this.wallArray[i].display();
       }
-      this.wallArray[i].handleCollision(this.player);
-      this.wallArray[i].display();
-    }
-      this.player.display();
   }
 
 // a function that handles which portal we're entering
