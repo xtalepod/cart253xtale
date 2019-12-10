@@ -29,7 +29,7 @@ class WorldTwo extends WorldOne {
       let x = random(-5, width);
       let y = random(5, height);
       let speed = random(-1, 1);
-      let colorWord = color(random(255), random(255), random(255));
+      let colorWord = color(random(255), random(193), random(193));
       let radius = 5;
       let wordText = this.catchWords[Math.floor(random(this.catchWords.length))];
       let wordSize = random(10, 50);
@@ -92,17 +92,17 @@ class WorldTwo extends WorldOne {
     pop();
     //setting the portalProperties for both portals to change position, size, color, and states
     push();
-    portalArray[0].x = 200;
-    portalArray[0].y = 30;
-    portalArray[0].radius = 50;
-    portalArray[0].fillColor = color(0);
-    portalArray[0].nextState = worldOne;
+    portalArray[0].x = width/2 + 350;
+    portalArray[0].y = height/2 - 275;
+    portalArray[0].radius = 60;
+    portalArray[0].fillColor = color(255, 217, 179);
+    portalArray[0].nextState = worldGameOver;
     pop();
     push();
-    portalArray[1].x = 300;
-    portalArray[1].y = 200;
+    portalArray[1].x = width/2 + 450;
+    portalArray[1].y = height/2 - 350;
     portalArray[1].radius = 40;
-    portalArray[1].fillColor = color(0);
+    portalArray[1].fillColor = color(255, 204, 153);
     // portalArray[1].nextState = worldTwo;
     pop();
     //information to set up the key location and size on start
@@ -128,10 +128,10 @@ class WorldTwo extends WorldOne {
       line(n + 400, this.player.y + noiseVal * 1000, n + 40, 850);
       pop();
     }
-    // //text to encourage the user to click the screen a lot to play the audio
-    // fill(0);
-    // textSize(50);
-    // text("electroaccoustic music click to compose", width / 2.5, 700);
+    //text to encourage the user to click the screen a lot to play the audio
+    fill(255);
+    textSize(40);
+    text("click intuitively until your computer crashes to compose", width / 2,height/2 + 250);
   }
 
   //a function that handles the portal position by calling back to the original function in the WorldOne
@@ -142,6 +142,8 @@ class WorldTwo extends WorldOne {
   //a function to play and stop the audio when the mouse is pressed
   mousePressed() {
     // This will be called by the main program when it detects a mouse press
+    push();
     this.sound.play();
+    pop();
   }
 }

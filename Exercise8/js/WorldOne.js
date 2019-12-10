@@ -34,7 +34,7 @@
 
      //the players
      this.player = new Player(820, 666, 6, color(255, 195, 195), 35);
-     this.player2 = new Player(165, 300, 6, color(221, 153, 255), 25)
+     this.player2 = new Player(165, 300, 6, color(255, 204, 153), 25)
 
      //information for the walls in this level
      //x and y variables to help with the fact that i built the walls in Gimp and positioning on the canvas being off
@@ -146,6 +146,8 @@
      //information about where and how to display the key
      key.x = 370;
      key.y = 761
+     key.size = 30;
+     key.fillColor = color(0, 255, 128);
      key.display();
      //information to move all the players, handle their input, and how to display them
      this.player.handleInput();

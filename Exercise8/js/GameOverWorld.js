@@ -96,6 +96,8 @@ class GameOverWorld extends WorldOne {
     push();
     key.x = width / 2 + 240
     key.y = height / 1.5 - 49;
+    key.size = 30;
+    key.fillColor = color(0);
     key.display();
     pop();
 
