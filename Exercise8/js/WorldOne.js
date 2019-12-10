@@ -295,9 +295,9 @@ class WorldOne extends PlayScene {
     this.handlePortalPosition();
 
 push();
-    key.x = width/2;
-    key.y = height/3 + 400;
-    key.size = 40;
+key.x = 370;
+key.y = 761
+key.display();
 pop();
 
       for (let i = 0; i < this.shelfArray.length; i++) {
@@ -305,10 +305,10 @@ pop();
         this.shelfArray[i].display();
       }
 
-      for (let i = 0; i < this.mazeArray.length; i++) {
-        this.mazeArray[i].handleCollision(this.player);
-        this.mazeArray[i].display();
-      }
+      // for (let i = 0; i < this.mazeArray.length; i++) {
+      //   this.mazeArray[i].handleCollision(this.player);
+      //   this.mazeArray[i].display();
+      // }
 
 
         // this.player.display();

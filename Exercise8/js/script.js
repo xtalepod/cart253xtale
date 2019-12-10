@@ -49,10 +49,10 @@ function setup() {
 //setting up and the playScene
   playScene = new PlayScene(playSceneBackground);
 
-//setting up the key
+// setting up the key
   key = new Key(50, 50,40);
 
-  currentScene = playScene; // Because we start on the title
+  currentScene = worldOne; // Because we start on the title
 //a function to set up the portals
   setUpPortals();
 }
